@@ -1,13 +1,13 @@
 # BOLD
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/OffchainLabs/bold)](https://goreportcard.com/report/github.com/OffchainLabs/bold)
+[![Go Report Card](https://goreportcard.com/badge/github.com/EspressoSystems/bold)](https://goreportcard.com/report/github.com/EspressoSystems/bold)
 [![codecov](https://codecov.io/gh/OffchainLabs/bold/branch/main/graph/badge.svg)](https://codecov.io/gh/OffchainLabs/bold)
 
-This repository implements Offchain Labs' BOLD (Bounded Liquidity Delay) Protocol: a dispute system to enable permissionless validation of Arbitrum chains. It is an efficient, all-vs-all challenge protocol that enables anyone on Ethereum to challenge invalid rollup state transitions. 
+This repository implements Offchain Labs' BOLD (Bounded Liquidity Delay) Protocol: a dispute system to enable permissionless validation of Arbitrum chains. It is an efficient, all-vs-all challenge protocol that enables anyone on Ethereum to challenge invalid rollup state transitions.
 
 BOLD provides a fixed, upper-bound on challenge confirmations for Arbitrum chains.
 
-Given state transitions are deterministic, this guarantees only one correct result for any given assertion. An **honest participant** will always win against malicious entities when challenging assertions posted to the settlement chain. 
+Given state transitions are deterministic, this guarantees only one correct result for any given assertion. An **honest participant** will always win against malicious entities when challenging assertions posted to the settlement chain.
 
 ## Repository Structure
 
@@ -20,7 +20,7 @@ For documentation on the economics of BOLD, see [Economics.pdf](docs/research-sp
 For detailed information on how our code is architected, see [ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ```
-api/ 
+api/
     API for monitoring and visualizing challenges
 assertions/
     Logic for scanning and posting assertions
@@ -60,7 +60,7 @@ BOLD is meant to be imported as a dependency in Arbitrum chains' validator softw
 
 ```go
 import (
-    "github.com/OffchainLabs/bold/challenge-manager"
+    "github.com/EspressoSystems/bold/challenge-manager"
 )
 
 ...
@@ -91,7 +91,7 @@ malicious parties.
 Install [Go v1.20](https://go.dev/doc/install). Then:
 
 ```
-git clone https://github.com/OffchainLabs/bold.git && cd bold
+git clone https://github.com/EspressoSystems/bold.git && cd bold
 ```
 
 The project can be built with either the Go tool or the Bazel build system. We use [Bazel](https://bazel.build) internally because it provides a hermetic, deterministic environment for building our project and gives us access to many tools including a suite of **static analysis checks**, and a great dependency management approach.
@@ -100,7 +100,7 @@ The project can be built with either the Go tool or the Bazel build system. We u
 
 To build, simply do:
 
-``` 
+```
 go build ./...
 ```
 
@@ -118,7 +118,8 @@ Then, we recommend aliasing the `bazel` command to `bazelisk`
 alias bazel=bazelisk
 ```
 
-To build with Bazel, 
+To build with Bazel,
+
 ```
 bazel build //...
 ```
@@ -207,11 +208,11 @@ You should now have Go bindings inside of `solgen/go`
 
 ## Documentation
 
-Go doc reference is available at [pkg.go.dev](https://pkg.go.dev/github.com/OffchainLabs/bold), and all documentation about the codebase can be found under `docs/`
+Go doc reference is available at [pkg.go.dev](https://pkg.go.dev/github.com/EspressoSystems/bold), and all documentation about the codebase can be found under `docs/`
 
 ## Security Audit
 
-BOLD has been audited by [Trail of Bits](https://www.trailofbits.com/) as of commit [60f97068c12cca73c45117a05ba1922f949fd6ae](https://github.com/OffchainLabs/bold/commit/60f97068c12cca73c45117a05ba1922f949fd6ae), and a more updated audit is being completed, to be finalized in the coming few weeks.
+BOLD has been audited by [Trail of Bits](https://www.trailofbits.com/) as of commit [60f97068c12cca73c45117a05ba1922f949fd6ae](https://github.com/EspressoSystems/bold/commit/60f97068c12cca73c45117a05ba1922f949fd6ae), and a more updated audit is being completed, to be finalized in the coming few weeks.
 
 The audit report can be found under [docs/audits/TrailOfBitsAudit](./docs/audits/TrailOfBitsAudit.pdf).
 

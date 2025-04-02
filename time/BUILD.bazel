@@ -3,7 +3,7 @@ load("@rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "time",
     srcs = ["time_reference.go"],
-    importpath = "github.com/offchainlabs/bold/time",
+    importpath = "github.com/EspressoSystems/bold/time",
     visibility = ["//visibility:public"],
 )
 

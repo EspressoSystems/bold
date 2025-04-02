@@ -6,7 +6,7 @@ go_library(
         "db.go",
         "schema.go",
     ],
-    importpath = "github.com/offchainlabs/bold/api/db",
+    importpath = "github.com/EspressoSystems/bold/api/db",
     visibility = ["//visibility:public"],
     deps = [
         "//api",
