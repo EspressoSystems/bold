@@ -1,4 +1,4 @@
-module github.com/offchainlabs/bold
+module github.com/EspressoSystems/bold
 
 go 1.23
 
