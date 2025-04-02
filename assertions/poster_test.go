@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 package assertions_test
 
@@ -13,14 +13,14 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 
-	"github.com/offchainlabs/bold/assertions"
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	cm "github.com/offchainlabs/bold/challenge-manager"
-	"github.com/offchainlabs/bold/challenge-manager/types"
-	"github.com/offchainlabs/bold/solgen/go/mocksgen"
-	challenge_testing "github.com/offchainlabs/bold/testing"
-	statemanager "github.com/offchainlabs/bold/testing/mocks/state-provider"
-	"github.com/offchainlabs/bold/testing/setup"
+	"github.com/EspressoSystems/bold/assertions"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	cm "github.com/EspressoSystems/bold/challenge-manager"
+	"github.com/EspressoSystems/bold/challenge-manager/types"
+	"github.com/EspressoSystems/bold/solgen/go/mocksgen"
+	challenge_testing "github.com/EspressoSystems/bold/testing"
+	statemanager "github.com/EspressoSystems/bold/testing/mocks/state-provider"
+	"github.com/EspressoSystems/bold/testing/setup"
 )
 
 func TestPostAssertion(t *testing.T) {

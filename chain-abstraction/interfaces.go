@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 package protocol
 
@@ -20,9 +20,9 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/rpc"
 
-	"github.com/offchainlabs/bold/containers/option"
-	"github.com/offchainlabs/bold/solgen/go/rollupgen"
-	"github.com/offchainlabs/bold/state-commitments/history"
+	"github.com/EspressoSystems/bold/containers/option"
+	"github.com/EspressoSystems/bold/solgen/go/rollupgen"
+	"github.com/EspressoSystems/bold/state-commitments/history"
 )
 
 // ErrCachedTimeSufficient is an error received from the challenge manager smart contract

@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 package prefixproofs_test
 
@@ -20,13 +20,13 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient/simulated"
 
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	"github.com/offchainlabs/bold/containers/option"
-	l2stateprovider "github.com/offchainlabs/bold/layer2-state-provider"
-	"github.com/offchainlabs/bold/solgen/go/mocksgen"
-	prefixproofs "github.com/offchainlabs/bold/state-commitments/prefix-proofs"
-	"github.com/offchainlabs/bold/testing/casttest"
-	statemanager "github.com/offchainlabs/bold/testing/mocks/state-provider"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	"github.com/EspressoSystems/bold/containers/option"
+	l2stateprovider "github.com/EspressoSystems/bold/layer2-state-provider"
+	"github.com/EspressoSystems/bold/solgen/go/mocksgen"
+	prefixproofs "github.com/EspressoSystems/bold/state-commitments/prefix-proofs"
+	"github.com/EspressoSystems/bold/testing/casttest"
+	statemanager "github.com/EspressoSystems/bold/testing/mocks/state-provider"
 )
 
 func TestAppendCompleteSubTree(t *testing.T) {

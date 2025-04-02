@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 // Package challengetree includes logic for keeping track of royal edges within a challenge
 // with utilities for computing cumulative path timers for said edges. This is helpful during
@@ -13,9 +13,9 @@ import (
 
 	"github.com/pkg/errors"
 
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	"github.com/offchainlabs/bold/containers/threadsafe"
-	l2stateprovider "github.com/offchainlabs/bold/layer2-state-provider"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	"github.com/EspressoSystems/bold/containers/threadsafe"
+	l2stateprovider "github.com/EspressoSystems/bold/layer2-state-provider"
 )
 
 // MetadataReader can read certain information about edges from the backend.

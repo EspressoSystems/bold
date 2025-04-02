@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 // Package db handles the interface to an underlying database of BOLD data
 // for easy querying of information used by the BOLD API.
@@ -17,10 +17,10 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/offchainlabs/bold/api"
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	"github.com/offchainlabs/bold/containers/option"
-	"github.com/offchainlabs/bold/state-commitments/history"
+	"github.com/EspressoSystems/bold/api"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	"github.com/EspressoSystems/bold/containers/option"
+	"github.com/EspressoSystems/bold/state-commitments/history"
 )
 
 type Database interface {

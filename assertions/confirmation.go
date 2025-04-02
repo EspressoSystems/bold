@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 package assertions
 
@@ -15,12 +15,12 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/log"
 
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	solimpl "github.com/offchainlabs/bold/chain-abstraction/sol-implementation"
-	"github.com/offchainlabs/bold/challenge-manager/types"
-	"github.com/offchainlabs/bold/containers/option"
-	"github.com/offchainlabs/bold/logs/ephemeral"
-	retry "github.com/offchainlabs/bold/runtime"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	solimpl "github.com/EspressoSystems/bold/chain-abstraction/sol-implementation"
+	"github.com/EspressoSystems/bold/challenge-manager/types"
+	"github.com/EspressoSystems/bold/containers/option"
+	"github.com/EspressoSystems/bold/logs/ephemeral"
+	retry "github.com/EspressoSystems/bold/runtime"
 )
 
 func (m *Manager) queueCanonicalAssertionsForConfirmation(ctx context.Context) {

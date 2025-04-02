@@ -5,8 +5,8 @@ import (
 
 	"github.com/ethereum/go-ethereum/core/types"
 
-	"github.com/offchainlabs/bold/testing/endtoend/backend"
-	"github.com/offchainlabs/bold/util/stopwaiter"
+	"github.com/EspressoSystems/bold/testing/endtoend/backend"
+	"github.com/EspressoSystems/bold/util/stopwaiter"
 )
 
 type simpleHeaderProvider struct {

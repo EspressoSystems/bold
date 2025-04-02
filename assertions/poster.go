@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 package assertions
 
@@ -16,12 +16,12 @@ import (
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/metrics"
 
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	solimpl "github.com/offchainlabs/bold/chain-abstraction/sol-implementation"
-	"github.com/offchainlabs/bold/containers"
-	"github.com/offchainlabs/bold/containers/option"
-	l2stateprovider "github.com/offchainlabs/bold/layer2-state-provider"
-	"github.com/offchainlabs/bold/logs/ephemeral"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	solimpl "github.com/EspressoSystems/bold/chain-abstraction/sol-implementation"
+	"github.com/EspressoSystems/bold/containers"
+	"github.com/EspressoSystems/bold/containers/option"
+	l2stateprovider "github.com/EspressoSystems/bold/layer2-state-provider"
+	"github.com/EspressoSystems/bold/logs/ephemeral"
 )
 
 var (

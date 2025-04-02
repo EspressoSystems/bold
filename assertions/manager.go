@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 // Package assertions contains testing utilities for posting and scanning for
 // assertions on chain, which are useful for simulating the responsibilities of
@@ -23,13 +23,13 @@ import (
 	"github.com/ethereum/go-ethereum/metrics"
 	"github.com/ethereum/go-ethereum/rpc"
 
-	"github.com/offchainlabs/bold/api/db"
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	"github.com/offchainlabs/bold/challenge-manager/types"
-	"github.com/offchainlabs/bold/containers/threadsafe"
-	l2stateprovider "github.com/offchainlabs/bold/layer2-state-provider"
-	retry "github.com/offchainlabs/bold/runtime"
-	"github.com/offchainlabs/bold/util/stopwaiter"
+	"github.com/EspressoSystems/bold/api/db"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	"github.com/EspressoSystems/bold/challenge-manager/types"
+	"github.com/EspressoSystems/bold/containers/threadsafe"
+	l2stateprovider "github.com/EspressoSystems/bold/layer2-state-provider"
+	retry "github.com/EspressoSystems/bold/runtime"
+	"github.com/EspressoSystems/bold/util/stopwaiter"
 )
 
 var (

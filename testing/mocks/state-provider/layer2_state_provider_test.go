@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 package stateprovider
 
 import (
@@ -17,9 +17,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	l2stateprovider "github.com/offchainlabs/bold/layer2-state-provider"
-	challenge_testing "github.com/offchainlabs/bold/testing"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	l2stateprovider "github.com/EspressoSystems/bold/layer2-state-provider"
+	challenge_testing "github.com/EspressoSystems/bold/testing"
 )
 
 func mockMachineAtBlock(_ context.Context, block uint64) (Machine, error) {

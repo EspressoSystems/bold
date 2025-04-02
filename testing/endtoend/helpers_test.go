@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 package endtoend
 
@@ -18,9 +18,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	solimpl "github.com/offchainlabs/bold/chain-abstraction/sol-implementation"
-	"github.com/offchainlabs/bold/solgen/go/rollupgen"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	solimpl "github.com/EspressoSystems/bold/chain-abstraction/sol-implementation"
+	"github.com/EspressoSystems/bold/solgen/go/rollupgen"
 )
 
 func setupAssertionChain(

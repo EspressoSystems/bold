@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 package l2stateprovider
 
@@ -18,12 +18,12 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/metrics"
 
-	"github.com/offchainlabs/bold/api"
-	"github.com/offchainlabs/bold/api/db"
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	"github.com/offchainlabs/bold/containers/option"
-	"github.com/offchainlabs/bold/state-commitments/history"
-	prefixproofs "github.com/offchainlabs/bold/state-commitments/prefix-proofs"
+	"github.com/EspressoSystems/bold/api"
+	"github.com/EspressoSystems/bold/api/db"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	"github.com/EspressoSystems/bold/containers/option"
+	"github.com/EspressoSystems/bold/state-commitments/history"
+	prefixproofs "github.com/EspressoSystems/bold/state-commitments/prefix-proofs"
 )
 
 // MachineHashCollector defines an interface which collects hashes of the state

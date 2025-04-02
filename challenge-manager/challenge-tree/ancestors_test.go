@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 package challengetree
 
@@ -12,9 +12,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	"github.com/offchainlabs/bold/challenge-manager/challenge-tree/mock"
-	"github.com/offchainlabs/bold/containers/threadsafe"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	"github.com/EspressoSystems/bold/challenge-manager/challenge-tree/mock"
+	"github.com/EspressoSystems/bold/containers/threadsafe"
 )
 
 func TestClosestEssentialAncestor(t *testing.T) {

@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 // Package history provides functions for computing merkle tree roots
 // and proofs needed for the BoLD protocol's history commitments.
@@ -48,7 +48,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 
-	"github.com/offchainlabs/bold/math"
+	"github.com/EspressoSystems/bold/math"
 )
 
 var (

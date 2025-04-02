@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 package challengemanager
 
@@ -14,16 +14,16 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	watcher "github.com/offchainlabs/bold/challenge-manager/chain-watcher"
-	edgetracker "github.com/offchainlabs/bold/challenge-manager/edge-tracker"
-	"github.com/offchainlabs/bold/challenge-manager/types"
-	"github.com/offchainlabs/bold/containers/option"
-	l2stateprovider "github.com/offchainlabs/bold/layer2-state-provider"
-	"github.com/offchainlabs/bold/solgen/go/rollupgen"
-	"github.com/offchainlabs/bold/testing/mocks"
-	"github.com/offchainlabs/bold/testing/setup"
-	customTime "github.com/offchainlabs/bold/time"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	watcher "github.com/EspressoSystems/bold/challenge-manager/chain-watcher"
+	edgetracker "github.com/EspressoSystems/bold/challenge-manager/edge-tracker"
+	"github.com/EspressoSystems/bold/challenge-manager/types"
+	"github.com/EspressoSystems/bold/containers/option"
+	l2stateprovider "github.com/EspressoSystems/bold/layer2-state-provider"
+	"github.com/EspressoSystems/bold/solgen/go/rollupgen"
+	"github.com/EspressoSystems/bold/testing/mocks"
+	"github.com/EspressoSystems/bold/testing/setup"
+	customTime "github.com/EspressoSystems/bold/time"
 )
 
 var _ = types.RivalHandler(&Manager{})

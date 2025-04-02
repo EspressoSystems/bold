@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 // Package challengemanager includes the main entrypoint for setting up a BoLD
 // challenge manager instance and challenging assertions onchain.
@@ -20,18 +20,18 @@ import (
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/metrics"
 
-	"github.com/offchainlabs/bold/api/server"
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	watcher "github.com/offchainlabs/bold/challenge-manager/chain-watcher"
-	edgetracker "github.com/offchainlabs/bold/challenge-manager/edge-tracker"
-	"github.com/offchainlabs/bold/challenge-manager/types"
-	"github.com/offchainlabs/bold/containers/events"
-	"github.com/offchainlabs/bold/containers/option"
-	"github.com/offchainlabs/bold/containers/threadsafe"
-	l2stateprovider "github.com/offchainlabs/bold/layer2-state-provider"
-	retry "github.com/offchainlabs/bold/runtime"
-	utilTime "github.com/offchainlabs/bold/time"
-	"github.com/offchainlabs/bold/util/stopwaiter"
+	"github.com/EspressoSystems/bold/api/server"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	watcher "github.com/EspressoSystems/bold/challenge-manager/chain-watcher"
+	edgetracker "github.com/EspressoSystems/bold/challenge-manager/edge-tracker"
+	"github.com/EspressoSystems/bold/challenge-manager/types"
+	"github.com/EspressoSystems/bold/containers/events"
+	"github.com/EspressoSystems/bold/containers/option"
+	"github.com/EspressoSystems/bold/containers/threadsafe"
+	l2stateprovider "github.com/EspressoSystems/bold/layer2-state-provider"
+	retry "github.com/EspressoSystems/bold/runtime"
+	utilTime "github.com/EspressoSystems/bold/time"
+	"github.com/EspressoSystems/bold/util/stopwaiter"
 )
 
 var (

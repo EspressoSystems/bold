@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 // Package solimpl includes an easy-to-use abstraction
 // around the challenge protocol contracts using their Go
@@ -27,16 +27,16 @@ import (
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/rpc"
 
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	"github.com/offchainlabs/bold/containers"
-	"github.com/offchainlabs/bold/containers/option"
-	"github.com/offchainlabs/bold/containers/threadsafe"
-	retry "github.com/offchainlabs/bold/runtime"
-	"github.com/offchainlabs/bold/solgen/go/bridgegen"
-	"github.com/offchainlabs/bold/solgen/go/contractsgen"
-	"github.com/offchainlabs/bold/solgen/go/mocksgen"
-	"github.com/offchainlabs/bold/solgen/go/rollupgen"
-	"github.com/offchainlabs/bold/solgen/go/testgen"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	"github.com/EspressoSystems/bold/containers"
+	"github.com/EspressoSystems/bold/containers/option"
+	"github.com/EspressoSystems/bold/containers/threadsafe"
+	retry "github.com/EspressoSystems/bold/runtime"
+	"github.com/EspressoSystems/bold/solgen/go/bridgegen"
+	"github.com/EspressoSystems/bold/solgen/go/contractsgen"
+	"github.com/EspressoSystems/bold/solgen/go/mocksgen"
+	"github.com/EspressoSystems/bold/solgen/go/rollupgen"
+	"github.com/EspressoSystems/bold/solgen/go/testgen"
 )
 
 var (

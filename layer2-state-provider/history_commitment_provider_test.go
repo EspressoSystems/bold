@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 package l2stateprovider
 
@@ -10,7 +10,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/offchainlabs/bold/containers/option"
+	"github.com/EspressoSystems/bold/containers/option"
 )
 
 func Test_computeRequiredNumberOfHashes(t *testing.T) {

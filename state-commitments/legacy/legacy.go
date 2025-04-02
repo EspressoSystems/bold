@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 // Package history defines the primitive HistoryCommitment type in the BoLD
 // protocol.
@@ -14,8 +14,8 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	inclusionproofs "github.com/offchainlabs/bold/state-commitments/inclusion-proofs"
-	prefixproofs "github.com/offchainlabs/bold/state-commitments/prefix-proofs"
+	inclusionproofs "github.com/EspressoSystems/bold/state-commitments/inclusion-proofs"
+	prefixproofs "github.com/EspressoSystems/bold/state-commitments/prefix-proofs"
 )
 
 var (

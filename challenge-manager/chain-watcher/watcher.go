@@ -1,13 +1,13 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 // Package watcher implements the main monitoring logic for protocol validators.
 // The challenge watcher is a singleton service available to all spawned edge
 // trackers and it tracks common information such as the edges' ancestors and an
 // edge's time unrivaled.
 //
-// See: [github.com/offchainlabs/bold/challenge-manager/edge-tracker]
+// See: [github.com/EspressoSystems/bold/challenge-manager/edge-tracker]
 package watcher
 
 import (
@@ -25,18 +25,18 @@ import (
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/metrics"
 
-	"github.com/offchainlabs/bold/api"
-	"github.com/offchainlabs/bold/api/db"
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	solimpl "github.com/offchainlabs/bold/chain-abstraction/sol-implementation"
-	challengetree "github.com/offchainlabs/bold/challenge-manager/challenge-tree"
-	"github.com/offchainlabs/bold/containers/option"
-	"github.com/offchainlabs/bold/containers/threadsafe"
-	l2stateprovider "github.com/offchainlabs/bold/layer2-state-provider"
-	"github.com/offchainlabs/bold/logs/ephemeral"
-	retry "github.com/offchainlabs/bold/runtime"
-	"github.com/offchainlabs/bold/solgen/go/challengeV2gen"
-	"github.com/offchainlabs/bold/util/stopwaiter"
+	"github.com/EspressoSystems/bold/api"
+	"github.com/EspressoSystems/bold/api/db"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	solimpl "github.com/EspressoSystems/bold/chain-abstraction/sol-implementation"
+	challengetree "github.com/EspressoSystems/bold/challenge-manager/challenge-tree"
+	"github.com/EspressoSystems/bold/containers/option"
+	"github.com/EspressoSystems/bold/containers/threadsafe"
+	l2stateprovider "github.com/EspressoSystems/bold/layer2-state-provider"
+	"github.com/EspressoSystems/bold/logs/ephemeral"
+	retry "github.com/EspressoSystems/bold/runtime"
+	"github.com/EspressoSystems/bold/solgen/go/challengeV2gen"
+	"github.com/EspressoSystems/bold/util/stopwaiter"
 )
 
 var (

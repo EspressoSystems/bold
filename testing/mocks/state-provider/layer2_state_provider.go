@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 // Package stateprovider defines smarter mocks for testing purposes that can
 // simulate a layer 2 state provider and layer 2 state execution.
@@ -18,12 +18,12 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/offchainlabs/bold/api/db"
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	l2stateprovider "github.com/offchainlabs/bold/layer2-state-provider"
-	"github.com/offchainlabs/bold/state-commitments/history"
-	challenge_testing "github.com/offchainlabs/bold/testing"
-	"github.com/offchainlabs/bold/testing/casttest"
+	"github.com/EspressoSystems/bold/api/db"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	l2stateprovider "github.com/EspressoSystems/bold/layer2-state-provider"
+	"github.com/EspressoSystems/bold/state-commitments/history"
+	challenge_testing "github.com/EspressoSystems/bold/testing"
+	"github.com/EspressoSystems/bold/testing/casttest"
 )
 
 // Defines the ABI encoding structure for submission of prefix proofs to the protocol contracts

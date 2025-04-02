@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 package backend
 
@@ -23,12 +23,12 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/rpc"
 
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	"github.com/offchainlabs/bold/solgen/go/mocksgen"
-	"github.com/offchainlabs/bold/solgen/go/rollupgen"
-	challenge_testing "github.com/offchainlabs/bold/testing"
-	"github.com/offchainlabs/bold/testing/setup"
-	"github.com/offchainlabs/bold/util"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	"github.com/EspressoSystems/bold/solgen/go/mocksgen"
+	"github.com/EspressoSystems/bold/solgen/go/rollupgen"
+	challenge_testing "github.com/EspressoSystems/bold/testing"
+	"github.com/EspressoSystems/bold/testing/setup"
+	"github.com/EspressoSystems/bold/util"
 )
 
 var _ Backend = &AnvilLocal{}

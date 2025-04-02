@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
+// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
 
 // Package backend handles the business logic for API data fetching
 // for BOLD challenge information. It is meant to be fairly abstract and
@@ -18,12 +18,12 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/offchainlabs/bold/api"
-	"github.com/offchainlabs/bold/api/db"
-	protocol "github.com/offchainlabs/bold/chain-abstraction"
-	watcher "github.com/offchainlabs/bold/challenge-manager/chain-watcher"
-	edgetracker "github.com/offchainlabs/bold/challenge-manager/edge-tracker"
-	"github.com/offchainlabs/bold/containers/option"
+	"github.com/EspressoSystems/bold/api"
+	"github.com/EspressoSystems/bold/api/db"
+	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	watcher "github.com/EspressoSystems/bold/challenge-manager/chain-watcher"
+	edgetracker "github.com/EspressoSystems/bold/challenge-manager/edge-tracker"
+	"github.com/EspressoSystems/bold/containers/option"
 )
 
 type BusinessLogicProvider interface {
