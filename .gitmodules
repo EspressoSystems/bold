@@ -4,4 +4,4 @@
 [submodule "contracts"]
 	path = contracts
 	url = https://github.com/EspressoSystems/nitro-contracts.git
-	branch = develop
+	branch = sync-v3.0.0
