@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package challengetree
 
@@ -10,10 +10,10 @@ import (
 
 	"github.com/pkg/errors"
 
-	protocol "github.com/EspressoSystems/bold/chain-abstraction"
-	"github.com/EspressoSystems/bold/containers"
-	"github.com/EspressoSystems/bold/containers/threadsafe"
-	bisection "github.com/EspressoSystems/bold/math"
+	protocol "github.com/offchainlabs/bold/chain-abstraction"
+	"github.com/offchainlabs/bold/containers"
+	"github.com/offchainlabs/bold/containers/threadsafe"
+	bisection "github.com/offchainlabs/bold/math"
 )
 
 var (

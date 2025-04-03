@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package solimpl_test
 
@@ -15,15 +15,15 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 
-	protocol "github.com/EspressoSystems/bold/chain-abstraction"
-	"github.com/EspressoSystems/bold/containers/option"
-	l2stateprovider "github.com/EspressoSystems/bold/layer2-state-provider"
-	"github.com/EspressoSystems/bold/solgen/go/mocksgen"
-	"github.com/EspressoSystems/bold/solgen/go/rollupgen"
-	"github.com/EspressoSystems/bold/state-commitments/history"
-	challenge_testing "github.com/EspressoSystems/bold/testing"
-	stateprovider "github.com/EspressoSystems/bold/testing/mocks/state-provider"
-	"github.com/EspressoSystems/bold/testing/setup"
+	protocol "github.com/offchainlabs/bold/chain-abstraction"
+	"github.com/offchainlabs/bold/containers/option"
+	l2stateprovider "github.com/offchainlabs/bold/layer2-state-provider"
+	"github.com/offchainlabs/bold/solgen/go/mocksgen"
+	"github.com/offchainlabs/bold/solgen/go/rollupgen"
+	"github.com/offchainlabs/bold/state-commitments/history"
+	challenge_testing "github.com/offchainlabs/bold/testing"
+	stateprovider "github.com/offchainlabs/bold/testing/mocks/state-provider"
+	"github.com/offchainlabs/bold/testing/setup"
 )
 
 func simpleAssertionMetadata() *l2stateprovider.AssociatedAssertionMetadata {

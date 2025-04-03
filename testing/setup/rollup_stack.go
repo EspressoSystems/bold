@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 // Package setup prepares a simulated backend for testing.
 package setup
@@ -24,20 +24,20 @@ import (
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/rpc"
 
-	protocol "github.com/EspressoSystems/bold/chain-abstraction"
-	solimpl "github.com/EspressoSystems/bold/chain-abstraction/sol-implementation"
-	l2stateprovider "github.com/EspressoSystems/bold/layer2-state-provider"
-	retry "github.com/EspressoSystems/bold/runtime"
-	"github.com/EspressoSystems/bold/solgen/go/bridgegen"
-	"github.com/EspressoSystems/bold/solgen/go/challengeV2gen"
-	"github.com/EspressoSystems/bold/solgen/go/contractsgen"
-	"github.com/EspressoSystems/bold/solgen/go/mocksgen"
-	"github.com/EspressoSystems/bold/solgen/go/ospgen"
-	"github.com/EspressoSystems/bold/solgen/go/proxiesgen"
-	"github.com/EspressoSystems/bold/solgen/go/rollupgen"
-	"github.com/EspressoSystems/bold/solgen/go/yulgen"
-	challenge_testing "github.com/EspressoSystems/bold/testing"
-	statemanager "github.com/EspressoSystems/bold/testing/mocks/state-provider"
+	protocol "github.com/offchainlabs/bold/chain-abstraction"
+	solimpl "github.com/offchainlabs/bold/chain-abstraction/sol-implementation"
+	l2stateprovider "github.com/offchainlabs/bold/layer2-state-provider"
+	retry "github.com/offchainlabs/bold/runtime"
+	"github.com/offchainlabs/bold/solgen/go/bridgegen"
+	"github.com/offchainlabs/bold/solgen/go/challengeV2gen"
+	"github.com/offchainlabs/bold/solgen/go/contractsgen"
+	"github.com/offchainlabs/bold/solgen/go/mocksgen"
+	"github.com/offchainlabs/bold/solgen/go/ospgen"
+	"github.com/offchainlabs/bold/solgen/go/proxiesgen"
+	"github.com/offchainlabs/bold/solgen/go/rollupgen"
+	"github.com/offchainlabs/bold/solgen/go/yulgen"
+	challenge_testing "github.com/offchainlabs/bold/testing"
+	statemanager "github.com/offchainlabs/bold/testing/mocks/state-provider"
 )
 
 type Committer interface {

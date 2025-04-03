@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package challengemanager
 
@@ -13,11 +13,11 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/log"
 
-	protocol "github.com/EspressoSystems/bold/chain-abstraction"
-	edgetracker "github.com/EspressoSystems/bold/challenge-manager/edge-tracker"
-	"github.com/EspressoSystems/bold/containers"
-	"github.com/EspressoSystems/bold/containers/option"
-	l2stateprovider "github.com/EspressoSystems/bold/layer2-state-provider"
+	protocol "github.com/offchainlabs/bold/chain-abstraction"
+	edgetracker "github.com/offchainlabs/bold/challenge-manager/edge-tracker"
+	"github.com/offchainlabs/bold/containers"
+	"github.com/offchainlabs/bold/containers/option"
+	l2stateprovider "github.com/offchainlabs/bold/layer2-state-provider"
 )
 
 // HandleCorrectRival is called when the assertion manager has posted a correct

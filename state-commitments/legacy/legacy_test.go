@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package legacy
 
@@ -12,7 +12,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	inclusionproofs "github.com/EspressoSystems/bold/state-commitments/inclusion-proofs"
+	inclusionproofs "github.com/offchainlabs/bold/state-commitments/inclusion-proofs"
 )
 
 func TestHistoryCommitment_LeafProofs(t *testing.T) {

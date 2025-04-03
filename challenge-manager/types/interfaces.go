@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 // Package types includes types and interfaces specific to the challenge manager instance.
 package types
@@ -8,7 +8,7 @@ package types
 import (
 	"context"
 
-	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	protocol "github.com/offchainlabs/bold/chain-abstraction"
 )
 
 // RivalHandler is the interface between the challenge manager and the assertion

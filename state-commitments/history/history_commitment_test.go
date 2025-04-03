@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package history
 
@@ -13,9 +13,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 
-	"github.com/EspressoSystems/bold/state-commitments/legacy"
-	prefixproofs "github.com/EspressoSystems/bold/state-commitments/prefix-proofs"
-	"github.com/EspressoSystems/bold/testing/casttest"
+	"github.com/offchainlabs/bold/state-commitments/legacy"
+	prefixproofs "github.com/offchainlabs/bold/state-commitments/prefix-proofs"
+	"github.com/offchainlabs/bold/testing/casttest"
 )
 
 func FuzzHistoryCommitter(f *testing.F) {

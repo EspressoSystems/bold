@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package challengetree
 
@@ -9,9 +9,9 @@ import (
 	"fmt"
 	"math"
 
-	protocol "github.com/EspressoSystems/bold/chain-abstraction"
-	"github.com/EspressoSystems/bold/containers/option"
-	"github.com/EspressoSystems/bold/containers/threadsafe"
+	protocol "github.com/offchainlabs/bold/chain-abstraction"
+	"github.com/offchainlabs/bold/containers/option"
+	"github.com/offchainlabs/bold/containers/threadsafe"
 )
 
 // Gets the local timer of an edge at a block number, T. If T is earlier than the edge's creation,

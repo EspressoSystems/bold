@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package inclusionproofs
 
@@ -12,8 +12,8 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	prefixproofs "github.com/EspressoSystems/bold/state-commitments/prefix-proofs"
-	"github.com/EspressoSystems/bold/testing/casttest"
+	prefixproofs "github.com/offchainlabs/bold/state-commitments/prefix-proofs"
+	"github.com/offchainlabs/bold/testing/casttest"
 )
 
 func TestInclusionProof(t *testing.T) {

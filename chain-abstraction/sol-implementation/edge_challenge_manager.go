@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package solimpl
 
@@ -20,15 +20,15 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/metrics"
 
-	protocol "github.com/EspressoSystems/bold/chain-abstraction"
-	challengetree "github.com/EspressoSystems/bold/challenge-manager/challenge-tree"
-	edgetracker "github.com/EspressoSystems/bold/challenge-manager/edge-tracker"
-	"github.com/EspressoSystems/bold/containers"
-	"github.com/EspressoSystems/bold/containers/option"
-	"github.com/EspressoSystems/bold/solgen/go/challengeV2gen"
-	"github.com/EspressoSystems/bold/solgen/go/ospgen"
-	"github.com/EspressoSystems/bold/solgen/go/rollupgen"
-	"github.com/EspressoSystems/bold/state-commitments/history"
+	protocol "github.com/offchainlabs/bold/chain-abstraction"
+	challengetree "github.com/offchainlabs/bold/challenge-manager/challenge-tree"
+	edgetracker "github.com/offchainlabs/bold/challenge-manager/edge-tracker"
+	"github.com/offchainlabs/bold/containers"
+	"github.com/offchainlabs/bold/containers/option"
+	"github.com/offchainlabs/bold/solgen/go/challengeV2gen"
+	"github.com/offchainlabs/bold/solgen/go/ospgen"
+	"github.com/offchainlabs/bold/solgen/go/rollupgen"
+	"github.com/offchainlabs/bold/state-commitments/history"
 )
 
 var (

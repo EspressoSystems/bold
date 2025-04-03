@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package assertions
 
@@ -15,14 +15,14 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 
-	protocol "github.com/EspressoSystems/bold/chain-abstraction"
-	"github.com/EspressoSystems/bold/containers/threadsafe"
-	"github.com/EspressoSystems/bold/solgen/go/mocksgen"
-	"github.com/EspressoSystems/bold/solgen/go/rollupgen"
-	challenge_testing "github.com/EspressoSystems/bold/testing"
-	"github.com/EspressoSystems/bold/testing/casttest"
-	statemanager "github.com/EspressoSystems/bold/testing/mocks/state-provider"
-	"github.com/EspressoSystems/bold/testing/setup"
+	protocol "github.com/offchainlabs/bold/chain-abstraction"
+	"github.com/offchainlabs/bold/containers/threadsafe"
+	"github.com/offchainlabs/bold/solgen/go/mocksgen"
+	"github.com/offchainlabs/bold/solgen/go/rollupgen"
+	challenge_testing "github.com/offchainlabs/bold/testing"
+	"github.com/offchainlabs/bold/testing/casttest"
+	statemanager "github.com/offchainlabs/bold/testing/mocks/state-provider"
+	"github.com/offchainlabs/bold/testing/setup"
 )
 
 func Test_extractAssertionFromEvent(t *testing.T) {

@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 // Package server defines the client-facing API methods for fetching data
 // related to BOLD challenges. It handles HTTP methods with their requests and responses.
@@ -16,8 +16,8 @@ import (
 
 	"github.com/ethereum/go-ethereum/log"
 
-	"github.com/EspressoSystems/bold/api/backend"
-	"github.com/EspressoSystems/bold/util/stopwaiter"
+	"github.com/offchainlabs/bold/api/backend"
+	"github.com/offchainlabs/bold/util/stopwaiter"
 )
 
 var apiVersion = "/api/v1"

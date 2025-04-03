@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 // Package l2stateprovider defines a dependency which provides L2 states and
 // proofs needed for the challenge manager to interact with an Arbitrum chain's
@@ -14,10 +14,10 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/EspressoSystems/bold/api/db"
-	protocol "github.com/EspressoSystems/bold/chain-abstraction"
-	"github.com/EspressoSystems/bold/containers/option"
-	"github.com/EspressoSystems/bold/state-commitments/history"
+	"github.com/offchainlabs/bold/api/db"
+	protocol "github.com/offchainlabs/bold/chain-abstraction"
+	"github.com/offchainlabs/bold/containers/option"
+	"github.com/offchainlabs/bold/state-commitments/history"
 )
 
 var ErrChainCatchingUp = errors.New("chain is catching up to the execution state")

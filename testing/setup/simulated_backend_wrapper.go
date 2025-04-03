@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package setup
 
@@ -16,7 +16,7 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient/simulated"
 	"github.com/ethereum/go-ethereum/rpc"
 
-	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	protocol "github.com/offchainlabs/bold/chain-abstraction"
 )
 
 var (

@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package challengemanager
 
@@ -11,14 +11,14 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/EspressoSystems/bold/api/backend"
-	"github.com/EspressoSystems/bold/api/db"
-	"github.com/EspressoSystems/bold/api/server"
-	"github.com/EspressoSystems/bold/assertions"
-	protocol "github.com/EspressoSystems/bold/chain-abstraction"
-	watcher "github.com/EspressoSystems/bold/challenge-manager/chain-watcher"
-	"github.com/EspressoSystems/bold/challenge-manager/types"
-	l2stateprovider "github.com/EspressoSystems/bold/layer2-state-provider"
+	"github.com/offchainlabs/bold/api/backend"
+	"github.com/offchainlabs/bold/api/db"
+	"github.com/offchainlabs/bold/api/server"
+	"github.com/offchainlabs/bold/assertions"
+	protocol "github.com/offchainlabs/bold/chain-abstraction"
+	watcher "github.com/offchainlabs/bold/challenge-manager/chain-watcher"
+	"github.com/offchainlabs/bold/challenge-manager/types"
+	l2stateprovider "github.com/offchainlabs/bold/layer2-state-provider"
 )
 
 type stackParams struct {

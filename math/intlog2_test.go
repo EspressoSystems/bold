@@ -1,6 +1,6 @@
 // Copyright 2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package math
 
@@ -11,7 +11,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/EspressoSystems/bold/testing/casttest"
+	"github.com/offchainlabs/bold/testing/casttest"
 )
 
 var benchResult int

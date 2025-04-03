@@ -1,11 +1,11 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package edgetracker
 
 import (
-	"github.com/EspressoSystems/bold/containers/fsm"
+	"github.com/offchainlabs/bold/containers/fsm"
 )
 
 func newEdgeTrackerFsm(

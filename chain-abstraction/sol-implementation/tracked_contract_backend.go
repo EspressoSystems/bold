@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package solimpl
 
@@ -14,7 +14,7 @@ import (
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/core/types"
 
-	protocol "github.com/EspressoSystems/bold/chain-abstraction"
+	protocol "github.com/offchainlabs/bold/chain-abstraction"
 )
 
 // TrackedContractBackend implements a wrapper around a chain backend interface

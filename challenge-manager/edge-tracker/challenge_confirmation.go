@@ -1,6 +1,6 @@
 // Copyright 2023-2024, Offchain Labs, Inc.
 // For license information, see:
-// https://github.com/EspressoSystems/bold/blob/main/LICENSE.md
+// https://github.com/offchainlabs/bold/blob/main/LICENSE.md
 
 package edgetracker
 
@@ -19,8 +19,8 @@ import (
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/metrics"
 
-	protocol "github.com/EspressoSystems/bold/chain-abstraction"
-	retry "github.com/EspressoSystems/bold/runtime"
+	protocol "github.com/offchainlabs/bold/chain-abstraction"
+	retry "github.com/offchainlabs/bold/runtime"
 )
 
 var onchainTimerDifferAfterConfirmationJobCounter = metrics.NewRegisteredCounter("arb/validator/tracker/onchain_timer_differed_after_confirmation_job", nil)
