@@ -3,7 +3,7 @@ load("@rules_go//go:def.bzl", "go_library")
 go_library(
     name = "util",
     srcs = ["backend.go"],
-    importpath = "github.com/EspressoSystems/bold/util",
+    importpath = "github.com/offchainlabs/bold/util",
     visibility = ["//visibility:public"],
     deps = [
         "//chain-abstraction:protocol",

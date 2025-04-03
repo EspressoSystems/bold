@@ -7,7 +7,7 @@ go_library(
         "manager.go",
         "stack.go",
     ],
-    importpath = "github.com/EspressoSystems/bold/challenge-manager",
+    importpath = "github.com/offchainlabs/bold/challenge-manager",
     visibility = ["//visibility:public"],
     deps = [
         "//api/backend",

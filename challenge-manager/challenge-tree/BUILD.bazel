@@ -9,7 +9,7 @@ go_library(
         "paths.go",
         "tree.go",
     ],
-    importpath = "github.com/EspressoSystems/bold/challenge-manager/challenge-tree",
+    importpath = "github.com/offchainlabs/bold/challenge-manager/challenge-tree",
     visibility = ["//visibility:public"],
     deps = [
         "//chain-abstraction:protocol",

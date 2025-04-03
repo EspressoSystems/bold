@@ -53,7 +53,7 @@ go_library(
         "expectations.go",
         "headers.go",
     ],
-    importpath = "github.com/EspressoSystems/bold/testing/endtoend",
+    importpath = "github.com/offchainlabs/bold/testing/endtoend",
     visibility = ["//visibility:public"],
     deps = [
         "//chain-abstraction:protocol",
