@@ -47,8 +47,10 @@ func (m *Manager) syncAssertions(ctx context.Context) {
 	}
 	m.assertionChainData.Unlock()
 
-	fromBlock := latestConfirmed.CreatedAtBlock()
-
+	fromBlock, err := m.chain.GetAssertionCreationParentBlock(ctx, latestConfirmed.Id().Hash)
+	if err != nil {
+		return
+	}
 	filterer, err := retry.UntilSucceeds(ctx, func() (*rollupgen.RollupUserLogicFilterer, error) {
 		return rollupgen.NewRollupUserLogicFilterer(m.rollupAddr, m.backend)
 	})
@@ -64,22 +66,28 @@ func (m *Manager) syncAssertions(ctx context.Context) {
 		return
 	}
 	if fromBlock != toBlock {
-		filterOpts := &bind.FilterOpts{
-			Start:   fromBlock,
-			End:     &toBlock,
-			Context: ctx,
-		}
-		_, err = retry.UntilSucceeds(ctx, func() (bool, error) {
-			innerErr := m.processAllAssertionsInRange(ctx, filterer, filterOpts)
-			if innerErr != nil {
-				log.Error("Could not process assertions in range", "err", innerErr)
-				return false, innerErr
+		for startBlock := fromBlock; startBlock <= toBlock; startBlock = startBlock + m.maxGetLogBlocks {
+			endBlock := startBlock + m.maxGetLogBlocks
+			if endBlock > toBlock {
+				endBlock = toBlock
 			}
-			return true, nil
-		})
-		if err != nil {
-			log.Error("Could not check for assertion added event")
-			return
+			filterOpts := &bind.FilterOpts{
+				Start:   startBlock,
+				End:     &endBlock,
+				Context: ctx,
+			}
+			_, err = retry.UntilSucceeds(ctx, func() (bool, error) {
+				innerErr := m.processAllAssertionsInRange(ctx, filterer, filterOpts)
+				if innerErr != nil {
+					log.Error("Could not process assertions in range", "err", innerErr)
+					return false, innerErr
+				}
+				return true, nil
+			})
+			if err != nil {
+				log.Error("Could not check for assertion added event")
+				return
+			}
 		}
 		fromBlock = toBlock
 	}
@@ -506,7 +514,7 @@ func (m *Manager) saveAssertionToDB(ctx context.Context, creationInfo *protocol.
 	if err != nil {
 		return err
 	}
-	firstChildBlock, err := assertion.SecondChildCreationBlock(ctx, opts)
+	firstChildBlock, err := assertion.FirstChildCreationBlock(ctx, opts)
 	if err != nil {
 		return err
 	}
@@ -523,7 +531,7 @@ func (m *Manager) saveAssertionToDB(ctx context.Context, creationInfo *protocol.
 		AfterInboxBatchAcc:       creationInfo.AfterInboxBatchAcc,
 		WasmModuleRoot:           creationInfo.WasmModuleRoot,
 		ChallengeManager:         creationInfo.ChallengeManager,
-		CreationBlock:            creationInfo.CreationBlock,
+		CreationBlock:            creationInfo.CreationParentBlock,
 		TransactionHash:          creationInfo.TransactionHash,
 		BeforeStateBlockHash:     beforeState.GlobalState.BlockHash,
 		BeforeStateSendRoot:      beforeState.GlobalState.SendRoot,
