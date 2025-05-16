@@ -32,7 +32,7 @@ var (
 // DeserializeMetaData contains all meta data concerning the Deserialize contract.
 var DeserializeMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea264697066735822122021aeab128185dcc014b98c99e9cfe236cd2a5d1fc351f9bcd76d870ea066fb2c64736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220d88448de8cbf2533608c52996f67bde9012d9a75bc0958459e63309d18e6013a64736f6c63430008190033",
 }
 
 // DeserializeABI is the input ABI used to generate the binding from.
@@ -205,7 +205,7 @@ func (_Deserialize *DeserializeTransactorRaw) Transact(opts *bind.TransactOpts, 
 // GlobalStateLibMetaData contains all meta data concerning the GlobalStateLib contract.
 var GlobalStateLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212209efd3cc58aed4955657d024cbace342d144b492f343046f4ef4598d1812c447164736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220d225692ce8f1a8a5815b44e8c5308e8dd2d217bbc6b6006280d85097b0f4568564736f6c63430008190033",
 }
 
 // GlobalStateLibABI is the input ABI used to generate the binding from.
@@ -378,7 +378,7 @@ func (_GlobalStateLib *GlobalStateLibTransactorRaw) Transact(opts *bind.Transact
 // InstructionsMetaData contains all meta data concerning the Instructions contract.
 var InstructionsMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220dc19f34f94cf7e8fb624765624c2654269c095e392844f6b15bef3368ef9031064736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220af5088f7fa1762e563a16b475f3bc23906f1f74801ca814ce110593f7d709e4364736f6c63430008190033",
 }
 
 // InstructionsABI is the input ABI used to generate the binding from.
@@ -551,7 +551,7 @@ func (_Instructions *InstructionsTransactorRaw) Transact(opts *bind.TransactOpts
 // MachineLibMetaData contains all meta data concerning the MachineLib contract.
 var MachineLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212200f6bb85ac0c1114f5b7c7ca0c853d45ad4a1314ca409e9d93973568dfcc0a55d64736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212205a91eba42b9da5ea82be81c50efe57e1d97ffe60c12083db7705039c2c5313f364736f6c63430008190033",
 }
 
 // MachineLibABI is the input ABI used to generate the binding from.
@@ -724,7 +724,7 @@ func (_MachineLib *MachineLibTransactorRaw) Transact(opts *bind.TransactOpts, me
 // MerkleProofLibMetaData contains all meta data concerning the MerkleProofLib contract.
 var MerkleProofLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212205eefc62383c6d7aa8dd1020a76f980819e8e80d716414510cf804b2cfeee824164736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220fc276e47116784673876848cdc9cf83b43bba841f90b53be5c58f8a1dbb777e964736f6c63430008190033",
 }
 
 // MerkleProofLibABI is the input ABI used to generate the binding from.
@@ -897,7 +897,7 @@ func (_MerkleProofLib *MerkleProofLibTransactorRaw) Transact(opts *bind.Transact
 // ModuleLibMetaData contains all meta data concerning the ModuleLib contract.
 var ModuleLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212200a7210f46bb8bbb72e0a56dd0de002b0233a64cd3f72bc2b2577daaef4db324464736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212201d9ed224619c012fe4c151873345e683c275a0c6f28f3386eebef35c3277c50e64736f6c63430008190033",
 }
 
 // ModuleLibABI is the input ABI used to generate the binding from.
@@ -1070,7 +1070,7 @@ func (_ModuleLib *ModuleLibTransactorRaw) Transact(opts *bind.TransactOpts, meth
 // ModuleMemoryCompactLibMetaData contains all meta data concerning the ModuleMemoryCompactLib contract.
 var ModuleMemoryCompactLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220a5dae35b1415bf028510f20c0d7f8a5241041ebe165c10dc221de02ec2a0aa1364736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220d6c7a290fe9a053a3bd3c745c911d805f3d08b2b5b169efc39fed10dfadf391464736f6c63430008190033",
 }
 
 // ModuleMemoryCompactLibABI is the input ABI used to generate the binding from.
@@ -1243,7 +1243,7 @@ func (_ModuleMemoryCompactLib *ModuleMemoryCompactLibTransactorRaw) Transact(opt
 // ModuleMemoryLibMetaData contains all meta data concerning the ModuleMemoryLib contract.
 var ModuleMemoryLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212202036e3fd6f6c3ec01b989a1065b157f060bcb97db83f068c09b46af39a4686ba64736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea264697066735822122003e79195013a820a83baa1b12354bb29a8b9e549fa64b9028413d603945e088264736f6c63430008190033",
 }
 
 // ModuleMemoryLibABI is the input ABI used to generate the binding from.
@@ -1416,7 +1416,7 @@ func (_ModuleMemoryLib *ModuleMemoryLibTransactorRaw) Transact(opts *bind.Transa
 // MultiStackLibMetaData contains all meta data concerning the MultiStackLib contract.
 var MultiStackLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea264697066735822122029c0e7b655029cdb5ac623e83256e5192dc9439fc1c401c10f9f741cf6096d6a64736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212203794279fd56c338c8c6bfcea0d905ffa52b8821ce3c2e771dbb76a321c23f4d264736f6c63430008190033",
 }
 
 // MultiStackLibABI is the input ABI used to generate the binding from.
@@ -1589,7 +1589,7 @@ func (_MultiStackLib *MultiStackLibTransactorRaw) Transact(opts *bind.TransactOp
 // PcArrayLibMetaData contains all meta data concerning the PcArrayLib contract.
 var PcArrayLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212201cd5181d47754cbee262e6ec31b0e5dbc95cc0cd501fc13dd951fc0a2b15363764736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212208e79a78bada7cdc0cf1cc8c83b2e38ee8e087693c723cb7017901963ec240da864736f6c63430008190033",
 }
 
 // PcArrayLibABI is the input ABI used to generate the binding from.
@@ -1762,7 +1762,7 @@ func (_PcArrayLib *PcArrayLibTransactorRaw) Transact(opts *bind.TransactOpts, me
 // StackFrameLibMetaData contains all meta data concerning the StackFrameLib contract.
 var StackFrameLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212205e1ee92171bb5da6e919cd3cbb53e02a9a09bbf2b3694e47f90f545997f724f564736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220337063284b08ce61008516bdcc1f74bef74918e584687a0d8d73dd484210d0b164736f6c63430008190033",
 }
 
 // StackFrameLibABI is the input ABI used to generate the binding from.
@@ -1935,7 +1935,7 @@ func (_StackFrameLib *StackFrameLibTransactorRaw) Transact(opts *bind.TransactOp
 // ValueArrayLibMetaData contains all meta data concerning the ValueArrayLib contract.
 var ValueArrayLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220d999b29f59be903ad48472ab7fbb5ec7d08bf693b0b36db65026cd8f6737917264736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea264697066735822122091a21f8f25e3ef52a4bc618e284d527f503be2b52c055ef4571c99f8884f9b6d64736f6c63430008190033",
 }
 
 // ValueArrayLibABI is the input ABI used to generate the binding from.
@@ -2108,7 +2108,7 @@ func (_ValueArrayLib *ValueArrayLibTransactorRaw) Transact(opts *bind.TransactOp
 // ValueLibMetaData contains all meta data concerning the ValueLib contract.
 var ValueLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220a31cd445013beee00dd2fd8341630ac0a529a6cfccc86becdad78d8f61e0cc3f64736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea264697066735822122085116abed036b0d4bbeb8f3714e8ceafd2f5e062d785716bce389a939b01eadd64736f6c63430008190033",
 }
 
 // ValueLibABI is the input ABI used to generate the binding from.
@@ -2281,7 +2281,7 @@ func (_ValueLib *ValueLibTransactorRaw) Transact(opts *bind.TransactOpts, method
 // ValueStackLibMetaData contains all meta data concerning the ValueStackLib contract.
 var ValueStackLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212202742035e2a43fc1de46bfb67d3d6672a7c9391f4919251e15577b54bdda22ba664736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220acafc59ad3740e48170c3bbdd9f560f4ae5fec3f8ca5cacfbd5f5236780aaac564736f6c63430008190033",
 }
 
 // ValueStackLibABI is the input ABI used to generate the binding from.
