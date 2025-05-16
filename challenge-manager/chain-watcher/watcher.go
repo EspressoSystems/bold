@@ -14,7 +14,6 @@ import (
 	"context"
 	"fmt"
 	"math"
-	"math/big"
 	"sync/atomic"
 	"time"
 
@@ -88,7 +87,7 @@ type Watcher struct {
 	// Only track challenges for these parent assertion hashes.
 	// Track all if empty / nil.
 	trackChallengeParentAssertionHashes []protocol.AssertionHash
-	maxLookbackBlocks                   uint64
+	maxGetLogBlocks                     uint64
 }
 
 // New initializes a watcher service for frequently scanning the chain
@@ -101,7 +100,7 @@ func New(
 	assertionConfirmingInterval time.Duration,
 	averageTimeForBlockCreation time.Duration,
 	trackChallengeParentAssertionHashes []protocol.AssertionHash,
-	maxLookbackBlocks uint64,
+	maxGetLogBlocks uint64,
 ) (*Watcher, error) {
 	return &Watcher{
 		chain:                               chain,
@@ -117,7 +116,7 @@ func New(
 		averageTimeForBlockCreation:         averageTimeForBlockCreation,
 		evilEdgesByLevel:                    threadsafe.NewMap(threadsafe.MapWithMetric[protocol.ChallengeLevel, *threadsafe.Set[protocol.EdgeId]]("evilEdgesByLevel")),
 		trackChallengeParentAssertionHashes: trackChallengeParentAssertionHashes,
-		maxLookbackBlocks:                   maxLookbackBlocks,
+		maxGetLogBlocks:                     maxGetLogBlocks,
 	}, nil
 }
 
@@ -211,33 +210,39 @@ func (w *Watcher) Start(ctx context.Context) {
 		log.Error("Could not initialize edge challenge manager filterer", "err", err)
 		return
 	}
-	filterOpts := &bind.FilterOpts{
-		Start:   fromBlock,
-		End:     &toBlock,
-		Context: ctx,
-	}
+	for startBlock := fromBlock; startBlock <= toBlock; startBlock = startBlock + w.maxGetLogBlocks {
+		endBlock := startBlock + w.maxGetLogBlocks
+		if endBlock > toBlock {
+			endBlock = toBlock
+		}
+		filterOpts := &bind.FilterOpts{
+			Start:   startBlock,
+			End:     &endBlock,
+			Context: ctx,
+		}
 
-	// Checks for different events right away before we start polling.
-	_, err = retry.UntilSucceeds(ctx, func() (bool, error) {
-		return true, w.checkForEdgeAdded(ctx, filterer, filterOpts)
-	})
-	if err != nil {
-		log.Error("Could not check for edge added", "err", err)
-		return
-	}
-	_, err = retry.UntilSucceeds(ctx, func() (bool, error) {
-		return true, w.checkForEdgeConfirmedByOneStepProof(ctx, filterer, filterOpts)
-	})
-	if err != nil {
-		log.Error("Could not check for edge confirmed by osp", "err", err)
-		return
-	}
-	_, err = retry.UntilSucceeds(ctx, func() (bool, error) {
-		return true, w.checkForEdgeConfirmedByTime(ctx, filterer, filterOpts)
-	})
-	if err != nil {
-		log.Error("Could not check for edge confirmed by time", "err", err)
-		return
+		// Checks for different events right away before we start polling.
+		_, err = retry.UntilSucceeds(ctx, func() (bool, error) {
+			return true, w.checkForEdgeAdded(ctx, filterer, filterOpts)
+		})
+		if err != nil {
+			log.Error("Could not check for edge added", "err", err)
+			return
+		}
+		_, err = retry.UntilSucceeds(ctx, func() (bool, error) {
+			return true, w.checkForEdgeConfirmedByOneStepProof(ctx, filterer, filterOpts)
+		})
+		if err != nil {
+			log.Error("Could not check for edge confirmed by osp", "err", err)
+			return
+		}
+		_, err = retry.UntilSucceeds(ctx, func() (bool, error) {
+			return true, w.checkForEdgeConfirmedByTime(ctx, filterer, filterOpts)
+		})
+		if err != nil {
+			log.Error("Could not check for edge confirmed by time", "err", err)
+			return
+		}
 	}
 
 	fromBlock = toBlock
@@ -291,7 +296,7 @@ func (w *Watcher) Start(ctx context.Context) {
 // GetRoyalEdges returns all royal, tracked edges in the watcher by assertion
 // hash.
 func (w *Watcher) GetRoyalEdges(ctx context.Context) (map[protocol.AssertionHash][]*api.JsonTrackedRoyalEdge, error) {
-	blockNum, err := w.chain.DesiredHeaderU64(ctx)
+	l1BlockNum, err := w.chain.DesiredL1HeaderU64(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -304,12 +309,12 @@ func (w *Watcher) GetRoyalEdges(ctx context.Context) (map[protocol.AssertionHash
 			if err2 != nil {
 				return err2
 			}
-			unrivaled, err2 := t.honestEdgeTree.IsUnrivaledAtBlockNum(edge, blockNum)
+			unrivaled, err2 := t.honestEdgeTree.IsUnrivaledAtBlockNum(edge, l1BlockNum)
 			if err2 != nil {
 				return err2
 			}
 			hasRival := !unrivaled
-			timeUnrivaled, err2 := t.honestEdgeTree.TimeUnrivaled(ctx, edge, blockNum)
+			timeUnrivaled, err2 := t.honestEdgeTree.TimeUnrivaled(ctx, edge, l1BlockNum)
 			if err2 != nil {
 				return err2
 			}
@@ -387,11 +392,11 @@ func (w *Watcher) ComputeAncestors(
 			challengedAssertionHash,
 		)
 	}
-	blockHeaderNumber, err := w.chain.DesiredHeaderU64(ctx)
+	l1BlockHeaderNumber, err := w.chain.DesiredL1HeaderU64(ctx)
 	if err != nil {
 		return nil, err
 	}
-	return chal.honestEdgeTree.ComputeAncestors(ctx, edgeId, blockHeaderNumber)
+	return chal.honestEdgeTree.ComputeAncestors(ctx, edgeId, l1BlockHeaderNumber)
 }
 
 func (w *Watcher) ClosestEssentialAncestor(
@@ -422,7 +427,7 @@ func (w *Watcher) IsEssentialAncestorConfirmable(
 			challengedAssertionHash,
 		)
 	}
-	blockHeaderNumber, err := w.chain.DesiredHeaderU64(ctx)
+	blockL1HeaderNumber, err := w.chain.DesiredL1HeaderU64(ctx)
 	if err != nil {
 		return false, err
 	}
@@ -436,7 +441,7 @@ func (w *Watcher) IsEssentialAncestorConfirmable(
 	pathWeight, err := chal.honestEdgeTree.ComputePathWeight(ctx, challengetree.ComputePathWeightArgs{
 		Child:    edge.Id(),
 		Ancestor: essentialAncestor.Id(),
-		BlockNum: blockHeaderNumber,
+		BlockNum: blockL1HeaderNumber,
 	})
 	if err != nil {
 		return false, err
@@ -454,7 +459,7 @@ func (w *Watcher) IsConfirmableEssentialEdge(
 	if !ok {
 		return false, nil, 0, fmt.Errorf("could not get challenge for top level assertion %#x", challengedAssertionHash)
 	}
-	blockHeaderNumber, err := w.chain.DesiredHeaderU64(ctx)
+	blockL1HeaderNumber, err := w.chain.DesiredL1HeaderU64(ctx)
 	if err != nil {
 		return false, nil, 0, err
 	}
@@ -462,7 +467,7 @@ func (w *Watcher) IsConfirmableEssentialEdge(
 		ctx,
 		challengetree.IsConfirmableArgs{
 			EssentialEdge:         essentialEdgeId,
-			BlockNum:              blockHeaderNumber,
+			BlockNum:              blockL1HeaderNumber,
 			ConfirmationThreshold: confirmationThreshold,
 		},
 	)
@@ -877,6 +882,7 @@ func (w *Watcher) confirmAssertionByChallengeWinner(ctx context.Context, edge pr
 	)
 
 	exceedsMaxMempoolSizeEphemeralErrorHandler := ephemeral.NewEphemeralErrorHandler(10*time.Minute, "posting this transaction will exceed max mempool size", 0)
+	gasEstimationEphemeralErrorHandler := ephemeral.NewEphemeralErrorHandler(10*time.Minute, "gas estimation errored for tx with hash", 0)
 
 	// Compute the number of blocks until we reach the assertion's
 	// deadline for confirmation.
@@ -898,6 +904,7 @@ func (w *Watcher) confirmAssertionByChallengeWinner(ctx context.Context, edge pr
 			if err != nil {
 				logLevel := log.Error
 				logLevel = exceedsMaxMempoolSizeEphemeralErrorHandler.LogLevel(err, logLevel)
+				logLevel = gasEstimationEphemeralErrorHandler.LogLevel(err, logLevel)
 
 				logLevel("Could not confirm assertion", "err", err, "assertionHash", claimedAssertion)
 				errorConfirmingAssertionByWinnerCounter.Inc(1)
@@ -921,7 +928,7 @@ func challengedAssertionConfirmableBlock(
 	info *protocol.AssertionCreatedInfo,
 	challengeGracePeriodBlocks uint64,
 ) uint64 {
-	confirmableAtBlock := info.CreationBlock + parentInfo.ConfirmPeriodBlocks
+	confirmableAtBlock := info.CreationL1Block + parentInfo.ConfirmPeriodBlocks
 	if winningEdgeConfirmationBlock+challengeGracePeriodBlocks > confirmableAtBlock {
 		confirmableAtBlock = winningEdgeConfirmationBlock + challengeGracePeriodBlocks
 	}
@@ -936,23 +943,24 @@ type filterRange struct {
 // Gets the start and end block numbers for our filter queries, starting from
 // the latest confirmed assertion's block number up to the latest block number.
 func (w *Watcher) getStartEndBlockNum(ctx context.Context) (filterRange, error) {
-	desiredRPCBlock := w.chain.GetDesiredRpcHeadBlockNumber()
-	latestDesiredBlockHeader, err := w.chain.Backend().HeaderByNumber(ctx, big.NewInt(int64(desiredRPCBlock)))
+	latestConfirmedAssertion, err := retry.UntilSucceeds(ctx, func() (protocol.Assertion, error) {
+		return w.chain.LatestConfirmed(ctx, w.chain.GetCallOptsWithDesiredRpcHeadBlockNumber(&bind.CallOpts{Context: ctx}))
+	})
 	if err != nil {
 		return filterRange{}, err
 	}
-	if !latestDesiredBlockHeader.Number.IsUint64() {
-		return filterRange{}, errors.New("latest desired block number is not a uint64")
+	latestDesiredBlockNum, err := retry.UntilSucceeds(ctx, func() (uint64, error) {
+		return w.chain.DesiredHeaderU64(ctx)
+	})
+	if err != nil {
+		return filterRange{}, err
 	}
-	latestDesiredBlockNum := latestDesiredBlockHeader.Number.Uint64()
-	startBlock := latestDesiredBlockNum
-	if w.maxLookbackBlocks < startBlock {
-		startBlock = startBlock - w.maxLookbackBlocks
-	} else {
-		startBlock = 0
+	latestConfirmedAssertionCreationBlock, err := w.chain.GetAssertionCreationParentBlock(ctx, latestConfirmedAssertion.Id().Hash)
+	if err != nil {
+		return filterRange{}, err
 	}
 	return filterRange{
-		startBlockNum: startBlock,
+		startBlockNum: latestConfirmedAssertionCreationBlock,
 		endBlockNum:   latestDesiredBlockNum,
 	}, nil
 }

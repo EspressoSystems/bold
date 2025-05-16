@@ -171,9 +171,11 @@ type ChainSetup struct {
 	useMockBridge              bool
 	useMockOneStepProver       bool
 	numAccountsToGen           uint64
+	numFundedAccounts          uint64
 	minimumAssertionPeriod     int64
 	challengeTestingOpts       []challenge_testing.Opt
 	StateManagerOpts           []statemanager.Opt
+	StakeTokenAddress          common.Address
 	EnableFastConfirmation     bool
 	EnableSafeFastConfirmation bool
 }
@@ -225,6 +227,12 @@ func WithStateManagerOpts(opts ...statemanager.Opt) Opt {
 func WithNumAccounts(n uint64) Opt {
 	return func(setup *ChainSetup) {
 		setup.numAccountsToGen = n
+	}
+}
+
+func WithNumFundedAccounts(n uint64) Opt {
+	return func(setup *ChainSetup) {
+		setup.numFundedAccounts = n
 	}
 }
 
@@ -334,7 +342,7 @@ func ChainsWithEdgeChallengeManager(opts ...Opt) (*ChainSetup, error) {
 		}
 		tx, err = safe.Setup(
 			accs[0].TxOpts,
-			[]common.Address{accs[1].AccountAddr, accs[2].AccountAddr},
+			[]common.Address{accs[1].AccountAddr, accs[2].AccountAddr, accs[3].AccountAddr},
 			big.NewInt(2),
 			common.Address{},
 			nil,
@@ -410,6 +418,12 @@ func ChainsWithEdgeChallengeManager(opts ...Opt) (*ChainSetup, error) {
 		if err != nil {
 			return nil, err
 		}
+		assertionChainOpts := []solimpl.Opt{
+			solimpl.WithRpcHeadBlockNumber(rpc.LatestBlockNumber),
+		}
+		if setp.EnableSafeFastConfirmation || (setp.EnableFastConfirmation && acc.AccountAddr == cfgOpts.AnyTrustFastConfirmer) {
+			assertionChainOpts = append(assertionChainOpts, solimpl.WithFastConfirmation())
+		}
 		chain, chainErr := solimpl.NewAssertionChain(
 			ctx,
 			addresses.Rollup,
@@ -417,8 +431,7 @@ func ChainsWithEdgeChallengeManager(opts ...Opt) (*ChainSetup, error) {
 			acc.TxOpts,
 			backend,
 			solimpl.NewChainBackendTransactor(backend),
-			solimpl.WithFastConfirmSafeAddress(safeProxyAddress),
-			solimpl.WithRpcHeadBlockNumber(rpc.LatestBlockNumber),
+			assertionChainOpts...,
 		)
 		if chainErr != nil {
 			return nil, chainErr
@@ -431,7 +444,8 @@ func ChainsWithEdgeChallengeManager(opts ...Opt) (*ChainSetup, error) {
 	if !ok {
 		return nil, errors.New("could not set big int")
 	}
-	for _, acc := range accs {
+	for i := 0; i < len(accs); i++ {
+		acc := accs[i]
 		transferTx, err := tokenBindings.TestWETH9Transactor.Transfer(accs[0].TxOpts, acc.TxOpts.From, seed)
 		if err != nil {
 			return nil, errors.Wrap(err, "could not approve account")
@@ -481,6 +495,7 @@ func ChainsWithEdgeChallengeManager(opts ...Opt) (*ChainSetup, error) {
 	setp.Addrs = addresses
 	setp.Backend = backend
 	setp.RollupConfig = cfg
+	setp.StakeTokenAddress = stakeToken
 	return setp, nil
 }
 
