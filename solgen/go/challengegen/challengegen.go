@@ -29,16 +29,10 @@ var (
 	_ = abi.ConvertType
 )
 
-// GlobalState is an auto generated low-level Go binding around an user-defined struct.
-type GlobalState struct {
-	Bytes32Vals [2][32]byte
-	U64Vals     [2]uint64
-}
-
-// OldChallengeLibChallenge is an auto generated low-level Go binding around an user-defined struct.
-type OldChallengeLibChallenge struct {
-	Current            OldChallengeLibParticipant
-	Next               OldChallengeLibParticipant
+// ChallengeLibChallenge is an auto generated low-level Go binding around an user-defined struct.
+type ChallengeLibChallenge struct {
+	Current            ChallengeLibParticipant
+	Next               ChallengeLibParticipant
 	LastMoveTimestamp  *big.Int
 	WasmModuleRoot     [32]byte
 	ChallengeStateHash [32]byte
@@ -46,1273 +40,43 @@ type OldChallengeLibChallenge struct {
 	Mode               uint8
 }
 
-// OldChallengeLibParticipant is an auto generated low-level Go binding around an user-defined struct.
-type OldChallengeLibParticipant struct {
+// ChallengeLibParticipant is an auto generated low-level Go binding around an user-defined struct.
+type ChallengeLibParticipant struct {
 	Addr     common.Address
 	TimeLeft *big.Int
 }
 
-// OldChallengeLibSegmentSelection is an auto generated low-level Go binding around an user-defined struct.
-type OldChallengeLibSegmentSelection struct {
+// ChallengeLibSegmentSelection is an auto generated low-level Go binding around an user-defined struct.
+type ChallengeLibSegmentSelection struct {
 	OldSegmentsStart  *big.Int
 	OldSegmentsLength *big.Int
 	OldSegments       [][32]byte
 	ChallengePosition *big.Int
 }
 
-// IOldChallengeManagerMetaData contains all meta data concerning the IOldChallengeManager contract.
-var IOldChallengeManagerMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"challengeRoot\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"challengedSegmentStart\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"challengedSegmentLength\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes32[]\",\"name\":\"chainHashes\",\"type\":\"bytes32[]\"}],\"name\":\"Bisected\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"enumIOldChallengeManager.ChallengeTerminationType\",\"name\":\"kind\",\"type\":\"uint8\"}],\"name\":\"ChallengeEnded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"blockSteps\",\"type\":\"uint256\"}],\"name\":\"ExecutionChallengeBegun\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"bytes32[2]\",\"name\":\"bytes32Vals\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint64[2]\",\"name\":\"u64Vals\",\"type\":\"uint64[2]\"}],\"indexed\":false,\"internalType\":\"structGlobalState\",\"name\":\"startState\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"bytes32[2]\",\"name\":\"bytes32Vals\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint64[2]\",\"name\":\"u64Vals\",\"type\":\"uint64[2]\"}],\"indexed\":false,\"internalType\":\"structGlobalState\",\"name\":\"endState\",\"type\":\"tuple\"}],\"name\":\"InitiatedChallenge\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"OneStepProofCompleted\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex_\",\"type\":\"uint64\"}],\"name\":\"challengeInfo\",\"outputs\":[{\"components\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"timeLeft\",\"type\":\"uint256\"}],\"internalType\":\"structOldChallengeLib.Participant\",\"name\":\"current\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"timeLeft\",\"type\":\"uint256\"}],\"internalType\":\"structOldChallengeLib.Participant\",\"name\":\"next\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"lastMoveTimestamp\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"wasmModuleRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"challengeStateHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint64\",\"name\":\"maxInboxMessages\",\"type\":\"uint64\"},{\"internalType\":\"enumOldChallengeLib.ChallengeMode\",\"name\":\"mode\",\"type\":\"uint8\"}],\"internalType\":\"structOldChallengeLib.Challenge\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex_\",\"type\":\"uint64\"}],\"name\":\"clearChallenge\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"wasmModuleRoot_\",\"type\":\"bytes32\"},{\"internalType\":\"enumMachineStatus[2]\",\"name\":\"startAndEndMachineStatuses_\",\"type\":\"uint8[2]\"},{\"components\":[{\"internalType\":\"bytes32[2]\",\"name\":\"bytes32Vals\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint64[2]\",\"name\":\"u64Vals\",\"type\":\"uint64[2]\"}],\"internalType\":\"structGlobalState[2]\",\"name\":\"startAndEndGlobalStates_\",\"type\":\"tuple[2]\"},{\"internalType\":\"uint64\",\"name\":\"numBlocks\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"asserter_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"challenger_\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"asserterTimeLeft_\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"challengerTimeLeft_\",\"type\":\"uint256\"}],\"name\":\"createChallenge\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"currentResponder\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIOldChallengeResultReceiver\",\"name\":\"resultReceiver_\",\"type\":\"address\"},{\"internalType\":\"contractISequencerInbox\",\"name\":\"sequencerInbox_\",\"type\":\"address\"},{\"internalType\":\"contractIBridge\",\"name\":\"bridge_\",\"type\":\"address\"},{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"osp_\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"isTimedOut\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex_\",\"type\":\"uint64\"}],\"name\":\"timeout\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+// GlobalState is an auto generated low-level Go binding around an user-defined struct.
+type GlobalState struct {
+	Bytes32Vals [2][32]byte
+	U64Vals     [2]uint64
 }
 
-// IOldChallengeManagerABI is the input ABI used to generate the binding from.
-// Deprecated: Use IOldChallengeManagerMetaData.ABI instead.
-var IOldChallengeManagerABI = IOldChallengeManagerMetaData.ABI
-
-// IOldChallengeManager is an auto generated Go binding around an Ethereum contract.
-type IOldChallengeManager struct {
-	IOldChallengeManagerCaller     // Read-only binding to the contract
-	IOldChallengeManagerTransactor // Write-only binding to the contract
-	IOldChallengeManagerFilterer   // Log filterer for contract events
-}
-
-// IOldChallengeManagerCaller is an auto generated read-only Go binding around an Ethereum contract.
-type IOldChallengeManagerCaller struct {
-	contract *bind.BoundContract // Generic contract wrapper for the low level calls
-}
-
-// IOldChallengeManagerTransactor is an auto generated write-only Go binding around an Ethereum contract.
-type IOldChallengeManagerTransactor struct {
-	contract *bind.BoundContract // Generic contract wrapper for the low level calls
-}
-
-// IOldChallengeManagerFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
-type IOldChallengeManagerFilterer struct {
-	contract *bind.BoundContract // Generic contract wrapper for the low level calls
-}
-
-// IOldChallengeManagerSession is an auto generated Go binding around an Ethereum contract,
-// with pre-set call and transact options.
-type IOldChallengeManagerSession struct {
-	Contract     *IOldChallengeManager // Generic contract binding to set the session for
-	CallOpts     bind.CallOpts         // Call options to use throughout this session
-	TransactOpts bind.TransactOpts     // Transaction auth options to use throughout this session
-}
-
-// IOldChallengeManagerCallerSession is an auto generated read-only Go binding around an Ethereum contract,
-// with pre-set call options.
-type IOldChallengeManagerCallerSession struct {
-	Contract *IOldChallengeManagerCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts               // Call options to use throughout this session
-}
-
-// IOldChallengeManagerTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
-// with pre-set transact options.
-type IOldChallengeManagerTransactorSession struct {
-	Contract     *IOldChallengeManagerTransactor // Generic contract transactor binding to set the session for
-	TransactOpts bind.TransactOpts               // Transaction auth options to use throughout this session
-}
-
-// IOldChallengeManagerRaw is an auto generated low-level Go binding around an Ethereum contract.
-type IOldChallengeManagerRaw struct {
-	Contract *IOldChallengeManager // Generic contract binding to access the raw methods on
-}
-
-// IOldChallengeManagerCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
-type IOldChallengeManagerCallerRaw struct {
-	Contract *IOldChallengeManagerCaller // Generic read-only contract binding to access the raw methods on
-}
-
-// IOldChallengeManagerTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
-type IOldChallengeManagerTransactorRaw struct {
-	Contract *IOldChallengeManagerTransactor // Generic write-only contract binding to access the raw methods on
-}
-
-// NewIOldChallengeManager creates a new instance of IOldChallengeManager, bound to a specific deployed contract.
-func NewIOldChallengeManager(address common.Address, backend bind.ContractBackend) (*IOldChallengeManager, error) {
-	contract, err := bindIOldChallengeManager(address, backend, backend, backend)
-	if err != nil {
-		return nil, err
-	}
-	return &IOldChallengeManager{IOldChallengeManagerCaller: IOldChallengeManagerCaller{contract: contract}, IOldChallengeManagerTransactor: IOldChallengeManagerTransactor{contract: contract}, IOldChallengeManagerFilterer: IOldChallengeManagerFilterer{contract: contract}}, nil
-}
-
-// NewIOldChallengeManagerCaller creates a new read-only instance of IOldChallengeManager, bound to a specific deployed contract.
-func NewIOldChallengeManagerCaller(address common.Address, caller bind.ContractCaller) (*IOldChallengeManagerCaller, error) {
-	contract, err := bindIOldChallengeManager(address, caller, nil, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &IOldChallengeManagerCaller{contract: contract}, nil
-}
-
-// NewIOldChallengeManagerTransactor creates a new write-only instance of IOldChallengeManager, bound to a specific deployed contract.
-func NewIOldChallengeManagerTransactor(address common.Address, transactor bind.ContractTransactor) (*IOldChallengeManagerTransactor, error) {
-	contract, err := bindIOldChallengeManager(address, nil, transactor, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &IOldChallengeManagerTransactor{contract: contract}, nil
-}
-
-// NewIOldChallengeManagerFilterer creates a new log filterer instance of IOldChallengeManager, bound to a specific deployed contract.
-func NewIOldChallengeManagerFilterer(address common.Address, filterer bind.ContractFilterer) (*IOldChallengeManagerFilterer, error) {
-	contract, err := bindIOldChallengeManager(address, nil, nil, filterer)
-	if err != nil {
-		return nil, err
-	}
-	return &IOldChallengeManagerFilterer{contract: contract}, nil
-}
-
-// bindIOldChallengeManager binds a generic wrapper to an already deployed contract.
-func bindIOldChallengeManager(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := IOldChallengeManagerMetaData.GetAbi()
-	if err != nil {
-		return nil, err
-	}
-	return bind.NewBoundContract(address, *parsed, caller, transactor, filterer), nil
-}
-
-// Call invokes the (constant) contract method with params as input values and
-// sets the output to result. The result type might be a single field for simple
-// returns, a slice of interfaces for anonymous returns and a struct for named
-// returns.
-func (_IOldChallengeManager *IOldChallengeManagerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _IOldChallengeManager.Contract.IOldChallengeManagerCaller.contract.Call(opts, result, method, params...)
-}
-
-// Transfer initiates a plain transaction to move funds to the contract, calling
-// its default method if one is available.
-func (_IOldChallengeManager *IOldChallengeManagerRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _IOldChallengeManager.Contract.IOldChallengeManagerTransactor.contract.Transfer(opts)
-}
-
-// Transact invokes the (paid) contract method with params as input values.
-func (_IOldChallengeManager *IOldChallengeManagerRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _IOldChallengeManager.Contract.IOldChallengeManagerTransactor.contract.Transact(opts, method, params...)
-}
-
-// Call invokes the (constant) contract method with params as input values and
-// sets the output to result. The result type might be a single field for simple
-// returns, a slice of interfaces for anonymous returns and a struct for named
-// returns.
-func (_IOldChallengeManager *IOldChallengeManagerCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _IOldChallengeManager.Contract.contract.Call(opts, result, method, params...)
-}
-
-// Transfer initiates a plain transaction to move funds to the contract, calling
-// its default method if one is available.
-func (_IOldChallengeManager *IOldChallengeManagerTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _IOldChallengeManager.Contract.contract.Transfer(opts)
-}
-
-// Transact invokes the (paid) contract method with params as input values.
-func (_IOldChallengeManager *IOldChallengeManagerTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _IOldChallengeManager.Contract.contract.Transact(opts, method, params...)
-}
-
-// ChallengeInfo is a free data retrieval call binding the contract method 0x7fd07a9c.
-//
-// Solidity: function challengeInfo(uint64 challengeIndex_) view returns(((address,uint256),(address,uint256),uint256,bytes32,bytes32,uint64,uint8))
-func (_IOldChallengeManager *IOldChallengeManagerCaller) ChallengeInfo(opts *bind.CallOpts, challengeIndex_ uint64) (OldChallengeLibChallenge, error) {
-	var out []interface{}
-	err := _IOldChallengeManager.contract.Call(opts, &out, "challengeInfo", challengeIndex_)
-
-	if err != nil {
-		return *new(OldChallengeLibChallenge), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(OldChallengeLibChallenge)).(*OldChallengeLibChallenge)
-
-	return out0, err
-
-}
-
-// ChallengeInfo is a free data retrieval call binding the contract method 0x7fd07a9c.
-//
-// Solidity: function challengeInfo(uint64 challengeIndex_) view returns(((address,uint256),(address,uint256),uint256,bytes32,bytes32,uint64,uint8))
-func (_IOldChallengeManager *IOldChallengeManagerSession) ChallengeInfo(challengeIndex_ uint64) (OldChallengeLibChallenge, error) {
-	return _IOldChallengeManager.Contract.ChallengeInfo(&_IOldChallengeManager.CallOpts, challengeIndex_)
-}
-
-// ChallengeInfo is a free data retrieval call binding the contract method 0x7fd07a9c.
-//
-// Solidity: function challengeInfo(uint64 challengeIndex_) view returns(((address,uint256),(address,uint256),uint256,bytes32,bytes32,uint64,uint8))
-func (_IOldChallengeManager *IOldChallengeManagerCallerSession) ChallengeInfo(challengeIndex_ uint64) (OldChallengeLibChallenge, error) {
-	return _IOldChallengeManager.Contract.ChallengeInfo(&_IOldChallengeManager.CallOpts, challengeIndex_)
-}
-
-// CurrentResponder is a free data retrieval call binding the contract method 0x23a9ef23.
-//
-// Solidity: function currentResponder(uint64 challengeIndex) view returns(address)
-func (_IOldChallengeManager *IOldChallengeManagerCaller) CurrentResponder(opts *bind.CallOpts, challengeIndex uint64) (common.Address, error) {
-	var out []interface{}
-	err := _IOldChallengeManager.contract.Call(opts, &out, "currentResponder", challengeIndex)
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
-}
-
-// CurrentResponder is a free data retrieval call binding the contract method 0x23a9ef23.
-//
-// Solidity: function currentResponder(uint64 challengeIndex) view returns(address)
-func (_IOldChallengeManager *IOldChallengeManagerSession) CurrentResponder(challengeIndex uint64) (common.Address, error) {
-	return _IOldChallengeManager.Contract.CurrentResponder(&_IOldChallengeManager.CallOpts, challengeIndex)
-}
-
-// CurrentResponder is a free data retrieval call binding the contract method 0x23a9ef23.
-//
-// Solidity: function currentResponder(uint64 challengeIndex) view returns(address)
-func (_IOldChallengeManager *IOldChallengeManagerCallerSession) CurrentResponder(challengeIndex uint64) (common.Address, error) {
-	return _IOldChallengeManager.Contract.CurrentResponder(&_IOldChallengeManager.CallOpts, challengeIndex)
-}
-
-// IsTimedOut is a free data retrieval call binding the contract method 0x9ede42b9.
-//
-// Solidity: function isTimedOut(uint64 challengeIndex) view returns(bool)
-func (_IOldChallengeManager *IOldChallengeManagerCaller) IsTimedOut(opts *bind.CallOpts, challengeIndex uint64) (bool, error) {
-	var out []interface{}
-	err := _IOldChallengeManager.contract.Call(opts, &out, "isTimedOut", challengeIndex)
-
-	if err != nil {
-		return *new(bool), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-
-	return out0, err
-
-}
-
-// IsTimedOut is a free data retrieval call binding the contract method 0x9ede42b9.
-//
-// Solidity: function isTimedOut(uint64 challengeIndex) view returns(bool)
-func (_IOldChallengeManager *IOldChallengeManagerSession) IsTimedOut(challengeIndex uint64) (bool, error) {
-	return _IOldChallengeManager.Contract.IsTimedOut(&_IOldChallengeManager.CallOpts, challengeIndex)
-}
-
-// IsTimedOut is a free data retrieval call binding the contract method 0x9ede42b9.
-//
-// Solidity: function isTimedOut(uint64 challengeIndex) view returns(bool)
-func (_IOldChallengeManager *IOldChallengeManagerCallerSession) IsTimedOut(challengeIndex uint64) (bool, error) {
-	return _IOldChallengeManager.Contract.IsTimedOut(&_IOldChallengeManager.CallOpts, challengeIndex)
-}
-
-// ClearChallenge is a paid mutator transaction binding the contract method 0x56e9df97.
-//
-// Solidity: function clearChallenge(uint64 challengeIndex_) returns()
-func (_IOldChallengeManager *IOldChallengeManagerTransactor) ClearChallenge(opts *bind.TransactOpts, challengeIndex_ uint64) (*types.Transaction, error) {
-	return _IOldChallengeManager.contract.Transact(opts, "clearChallenge", challengeIndex_)
-}
-
-// ClearChallenge is a paid mutator transaction binding the contract method 0x56e9df97.
-//
-// Solidity: function clearChallenge(uint64 challengeIndex_) returns()
-func (_IOldChallengeManager *IOldChallengeManagerSession) ClearChallenge(challengeIndex_ uint64) (*types.Transaction, error) {
-	return _IOldChallengeManager.Contract.ClearChallenge(&_IOldChallengeManager.TransactOpts, challengeIndex_)
-}
-
-// ClearChallenge is a paid mutator transaction binding the contract method 0x56e9df97.
-//
-// Solidity: function clearChallenge(uint64 challengeIndex_) returns()
-func (_IOldChallengeManager *IOldChallengeManagerTransactorSession) ClearChallenge(challengeIndex_ uint64) (*types.Transaction, error) {
-	return _IOldChallengeManager.Contract.ClearChallenge(&_IOldChallengeManager.TransactOpts, challengeIndex_)
-}
-
-// CreateChallenge is a paid mutator transaction binding the contract method 0x14eab5e7.
-//
-// Solidity: function createChallenge(bytes32 wasmModuleRoot_, uint8[2] startAndEndMachineStatuses_, (bytes32[2],uint64[2])[2] startAndEndGlobalStates_, uint64 numBlocks, address asserter_, address challenger_, uint256 asserterTimeLeft_, uint256 challengerTimeLeft_) returns(uint64)
-func (_IOldChallengeManager *IOldChallengeManagerTransactor) CreateChallenge(opts *bind.TransactOpts, wasmModuleRoot_ [32]byte, startAndEndMachineStatuses_ [2]uint8, startAndEndGlobalStates_ [2]GlobalState, numBlocks uint64, asserter_ common.Address, challenger_ common.Address, asserterTimeLeft_ *big.Int, challengerTimeLeft_ *big.Int) (*types.Transaction, error) {
-	return _IOldChallengeManager.contract.Transact(opts, "createChallenge", wasmModuleRoot_, startAndEndMachineStatuses_, startAndEndGlobalStates_, numBlocks, asserter_, challenger_, asserterTimeLeft_, challengerTimeLeft_)
-}
-
-// CreateChallenge is a paid mutator transaction binding the contract method 0x14eab5e7.
-//
-// Solidity: function createChallenge(bytes32 wasmModuleRoot_, uint8[2] startAndEndMachineStatuses_, (bytes32[2],uint64[2])[2] startAndEndGlobalStates_, uint64 numBlocks, address asserter_, address challenger_, uint256 asserterTimeLeft_, uint256 challengerTimeLeft_) returns(uint64)
-func (_IOldChallengeManager *IOldChallengeManagerSession) CreateChallenge(wasmModuleRoot_ [32]byte, startAndEndMachineStatuses_ [2]uint8, startAndEndGlobalStates_ [2]GlobalState, numBlocks uint64, asserter_ common.Address, challenger_ common.Address, asserterTimeLeft_ *big.Int, challengerTimeLeft_ *big.Int) (*types.Transaction, error) {
-	return _IOldChallengeManager.Contract.CreateChallenge(&_IOldChallengeManager.TransactOpts, wasmModuleRoot_, startAndEndMachineStatuses_, startAndEndGlobalStates_, numBlocks, asserter_, challenger_, asserterTimeLeft_, challengerTimeLeft_)
-}
-
-// CreateChallenge is a paid mutator transaction binding the contract method 0x14eab5e7.
-//
-// Solidity: function createChallenge(bytes32 wasmModuleRoot_, uint8[2] startAndEndMachineStatuses_, (bytes32[2],uint64[2])[2] startAndEndGlobalStates_, uint64 numBlocks, address asserter_, address challenger_, uint256 asserterTimeLeft_, uint256 challengerTimeLeft_) returns(uint64)
-func (_IOldChallengeManager *IOldChallengeManagerTransactorSession) CreateChallenge(wasmModuleRoot_ [32]byte, startAndEndMachineStatuses_ [2]uint8, startAndEndGlobalStates_ [2]GlobalState, numBlocks uint64, asserter_ common.Address, challenger_ common.Address, asserterTimeLeft_ *big.Int, challengerTimeLeft_ *big.Int) (*types.Transaction, error) {
-	return _IOldChallengeManager.Contract.CreateChallenge(&_IOldChallengeManager.TransactOpts, wasmModuleRoot_, startAndEndMachineStatuses_, startAndEndGlobalStates_, numBlocks, asserter_, challenger_, asserterTimeLeft_, challengerTimeLeft_)
-}
-
-// Initialize is a paid mutator transaction binding the contract method 0xf8c8765e.
-//
-// Solidity: function initialize(address resultReceiver_, address sequencerInbox_, address bridge_, address osp_) returns()
-func (_IOldChallengeManager *IOldChallengeManagerTransactor) Initialize(opts *bind.TransactOpts, resultReceiver_ common.Address, sequencerInbox_ common.Address, bridge_ common.Address, osp_ common.Address) (*types.Transaction, error) {
-	return _IOldChallengeManager.contract.Transact(opts, "initialize", resultReceiver_, sequencerInbox_, bridge_, osp_)
-}
-
-// Initialize is a paid mutator transaction binding the contract method 0xf8c8765e.
-//
-// Solidity: function initialize(address resultReceiver_, address sequencerInbox_, address bridge_, address osp_) returns()
-func (_IOldChallengeManager *IOldChallengeManagerSession) Initialize(resultReceiver_ common.Address, sequencerInbox_ common.Address, bridge_ common.Address, osp_ common.Address) (*types.Transaction, error) {
-	return _IOldChallengeManager.Contract.Initialize(&_IOldChallengeManager.TransactOpts, resultReceiver_, sequencerInbox_, bridge_, osp_)
-}
-
-// Initialize is a paid mutator transaction binding the contract method 0xf8c8765e.
-//
-// Solidity: function initialize(address resultReceiver_, address sequencerInbox_, address bridge_, address osp_) returns()
-func (_IOldChallengeManager *IOldChallengeManagerTransactorSession) Initialize(resultReceiver_ common.Address, sequencerInbox_ common.Address, bridge_ common.Address, osp_ common.Address) (*types.Transaction, error) {
-	return _IOldChallengeManager.Contract.Initialize(&_IOldChallengeManager.TransactOpts, resultReceiver_, sequencerInbox_, bridge_, osp_)
-}
-
-// Timeout is a paid mutator transaction binding the contract method 0x1b45c86a.
-//
-// Solidity: function timeout(uint64 challengeIndex_) returns()
-func (_IOldChallengeManager *IOldChallengeManagerTransactor) Timeout(opts *bind.TransactOpts, challengeIndex_ uint64) (*types.Transaction, error) {
-	return _IOldChallengeManager.contract.Transact(opts, "timeout", challengeIndex_)
-}
-
-// Timeout is a paid mutator transaction binding the contract method 0x1b45c86a.
-//
-// Solidity: function timeout(uint64 challengeIndex_) returns()
-func (_IOldChallengeManager *IOldChallengeManagerSession) Timeout(challengeIndex_ uint64) (*types.Transaction, error) {
-	return _IOldChallengeManager.Contract.Timeout(&_IOldChallengeManager.TransactOpts, challengeIndex_)
-}
-
-// Timeout is a paid mutator transaction binding the contract method 0x1b45c86a.
-//
-// Solidity: function timeout(uint64 challengeIndex_) returns()
-func (_IOldChallengeManager *IOldChallengeManagerTransactorSession) Timeout(challengeIndex_ uint64) (*types.Transaction, error) {
-	return _IOldChallengeManager.Contract.Timeout(&_IOldChallengeManager.TransactOpts, challengeIndex_)
-}
-
-// IOldChallengeManagerBisectedIterator is returned from FilterBisected and is used to iterate over the raw logs and unpacked data for Bisected events raised by the IOldChallengeManager contract.
-type IOldChallengeManagerBisectedIterator struct {
-	Event *IOldChallengeManagerBisected // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *IOldChallengeManagerBisectedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IOldChallengeManagerBisected)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(IOldChallengeManagerBisected)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *IOldChallengeManagerBisectedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *IOldChallengeManagerBisectedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// IOldChallengeManagerBisected represents a Bisected event raised by the IOldChallengeManager contract.
-type IOldChallengeManagerBisected struct {
-	ChallengeIndex          uint64
-	ChallengeRoot           [32]byte
-	ChallengedSegmentStart  *big.Int
-	ChallengedSegmentLength *big.Int
-	ChainHashes             [][32]byte
-	Raw                     types.Log // Blockchain specific contextual infos
-}
-
-// FilterBisected is a free log retrieval operation binding the contract event 0x86b34e9455464834eca718f62d4481437603bb929d8a78ccde5d1bc79fa06d68.
-//
-// Solidity: event Bisected(uint64 indexed challengeIndex, bytes32 indexed challengeRoot, uint256 challengedSegmentStart, uint256 challengedSegmentLength, bytes32[] chainHashes)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) FilterBisected(opts *bind.FilterOpts, challengeIndex []uint64, challengeRoot [][32]byte) (*IOldChallengeManagerBisectedIterator, error) {
-
-	var challengeIndexRule []interface{}
-	for _, challengeIndexItem := range challengeIndex {
-		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
-	}
-	var challengeRootRule []interface{}
-	for _, challengeRootItem := range challengeRoot {
-		challengeRootRule = append(challengeRootRule, challengeRootItem)
-	}
-
-	logs, sub, err := _IOldChallengeManager.contract.FilterLogs(opts, "Bisected", challengeIndexRule, challengeRootRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IOldChallengeManagerBisectedIterator{contract: _IOldChallengeManager.contract, event: "Bisected", logs: logs, sub: sub}, nil
-}
-
-// WatchBisected is a free log subscription operation binding the contract event 0x86b34e9455464834eca718f62d4481437603bb929d8a78ccde5d1bc79fa06d68.
-//
-// Solidity: event Bisected(uint64 indexed challengeIndex, bytes32 indexed challengeRoot, uint256 challengedSegmentStart, uint256 challengedSegmentLength, bytes32[] chainHashes)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) WatchBisected(opts *bind.WatchOpts, sink chan<- *IOldChallengeManagerBisected, challengeIndex []uint64, challengeRoot [][32]byte) (event.Subscription, error) {
-
-	var challengeIndexRule []interface{}
-	for _, challengeIndexItem := range challengeIndex {
-		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
-	}
-	var challengeRootRule []interface{}
-	for _, challengeRootItem := range challengeRoot {
-		challengeRootRule = append(challengeRootRule, challengeRootItem)
-	}
-
-	logs, sub, err := _IOldChallengeManager.contract.WatchLogs(opts, "Bisected", challengeIndexRule, challengeRootRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(IOldChallengeManagerBisected)
-				if err := _IOldChallengeManager.contract.UnpackLog(event, "Bisected", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseBisected is a log parse operation binding the contract event 0x86b34e9455464834eca718f62d4481437603bb929d8a78ccde5d1bc79fa06d68.
-//
-// Solidity: event Bisected(uint64 indexed challengeIndex, bytes32 indexed challengeRoot, uint256 challengedSegmentStart, uint256 challengedSegmentLength, bytes32[] chainHashes)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) ParseBisected(log types.Log) (*IOldChallengeManagerBisected, error) {
-	event := new(IOldChallengeManagerBisected)
-	if err := _IOldChallengeManager.contract.UnpackLog(event, "Bisected", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// IOldChallengeManagerChallengeEndedIterator is returned from FilterChallengeEnded and is used to iterate over the raw logs and unpacked data for ChallengeEnded events raised by the IOldChallengeManager contract.
-type IOldChallengeManagerChallengeEndedIterator struct {
-	Event *IOldChallengeManagerChallengeEnded // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *IOldChallengeManagerChallengeEndedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IOldChallengeManagerChallengeEnded)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(IOldChallengeManagerChallengeEnded)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *IOldChallengeManagerChallengeEndedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *IOldChallengeManagerChallengeEndedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// IOldChallengeManagerChallengeEnded represents a ChallengeEnded event raised by the IOldChallengeManager contract.
-type IOldChallengeManagerChallengeEnded struct {
-	ChallengeIndex uint64
-	Kind           uint8
-	Raw            types.Log // Blockchain specific contextual infos
-}
-
-// FilterChallengeEnded is a free log retrieval operation binding the contract event 0xfdaece6c274a4b56af16761f83fd6b1062823192630ea08e019fdf9b2d747f40.
-//
-// Solidity: event ChallengeEnded(uint64 indexed challengeIndex, uint8 kind)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) FilterChallengeEnded(opts *bind.FilterOpts, challengeIndex []uint64) (*IOldChallengeManagerChallengeEndedIterator, error) {
-
-	var challengeIndexRule []interface{}
-	for _, challengeIndexItem := range challengeIndex {
-		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
-	}
-
-	logs, sub, err := _IOldChallengeManager.contract.FilterLogs(opts, "ChallengeEnded", challengeIndexRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IOldChallengeManagerChallengeEndedIterator{contract: _IOldChallengeManager.contract, event: "ChallengeEnded", logs: logs, sub: sub}, nil
-}
-
-// WatchChallengeEnded is a free log subscription operation binding the contract event 0xfdaece6c274a4b56af16761f83fd6b1062823192630ea08e019fdf9b2d747f40.
-//
-// Solidity: event ChallengeEnded(uint64 indexed challengeIndex, uint8 kind)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) WatchChallengeEnded(opts *bind.WatchOpts, sink chan<- *IOldChallengeManagerChallengeEnded, challengeIndex []uint64) (event.Subscription, error) {
-
-	var challengeIndexRule []interface{}
-	for _, challengeIndexItem := range challengeIndex {
-		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
-	}
-
-	logs, sub, err := _IOldChallengeManager.contract.WatchLogs(opts, "ChallengeEnded", challengeIndexRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(IOldChallengeManagerChallengeEnded)
-				if err := _IOldChallengeManager.contract.UnpackLog(event, "ChallengeEnded", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseChallengeEnded is a log parse operation binding the contract event 0xfdaece6c274a4b56af16761f83fd6b1062823192630ea08e019fdf9b2d747f40.
-//
-// Solidity: event ChallengeEnded(uint64 indexed challengeIndex, uint8 kind)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) ParseChallengeEnded(log types.Log) (*IOldChallengeManagerChallengeEnded, error) {
-	event := new(IOldChallengeManagerChallengeEnded)
-	if err := _IOldChallengeManager.contract.UnpackLog(event, "ChallengeEnded", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// IOldChallengeManagerExecutionChallengeBegunIterator is returned from FilterExecutionChallengeBegun and is used to iterate over the raw logs and unpacked data for ExecutionChallengeBegun events raised by the IOldChallengeManager contract.
-type IOldChallengeManagerExecutionChallengeBegunIterator struct {
-	Event *IOldChallengeManagerExecutionChallengeBegun // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *IOldChallengeManagerExecutionChallengeBegunIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IOldChallengeManagerExecutionChallengeBegun)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(IOldChallengeManagerExecutionChallengeBegun)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *IOldChallengeManagerExecutionChallengeBegunIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *IOldChallengeManagerExecutionChallengeBegunIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// IOldChallengeManagerExecutionChallengeBegun represents a ExecutionChallengeBegun event raised by the IOldChallengeManager contract.
-type IOldChallengeManagerExecutionChallengeBegun struct {
-	ChallengeIndex uint64
-	BlockSteps     *big.Int
-	Raw            types.Log // Blockchain specific contextual infos
-}
-
-// FilterExecutionChallengeBegun is a free log retrieval operation binding the contract event 0x24e032e170243bbea97e140174b22dc7e54fb85925afbf52c70e001cd6af16db.
-//
-// Solidity: event ExecutionChallengeBegun(uint64 indexed challengeIndex, uint256 blockSteps)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) FilterExecutionChallengeBegun(opts *bind.FilterOpts, challengeIndex []uint64) (*IOldChallengeManagerExecutionChallengeBegunIterator, error) {
-
-	var challengeIndexRule []interface{}
-	for _, challengeIndexItem := range challengeIndex {
-		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
-	}
-
-	logs, sub, err := _IOldChallengeManager.contract.FilterLogs(opts, "ExecutionChallengeBegun", challengeIndexRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IOldChallengeManagerExecutionChallengeBegunIterator{contract: _IOldChallengeManager.contract, event: "ExecutionChallengeBegun", logs: logs, sub: sub}, nil
-}
-
-// WatchExecutionChallengeBegun is a free log subscription operation binding the contract event 0x24e032e170243bbea97e140174b22dc7e54fb85925afbf52c70e001cd6af16db.
-//
-// Solidity: event ExecutionChallengeBegun(uint64 indexed challengeIndex, uint256 blockSteps)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) WatchExecutionChallengeBegun(opts *bind.WatchOpts, sink chan<- *IOldChallengeManagerExecutionChallengeBegun, challengeIndex []uint64) (event.Subscription, error) {
-
-	var challengeIndexRule []interface{}
-	for _, challengeIndexItem := range challengeIndex {
-		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
-	}
-
-	logs, sub, err := _IOldChallengeManager.contract.WatchLogs(opts, "ExecutionChallengeBegun", challengeIndexRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(IOldChallengeManagerExecutionChallengeBegun)
-				if err := _IOldChallengeManager.contract.UnpackLog(event, "ExecutionChallengeBegun", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseExecutionChallengeBegun is a log parse operation binding the contract event 0x24e032e170243bbea97e140174b22dc7e54fb85925afbf52c70e001cd6af16db.
-//
-// Solidity: event ExecutionChallengeBegun(uint64 indexed challengeIndex, uint256 blockSteps)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) ParseExecutionChallengeBegun(log types.Log) (*IOldChallengeManagerExecutionChallengeBegun, error) {
-	event := new(IOldChallengeManagerExecutionChallengeBegun)
-	if err := _IOldChallengeManager.contract.UnpackLog(event, "ExecutionChallengeBegun", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// IOldChallengeManagerInitiatedChallengeIterator is returned from FilterInitiatedChallenge and is used to iterate over the raw logs and unpacked data for InitiatedChallenge events raised by the IOldChallengeManager contract.
-type IOldChallengeManagerInitiatedChallengeIterator struct {
-	Event *IOldChallengeManagerInitiatedChallenge // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *IOldChallengeManagerInitiatedChallengeIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IOldChallengeManagerInitiatedChallenge)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(IOldChallengeManagerInitiatedChallenge)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *IOldChallengeManagerInitiatedChallengeIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *IOldChallengeManagerInitiatedChallengeIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// IOldChallengeManagerInitiatedChallenge represents a InitiatedChallenge event raised by the IOldChallengeManager contract.
-type IOldChallengeManagerInitiatedChallenge struct {
-	ChallengeIndex uint64
-	StartState     GlobalState
-	EndState       GlobalState
-	Raw            types.Log // Blockchain specific contextual infos
-}
-
-// FilterInitiatedChallenge is a free log retrieval operation binding the contract event 0x76604fe17af46c9b5f53ffe99ff23e0f655dab91886b07ac1fc0254319f7145a.
-//
-// Solidity: event InitiatedChallenge(uint64 indexed challengeIndex, (bytes32[2],uint64[2]) startState, (bytes32[2],uint64[2]) endState)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) FilterInitiatedChallenge(opts *bind.FilterOpts, challengeIndex []uint64) (*IOldChallengeManagerInitiatedChallengeIterator, error) {
-
-	var challengeIndexRule []interface{}
-	for _, challengeIndexItem := range challengeIndex {
-		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
-	}
-
-	logs, sub, err := _IOldChallengeManager.contract.FilterLogs(opts, "InitiatedChallenge", challengeIndexRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IOldChallengeManagerInitiatedChallengeIterator{contract: _IOldChallengeManager.contract, event: "InitiatedChallenge", logs: logs, sub: sub}, nil
-}
-
-// WatchInitiatedChallenge is a free log subscription operation binding the contract event 0x76604fe17af46c9b5f53ffe99ff23e0f655dab91886b07ac1fc0254319f7145a.
-//
-// Solidity: event InitiatedChallenge(uint64 indexed challengeIndex, (bytes32[2],uint64[2]) startState, (bytes32[2],uint64[2]) endState)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) WatchInitiatedChallenge(opts *bind.WatchOpts, sink chan<- *IOldChallengeManagerInitiatedChallenge, challengeIndex []uint64) (event.Subscription, error) {
-
-	var challengeIndexRule []interface{}
-	for _, challengeIndexItem := range challengeIndex {
-		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
-	}
-
-	logs, sub, err := _IOldChallengeManager.contract.WatchLogs(opts, "InitiatedChallenge", challengeIndexRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(IOldChallengeManagerInitiatedChallenge)
-				if err := _IOldChallengeManager.contract.UnpackLog(event, "InitiatedChallenge", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseInitiatedChallenge is a log parse operation binding the contract event 0x76604fe17af46c9b5f53ffe99ff23e0f655dab91886b07ac1fc0254319f7145a.
-//
-// Solidity: event InitiatedChallenge(uint64 indexed challengeIndex, (bytes32[2],uint64[2]) startState, (bytes32[2],uint64[2]) endState)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) ParseInitiatedChallenge(log types.Log) (*IOldChallengeManagerInitiatedChallenge, error) {
-	event := new(IOldChallengeManagerInitiatedChallenge)
-	if err := _IOldChallengeManager.contract.UnpackLog(event, "InitiatedChallenge", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// IOldChallengeManagerOneStepProofCompletedIterator is returned from FilterOneStepProofCompleted and is used to iterate over the raw logs and unpacked data for OneStepProofCompleted events raised by the IOldChallengeManager contract.
-type IOldChallengeManagerOneStepProofCompletedIterator struct {
-	Event *IOldChallengeManagerOneStepProofCompleted // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *IOldChallengeManagerOneStepProofCompletedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IOldChallengeManagerOneStepProofCompleted)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(IOldChallengeManagerOneStepProofCompleted)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *IOldChallengeManagerOneStepProofCompletedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *IOldChallengeManagerOneStepProofCompletedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// IOldChallengeManagerOneStepProofCompleted represents a OneStepProofCompleted event raised by the IOldChallengeManager contract.
-type IOldChallengeManagerOneStepProofCompleted struct {
-	ChallengeIndex uint64
-	Raw            types.Log // Blockchain specific contextual infos
-}
-
-// FilterOneStepProofCompleted is a free log retrieval operation binding the contract event 0xc2cc42e04ff8c36de71c6a2937ea9f161dd0dd9e175f00caa26e5200643c781e.
-//
-// Solidity: event OneStepProofCompleted(uint64 indexed challengeIndex)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) FilterOneStepProofCompleted(opts *bind.FilterOpts, challengeIndex []uint64) (*IOldChallengeManagerOneStepProofCompletedIterator, error) {
-
-	var challengeIndexRule []interface{}
-	for _, challengeIndexItem := range challengeIndex {
-		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
-	}
-
-	logs, sub, err := _IOldChallengeManager.contract.FilterLogs(opts, "OneStepProofCompleted", challengeIndexRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IOldChallengeManagerOneStepProofCompletedIterator{contract: _IOldChallengeManager.contract, event: "OneStepProofCompleted", logs: logs, sub: sub}, nil
-}
-
-// WatchOneStepProofCompleted is a free log subscription operation binding the contract event 0xc2cc42e04ff8c36de71c6a2937ea9f161dd0dd9e175f00caa26e5200643c781e.
-//
-// Solidity: event OneStepProofCompleted(uint64 indexed challengeIndex)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) WatchOneStepProofCompleted(opts *bind.WatchOpts, sink chan<- *IOldChallengeManagerOneStepProofCompleted, challengeIndex []uint64) (event.Subscription, error) {
-
-	var challengeIndexRule []interface{}
-	for _, challengeIndexItem := range challengeIndex {
-		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
-	}
-
-	logs, sub, err := _IOldChallengeManager.contract.WatchLogs(opts, "OneStepProofCompleted", challengeIndexRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(IOldChallengeManagerOneStepProofCompleted)
-				if err := _IOldChallengeManager.contract.UnpackLog(event, "OneStepProofCompleted", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseOneStepProofCompleted is a log parse operation binding the contract event 0xc2cc42e04ff8c36de71c6a2937ea9f161dd0dd9e175f00caa26e5200643c781e.
-//
-// Solidity: event OneStepProofCompleted(uint64 indexed challengeIndex)
-func (_IOldChallengeManager *IOldChallengeManagerFilterer) ParseOneStepProofCompleted(log types.Log) (*IOldChallengeManagerOneStepProofCompleted, error) {
-	event := new(IOldChallengeManagerOneStepProofCompleted)
-	if err := _IOldChallengeManager.contract.UnpackLog(event, "OneStepProofCompleted", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// IOldChallengeResultReceiverMetaData contains all meta data concerning the IOldChallengeResultReceiver contract.
-var IOldChallengeResultReceiverMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"challengeIndex\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"winner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"loser\",\"type\":\"address\"}],\"name\":\"completeChallenge\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
-}
-
-// IOldChallengeResultReceiverABI is the input ABI used to generate the binding from.
-// Deprecated: Use IOldChallengeResultReceiverMetaData.ABI instead.
-var IOldChallengeResultReceiverABI = IOldChallengeResultReceiverMetaData.ABI
-
-// IOldChallengeResultReceiver is an auto generated Go binding around an Ethereum contract.
-type IOldChallengeResultReceiver struct {
-	IOldChallengeResultReceiverCaller     // Read-only binding to the contract
-	IOldChallengeResultReceiverTransactor // Write-only binding to the contract
-	IOldChallengeResultReceiverFilterer   // Log filterer for contract events
-}
-
-// IOldChallengeResultReceiverCaller is an auto generated read-only Go binding around an Ethereum contract.
-type IOldChallengeResultReceiverCaller struct {
-	contract *bind.BoundContract // Generic contract wrapper for the low level calls
-}
-
-// IOldChallengeResultReceiverTransactor is an auto generated write-only Go binding around an Ethereum contract.
-type IOldChallengeResultReceiverTransactor struct {
-	contract *bind.BoundContract // Generic contract wrapper for the low level calls
-}
-
-// IOldChallengeResultReceiverFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
-type IOldChallengeResultReceiverFilterer struct {
-	contract *bind.BoundContract // Generic contract wrapper for the low level calls
-}
-
-// IOldChallengeResultReceiverSession is an auto generated Go binding around an Ethereum contract,
-// with pre-set call and transact options.
-type IOldChallengeResultReceiverSession struct {
-	Contract     *IOldChallengeResultReceiver // Generic contract binding to set the session for
-	CallOpts     bind.CallOpts                // Call options to use throughout this session
-	TransactOpts bind.TransactOpts            // Transaction auth options to use throughout this session
-}
-
-// IOldChallengeResultReceiverCallerSession is an auto generated read-only Go binding around an Ethereum contract,
-// with pre-set call options.
-type IOldChallengeResultReceiverCallerSession struct {
-	Contract *IOldChallengeResultReceiverCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts                      // Call options to use throughout this session
-}
-
-// IOldChallengeResultReceiverTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
-// with pre-set transact options.
-type IOldChallengeResultReceiverTransactorSession struct {
-	Contract     *IOldChallengeResultReceiverTransactor // Generic contract transactor binding to set the session for
-	TransactOpts bind.TransactOpts                      // Transaction auth options to use throughout this session
-}
-
-// IOldChallengeResultReceiverRaw is an auto generated low-level Go binding around an Ethereum contract.
-type IOldChallengeResultReceiverRaw struct {
-	Contract *IOldChallengeResultReceiver // Generic contract binding to access the raw methods on
-}
-
-// IOldChallengeResultReceiverCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
-type IOldChallengeResultReceiverCallerRaw struct {
-	Contract *IOldChallengeResultReceiverCaller // Generic read-only contract binding to access the raw methods on
-}
-
-// IOldChallengeResultReceiverTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
-type IOldChallengeResultReceiverTransactorRaw struct {
-	Contract *IOldChallengeResultReceiverTransactor // Generic write-only contract binding to access the raw methods on
-}
-
-// NewIOldChallengeResultReceiver creates a new instance of IOldChallengeResultReceiver, bound to a specific deployed contract.
-func NewIOldChallengeResultReceiver(address common.Address, backend bind.ContractBackend) (*IOldChallengeResultReceiver, error) {
-	contract, err := bindIOldChallengeResultReceiver(address, backend, backend, backend)
-	if err != nil {
-		return nil, err
-	}
-	return &IOldChallengeResultReceiver{IOldChallengeResultReceiverCaller: IOldChallengeResultReceiverCaller{contract: contract}, IOldChallengeResultReceiverTransactor: IOldChallengeResultReceiverTransactor{contract: contract}, IOldChallengeResultReceiverFilterer: IOldChallengeResultReceiverFilterer{contract: contract}}, nil
-}
-
-// NewIOldChallengeResultReceiverCaller creates a new read-only instance of IOldChallengeResultReceiver, bound to a specific deployed contract.
-func NewIOldChallengeResultReceiverCaller(address common.Address, caller bind.ContractCaller) (*IOldChallengeResultReceiverCaller, error) {
-	contract, err := bindIOldChallengeResultReceiver(address, caller, nil, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &IOldChallengeResultReceiverCaller{contract: contract}, nil
-}
-
-// NewIOldChallengeResultReceiverTransactor creates a new write-only instance of IOldChallengeResultReceiver, bound to a specific deployed contract.
-func NewIOldChallengeResultReceiverTransactor(address common.Address, transactor bind.ContractTransactor) (*IOldChallengeResultReceiverTransactor, error) {
-	contract, err := bindIOldChallengeResultReceiver(address, nil, transactor, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &IOldChallengeResultReceiverTransactor{contract: contract}, nil
-}
-
-// NewIOldChallengeResultReceiverFilterer creates a new log filterer instance of IOldChallengeResultReceiver, bound to a specific deployed contract.
-func NewIOldChallengeResultReceiverFilterer(address common.Address, filterer bind.ContractFilterer) (*IOldChallengeResultReceiverFilterer, error) {
-	contract, err := bindIOldChallengeResultReceiver(address, nil, nil, filterer)
-	if err != nil {
-		return nil, err
-	}
-	return &IOldChallengeResultReceiverFilterer{contract: contract}, nil
-}
-
-// bindIOldChallengeResultReceiver binds a generic wrapper to an already deployed contract.
-func bindIOldChallengeResultReceiver(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := IOldChallengeResultReceiverMetaData.GetAbi()
-	if err != nil {
-		return nil, err
-	}
-	return bind.NewBoundContract(address, *parsed, caller, transactor, filterer), nil
-}
-
-// Call invokes the (constant) contract method with params as input values and
-// sets the output to result. The result type might be a single field for simple
-// returns, a slice of interfaces for anonymous returns and a struct for named
-// returns.
-func (_IOldChallengeResultReceiver *IOldChallengeResultReceiverRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _IOldChallengeResultReceiver.Contract.IOldChallengeResultReceiverCaller.contract.Call(opts, result, method, params...)
-}
-
-// Transfer initiates a plain transaction to move funds to the contract, calling
-// its default method if one is available.
-func (_IOldChallengeResultReceiver *IOldChallengeResultReceiverRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _IOldChallengeResultReceiver.Contract.IOldChallengeResultReceiverTransactor.contract.Transfer(opts)
-}
-
-// Transact invokes the (paid) contract method with params as input values.
-func (_IOldChallengeResultReceiver *IOldChallengeResultReceiverRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _IOldChallengeResultReceiver.Contract.IOldChallengeResultReceiverTransactor.contract.Transact(opts, method, params...)
-}
-
-// Call invokes the (constant) contract method with params as input values and
-// sets the output to result. The result type might be a single field for simple
-// returns, a slice of interfaces for anonymous returns and a struct for named
-// returns.
-func (_IOldChallengeResultReceiver *IOldChallengeResultReceiverCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _IOldChallengeResultReceiver.Contract.contract.Call(opts, result, method, params...)
-}
-
-// Transfer initiates a plain transaction to move funds to the contract, calling
-// its default method if one is available.
-func (_IOldChallengeResultReceiver *IOldChallengeResultReceiverTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _IOldChallengeResultReceiver.Contract.contract.Transfer(opts)
-}
-
-// Transact invokes the (paid) contract method with params as input values.
-func (_IOldChallengeResultReceiver *IOldChallengeResultReceiverTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _IOldChallengeResultReceiver.Contract.contract.Transact(opts, method, params...)
-}
-
-// CompleteChallenge is a paid mutator transaction binding the contract method 0x0357aa49.
-//
-// Solidity: function completeChallenge(uint256 challengeIndex, address winner, address loser) returns()
-func (_IOldChallengeResultReceiver *IOldChallengeResultReceiverTransactor) CompleteChallenge(opts *bind.TransactOpts, challengeIndex *big.Int, winner common.Address, loser common.Address) (*types.Transaction, error) {
-	return _IOldChallengeResultReceiver.contract.Transact(opts, "completeChallenge", challengeIndex, winner, loser)
-}
-
-// CompleteChallenge is a paid mutator transaction binding the contract method 0x0357aa49.
-//
-// Solidity: function completeChallenge(uint256 challengeIndex, address winner, address loser) returns()
-func (_IOldChallengeResultReceiver *IOldChallengeResultReceiverSession) CompleteChallenge(challengeIndex *big.Int, winner common.Address, loser common.Address) (*types.Transaction, error) {
-	return _IOldChallengeResultReceiver.Contract.CompleteChallenge(&_IOldChallengeResultReceiver.TransactOpts, challengeIndex, winner, loser)
-}
-
-// CompleteChallenge is a paid mutator transaction binding the contract method 0x0357aa49.
-//
-// Solidity: function completeChallenge(uint256 challengeIndex, address winner, address loser) returns()
-func (_IOldChallengeResultReceiver *IOldChallengeResultReceiverTransactorSession) CompleteChallenge(challengeIndex *big.Int, winner common.Address, loser common.Address) (*types.Transaction, error) {
-	return _IOldChallengeResultReceiver.Contract.CompleteChallenge(&_IOldChallengeResultReceiver.TransactOpts, challengeIndex, winner, loser)
-}
-
-// OldChallengeLibMetaData contains all meta data concerning the OldChallengeLib contract.
-var OldChallengeLibMetaData = &bind.MetaData{
+// ChallengeLibMetaData contains all meta data concerning the ChallengeLib contract.
+var ChallengeLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220e63de2da92b511a25ebb05a7925d3cbcd7e16b4d568b76770e32e8b1606ffc5464736f6c63430008110033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212202defb614e60618b8447f51804dec8590e946d6387bfd44682506941eb4ab7c7964736f6c63430008190033",
 }
 
-// OldChallengeLibABI is the input ABI used to generate the binding from.
-// Deprecated: Use OldChallengeLibMetaData.ABI instead.
-var OldChallengeLibABI = OldChallengeLibMetaData.ABI
+// ChallengeLibABI is the input ABI used to generate the binding from.
+// Deprecated: Use ChallengeLibMetaData.ABI instead.
+var ChallengeLibABI = ChallengeLibMetaData.ABI
 
-// OldChallengeLibBin is the compiled bytecode used for deploying new contracts.
-// Deprecated: Use OldChallengeLibMetaData.Bin instead.
-var OldChallengeLibBin = OldChallengeLibMetaData.Bin
+// ChallengeLibBin is the compiled bytecode used for deploying new contracts.
+// Deprecated: Use ChallengeLibMetaData.Bin instead.
+var ChallengeLibBin = ChallengeLibMetaData.Bin
 
-// DeployOldChallengeLib deploys a new Ethereum contract, binding an instance of OldChallengeLib to it.
-func DeployOldChallengeLib(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *OldChallengeLib, error) {
-	parsed, err := OldChallengeLibMetaData.GetAbi()
+// DeployChallengeLib deploys a new Ethereum contract, binding an instance of ChallengeLib to it.
+func DeployChallengeLib(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *ChallengeLib, error) {
+	parsed, err := ChallengeLibMetaData.GetAbi()
 	if err != nil {
 		return common.Address{}, nil, nil, err
 	}
@@ -1320,111 +84,111 @@ func DeployOldChallengeLib(auth *bind.TransactOpts, backend bind.ContractBackend
 		return common.Address{}, nil, nil, errors.New("GetABI returned nil")
 	}
 
-	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(OldChallengeLibBin), backend)
+	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(ChallengeLibBin), backend)
 	if err != nil {
 		return common.Address{}, nil, nil, err
 	}
-	return address, tx, &OldChallengeLib{OldChallengeLibCaller: OldChallengeLibCaller{contract: contract}, OldChallengeLibTransactor: OldChallengeLibTransactor{contract: contract}, OldChallengeLibFilterer: OldChallengeLibFilterer{contract: contract}}, nil
+	return address, tx, &ChallengeLib{ChallengeLibCaller: ChallengeLibCaller{contract: contract}, ChallengeLibTransactor: ChallengeLibTransactor{contract: contract}, ChallengeLibFilterer: ChallengeLibFilterer{contract: contract}}, nil
 }
 
-// OldChallengeLib is an auto generated Go binding around an Ethereum contract.
-type OldChallengeLib struct {
-	OldChallengeLibCaller     // Read-only binding to the contract
-	OldChallengeLibTransactor // Write-only binding to the contract
-	OldChallengeLibFilterer   // Log filterer for contract events
+// ChallengeLib is an auto generated Go binding around an Ethereum contract.
+type ChallengeLib struct {
+	ChallengeLibCaller     // Read-only binding to the contract
+	ChallengeLibTransactor // Write-only binding to the contract
+	ChallengeLibFilterer   // Log filterer for contract events
 }
 
-// OldChallengeLibCaller is an auto generated read-only Go binding around an Ethereum contract.
-type OldChallengeLibCaller struct {
+// ChallengeLibCaller is an auto generated read-only Go binding around an Ethereum contract.
+type ChallengeLibCaller struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// OldChallengeLibTransactor is an auto generated write-only Go binding around an Ethereum contract.
-type OldChallengeLibTransactor struct {
+// ChallengeLibTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type ChallengeLibTransactor struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// OldChallengeLibFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
-type OldChallengeLibFilterer struct {
+// ChallengeLibFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type ChallengeLibFilterer struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// OldChallengeLibSession is an auto generated Go binding around an Ethereum contract,
+// ChallengeLibSession is an auto generated Go binding around an Ethereum contract,
 // with pre-set call and transact options.
-type OldChallengeLibSession struct {
-	Contract     *OldChallengeLib  // Generic contract binding to set the session for
+type ChallengeLibSession struct {
+	Contract     *ChallengeLib     // Generic contract binding to set the session for
 	CallOpts     bind.CallOpts     // Call options to use throughout this session
 	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
 }
 
-// OldChallengeLibCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// ChallengeLibCallerSession is an auto generated read-only Go binding around an Ethereum contract,
 // with pre-set call options.
-type OldChallengeLibCallerSession struct {
-	Contract *OldChallengeLibCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts          // Call options to use throughout this session
+type ChallengeLibCallerSession struct {
+	Contract *ChallengeLibCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts       // Call options to use throughout this session
 }
 
-// OldChallengeLibTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// ChallengeLibTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
 // with pre-set transact options.
-type OldChallengeLibTransactorSession struct {
-	Contract     *OldChallengeLibTransactor // Generic contract transactor binding to set the session for
-	TransactOpts bind.TransactOpts          // Transaction auth options to use throughout this session
+type ChallengeLibTransactorSession struct {
+	Contract     *ChallengeLibTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts       // Transaction auth options to use throughout this session
 }
 
-// OldChallengeLibRaw is an auto generated low-level Go binding around an Ethereum contract.
-type OldChallengeLibRaw struct {
-	Contract *OldChallengeLib // Generic contract binding to access the raw methods on
+// ChallengeLibRaw is an auto generated low-level Go binding around an Ethereum contract.
+type ChallengeLibRaw struct {
+	Contract *ChallengeLib // Generic contract binding to access the raw methods on
 }
 
-// OldChallengeLibCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
-type OldChallengeLibCallerRaw struct {
-	Contract *OldChallengeLibCaller // Generic read-only contract binding to access the raw methods on
+// ChallengeLibCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type ChallengeLibCallerRaw struct {
+	Contract *ChallengeLibCaller // Generic read-only contract binding to access the raw methods on
 }
 
-// OldChallengeLibTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
-type OldChallengeLibTransactorRaw struct {
-	Contract *OldChallengeLibTransactor // Generic write-only contract binding to access the raw methods on
+// ChallengeLibTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type ChallengeLibTransactorRaw struct {
+	Contract *ChallengeLibTransactor // Generic write-only contract binding to access the raw methods on
 }
 
-// NewOldChallengeLib creates a new instance of OldChallengeLib, bound to a specific deployed contract.
-func NewOldChallengeLib(address common.Address, backend bind.ContractBackend) (*OldChallengeLib, error) {
-	contract, err := bindOldChallengeLib(address, backend, backend, backend)
+// NewChallengeLib creates a new instance of ChallengeLib, bound to a specific deployed contract.
+func NewChallengeLib(address common.Address, backend bind.ContractBackend) (*ChallengeLib, error) {
+	contract, err := bindChallengeLib(address, backend, backend, backend)
 	if err != nil {
 		return nil, err
 	}
-	return &OldChallengeLib{OldChallengeLibCaller: OldChallengeLibCaller{contract: contract}, OldChallengeLibTransactor: OldChallengeLibTransactor{contract: contract}, OldChallengeLibFilterer: OldChallengeLibFilterer{contract: contract}}, nil
+	return &ChallengeLib{ChallengeLibCaller: ChallengeLibCaller{contract: contract}, ChallengeLibTransactor: ChallengeLibTransactor{contract: contract}, ChallengeLibFilterer: ChallengeLibFilterer{contract: contract}}, nil
 }
 
-// NewOldChallengeLibCaller creates a new read-only instance of OldChallengeLib, bound to a specific deployed contract.
-func NewOldChallengeLibCaller(address common.Address, caller bind.ContractCaller) (*OldChallengeLibCaller, error) {
-	contract, err := bindOldChallengeLib(address, caller, nil, nil)
+// NewChallengeLibCaller creates a new read-only instance of ChallengeLib, bound to a specific deployed contract.
+func NewChallengeLibCaller(address common.Address, caller bind.ContractCaller) (*ChallengeLibCaller, error) {
+	contract, err := bindChallengeLib(address, caller, nil, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &OldChallengeLibCaller{contract: contract}, nil
+	return &ChallengeLibCaller{contract: contract}, nil
 }
 
-// NewOldChallengeLibTransactor creates a new write-only instance of OldChallengeLib, bound to a specific deployed contract.
-func NewOldChallengeLibTransactor(address common.Address, transactor bind.ContractTransactor) (*OldChallengeLibTransactor, error) {
-	contract, err := bindOldChallengeLib(address, nil, transactor, nil)
+// NewChallengeLibTransactor creates a new write-only instance of ChallengeLib, bound to a specific deployed contract.
+func NewChallengeLibTransactor(address common.Address, transactor bind.ContractTransactor) (*ChallengeLibTransactor, error) {
+	contract, err := bindChallengeLib(address, nil, transactor, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &OldChallengeLibTransactor{contract: contract}, nil
+	return &ChallengeLibTransactor{contract: contract}, nil
 }
 
-// NewOldChallengeLibFilterer creates a new log filterer instance of OldChallengeLib, bound to a specific deployed contract.
-func NewOldChallengeLibFilterer(address common.Address, filterer bind.ContractFilterer) (*OldChallengeLibFilterer, error) {
-	contract, err := bindOldChallengeLib(address, nil, nil, filterer)
+// NewChallengeLibFilterer creates a new log filterer instance of ChallengeLib, bound to a specific deployed contract.
+func NewChallengeLibFilterer(address common.Address, filterer bind.ContractFilterer) (*ChallengeLibFilterer, error) {
+	contract, err := bindChallengeLib(address, nil, nil, filterer)
 	if err != nil {
 		return nil, err
 	}
-	return &OldChallengeLibFilterer{contract: contract}, nil
+	return &ChallengeLibFilterer{contract: contract}, nil
 }
 
-// bindOldChallengeLib binds a generic wrapper to an already deployed contract.
-func bindOldChallengeLib(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := OldChallengeLibMetaData.GetAbi()
+// bindChallengeLib binds a generic wrapper to an already deployed contract.
+func bindChallengeLib(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := ChallengeLibMetaData.GetAbi()
 	if err != nil {
 		return nil, err
 	}
@@ -1435,57 +199,57 @@ func bindOldChallengeLib(address common.Address, caller bind.ContractCaller, tra
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_OldChallengeLib *OldChallengeLibRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _OldChallengeLib.Contract.OldChallengeLibCaller.contract.Call(opts, result, method, params...)
+func (_ChallengeLib *ChallengeLibRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _ChallengeLib.Contract.ChallengeLibCaller.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_OldChallengeLib *OldChallengeLibRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _OldChallengeLib.Contract.OldChallengeLibTransactor.contract.Transfer(opts)
+func (_ChallengeLib *ChallengeLibRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _ChallengeLib.Contract.ChallengeLibTransactor.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_OldChallengeLib *OldChallengeLibRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _OldChallengeLib.Contract.OldChallengeLibTransactor.contract.Transact(opts, method, params...)
+func (_ChallengeLib *ChallengeLibRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _ChallengeLib.Contract.ChallengeLibTransactor.contract.Transact(opts, method, params...)
 }
 
 // Call invokes the (constant) contract method with params as input values and
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_OldChallengeLib *OldChallengeLibCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _OldChallengeLib.Contract.contract.Call(opts, result, method, params...)
+func (_ChallengeLib *ChallengeLibCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _ChallengeLib.Contract.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_OldChallengeLib *OldChallengeLibTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _OldChallengeLib.Contract.contract.Transfer(opts)
+func (_ChallengeLib *ChallengeLibTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _ChallengeLib.Contract.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_OldChallengeLib *OldChallengeLibTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _OldChallengeLib.Contract.contract.Transact(opts, method, params...)
+func (_ChallengeLib *ChallengeLibTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _ChallengeLib.Contract.contract.Transact(opts, method, params...)
 }
 
-// OldChallengeManagerMetaData contains all meta data concerning the OldChallengeManager contract.
-var OldChallengeManagerMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"challengeRoot\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"challengedSegmentStart\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"challengedSegmentLength\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes32[]\",\"name\":\"chainHashes\",\"type\":\"bytes32[]\"}],\"name\":\"Bisected\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"enumIOldChallengeManager.ChallengeTerminationType\",\"name\":\"kind\",\"type\":\"uint8\"}],\"name\":\"ChallengeEnded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"blockSteps\",\"type\":\"uint256\"}],\"name\":\"ExecutionChallengeBegun\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"bytes32[2]\",\"name\":\"bytes32Vals\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint64[2]\",\"name\":\"u64Vals\",\"type\":\"uint64[2]\"}],\"indexed\":false,\"internalType\":\"structGlobalState\",\"name\":\"startState\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"bytes32[2]\",\"name\":\"bytes32Vals\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint64[2]\",\"name\":\"u64Vals\",\"type\":\"uint64[2]\"}],\"indexed\":false,\"internalType\":\"structGlobalState\",\"name\":\"endState\",\"type\":\"tuple\"}],\"name\":\"InitiatedChallenge\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"OneStepProofCompleted\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"oldSegmentsStart\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"oldSegmentsLength\",\"type\":\"uint256\"},{\"internalType\":\"bytes32[]\",\"name\":\"oldSegments\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"challengePosition\",\"type\":\"uint256\"}],\"internalType\":\"structOldChallengeLib.SegmentSelection\",\"name\":\"selection\",\"type\":\"tuple\"},{\"internalType\":\"bytes32[]\",\"name\":\"newSegments\",\"type\":\"bytes32[]\"}],\"name\":\"bisectExecution\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"bridge\",\"outputs\":[{\"internalType\":\"contractIBridge\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"oldSegmentsStart\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"oldSegmentsLength\",\"type\":\"uint256\"},{\"internalType\":\"bytes32[]\",\"name\":\"oldSegments\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"challengePosition\",\"type\":\"uint256\"}],\"internalType\":\"structOldChallengeLib.SegmentSelection\",\"name\":\"selection\",\"type\":\"tuple\"},{\"internalType\":\"enumMachineStatus[2]\",\"name\":\"machineStatuses\",\"type\":\"uint8[2]\"},{\"internalType\":\"bytes32[2]\",\"name\":\"globalStateHashes\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint256\",\"name\":\"numSteps\",\"type\":\"uint256\"}],\"name\":\"challengeExecution\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"challengeInfo\",\"outputs\":[{\"components\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"timeLeft\",\"type\":\"uint256\"}],\"internalType\":\"structOldChallengeLib.Participant\",\"name\":\"current\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"timeLeft\",\"type\":\"uint256\"}],\"internalType\":\"structOldChallengeLib.Participant\",\"name\":\"next\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"lastMoveTimestamp\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"wasmModuleRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"challengeStateHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint64\",\"name\":\"maxInboxMessages\",\"type\":\"uint64\"},{\"internalType\":\"enumOldChallengeLib.ChallengeMode\",\"name\":\"mode\",\"type\":\"uint8\"}],\"internalType\":\"structOldChallengeLib.Challenge\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"challenges\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"timeLeft\",\"type\":\"uint256\"}],\"internalType\":\"structOldChallengeLib.Participant\",\"name\":\"current\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"timeLeft\",\"type\":\"uint256\"}],\"internalType\":\"structOldChallengeLib.Participant\",\"name\":\"next\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"lastMoveTimestamp\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"wasmModuleRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"challengeStateHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint64\",\"name\":\"maxInboxMessages\",\"type\":\"uint64\"},{\"internalType\":\"enumOldChallengeLib.ChallengeMode\",\"name\":\"mode\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"clearChallenge\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"wasmModuleRoot_\",\"type\":\"bytes32\"},{\"internalType\":\"enumMachineStatus[2]\",\"name\":\"startAndEndMachineStatuses_\",\"type\":\"uint8[2]\"},{\"components\":[{\"internalType\":\"bytes32[2]\",\"name\":\"bytes32Vals\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint64[2]\",\"name\":\"u64Vals\",\"type\":\"uint64[2]\"}],\"internalType\":\"structGlobalState[2]\",\"name\":\"startAndEndGlobalStates_\",\"type\":\"tuple[2]\"},{\"internalType\":\"uint64\",\"name\":\"numBlocks\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"asserter_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"challenger_\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"asserterTimeLeft_\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"challengerTimeLeft_\",\"type\":\"uint256\"}],\"name\":\"createChallenge\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"currentResponder\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIOldChallengeResultReceiver\",\"name\":\"resultReceiver_\",\"type\":\"address\"},{\"internalType\":\"contractISequencerInbox\",\"name\":\"sequencerInbox_\",\"type\":\"address\"},{\"internalType\":\"contractIBridge\",\"name\":\"bridge_\",\"type\":\"address\"},{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"osp_\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"isTimedOut\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"oldSegmentsStart\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"oldSegmentsLength\",\"type\":\"uint256\"},{\"internalType\":\"bytes32[]\",\"name\":\"oldSegments\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"challengePosition\",\"type\":\"uint256\"}],\"internalType\":\"structOldChallengeLib.SegmentSelection\",\"name\":\"selection\",\"type\":\"tuple\"},{\"internalType\":\"bytes\",\"name\":\"proof\",\"type\":\"bytes\"}],\"name\":\"oneStepProveExecution\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"osp\",\"outputs\":[{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"resultReceiver\",\"outputs\":[{\"internalType\":\"contractIOldChallengeResultReceiver\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"sequencerInbox\",\"outputs\":[{\"internalType\":\"contractISequencerInbox\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"timeout\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalChallengesCreated\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
-	Bin: "0x60a06040523060805234801561001457600080fd5b50608051613740610030600039600061155501526137406000f3fe608060405234801561001057600080fd5b50600436106101005760003560e01c80639ede42b911610097578063ee35f32711610066578063ee35f327146102f0578063f26a62c614610303578063f8c8765e14610316578063fb7be0a11461032957600080fd5b80639ede42b914610294578063a521b032146102b7578063d248d124146102ca578063e78cea92146102dd57600080fd5b806356e9df97116100d357806356e9df97146101a95780635ef489e6146101bc5780637fd07a9c146101d05780638f1d3776146101f057600080fd5b806314eab5e7146101055780631b45c86a1461013657806323a9ef231461014b5780633504f1d714610196575b600080fd5b610118610113366004612e03565b61033c565b60405167ffffffffffffffff90911681526020015b60405180910390f35b610149610144366004612e96565b61064c565b005b61017e610159366004612e96565b67ffffffffffffffff166000908152600160205260409020546001600160a01b031690565b6040516001600160a01b03909116815260200161012d565b60025461017e906001600160a01b031681565b6101496101b7366004612e96565b61072a565b6000546101189067ffffffffffffffff1681565b6101e36101de366004612e96565b6108b4565b60405161012d9190612edb565b6102816101fe366004612f65565b6001602081815260009283526040928390208351808501855281546001600160a01b03908116825293820154818401528451808601909552600282015490931684526003810154918401919091526004810154600582015460068301546007909301549394939192909167ffffffffffffffff811690600160401b900460ff1687565b60405161012d9796959493929190612f7e565b6102a76102a2366004612e96565b6109dc565b604051901515815260200161012d565b6101496102c5366004612ff6565b610a04565b6101496102d836600461309b565b610fbb565b60045461017e906001600160a01b031681565b60035461017e906001600160a01b031681565b60055461017e906001600160a01b031681565b61014961032436600461312e565b61154b565b61014961033736600461318a565b6116f5565b6002546000906001600160a01b0316331461039e5760405162461bcd60e51b815260206004820152601060248201527f4f4e4c595f524f4c4c55505f4348414c0000000000000000000000000000000060448201526064015b60405180910390fd5b6040805160028082526060820183526000926020830190803683370190505090506103f46103cf60208b018b61322f565b6103ef8a60005b608002018036038101906103ea91906132f0565b611f09565b611fb2565b8160008151811061040757610407613219565b602090810291909101015261043689600160200201602081019061042b919061322f565b6103ef8a60016103d6565b8160018151811061044957610449613219565b6020908102919091010152600080548190819061046f9067ffffffffffffffff1661339f565b825467ffffffffffffffff8083166101009490940a848102910219909116179092559091506104a0576104a06133c6565b67ffffffffffffffff81166000908152600160205260408120600581018d9055906104db6104d6368d90038d0160808e016132f0565b6120b7565b905060026104ef60408e0160208f0161322f565b600281111561050057610500612eb1565b148061052f5750600061052361051e368e90038e0160808f016132f0565b6120cc565b67ffffffffffffffff16115b15610542578061053e8161339f565b9150505b6007820180546040805180820182526001600160a01b038d811680835260209283018d905260028801805473ffffffffffffffffffffffffffffffffffffffff199081169092179055600388018d905583518085018552918e16808352919092018b905286549091161785556001850189905542600486015567ffffffffffffffff84811668ffffffffffffffffff1990931692909217600160401b179092559051908416907f76604fe17af46c9b5f53ffe99ff23e0f655dab91886b07ac1fc0254319f7145a9061061a908e906080820190613424565b60405180910390a26106398360008c67ffffffffffffffff16876120db565b5090925050505b98975050505050505050565b600067ffffffffffffffff8216600090815260016020526040902060070154600160401b900460ff16600281111561068657610686612eb1565b1415604051806040016040528060078152602001661393d7d0d2105360ca1b815250906106c65760405162461bcd60e51b81526004016103959190613440565b506106d0816109dc565b61071c5760405162461bcd60e51b815260206004820152601060248201527f54494d454f55545f444541444c494e45000000000000000000000000000000006044820152606401610395565b610727816000612172565b50565b6002546001600160a01b031633146107845760405162461bcd60e51b815260206004820152601060248201527f4e4f545f5245535f5245434549564552000000000000000000000000000000006044820152606401610395565b600067ffffffffffffffff8216600090815260016020526040902060070154600160401b900460ff1660028111156107be576107be612eb1565b1415604051806040016040528060078152602001661393d7d0d2105360ca1b815250906107fe5760405162461bcd60e51b81526004016103959190613440565b5067ffffffffffffffff81166000818152600160208190526040808320805473ffffffffffffffffffffffffffffffffffffffff1990811682559281018490556002810180549093169092556003808301849055600483018490556005830184905560068301939093556007909101805468ffffffffffffffffff19169055517ffdaece6c274a4b56af16761f83fd6b1062823192630ea08e019fdf9b2d747f40916108a99161348e565b60405180910390a250565b6040805161012081018252600060e0820181815261010083018290528252825180840184528181526020808201839052830152918101829052606081018290526080810182905260a0810182905260c081019190915267ffffffffffffffff82811660009081526001602081815260409283902083516101208101855281546001600160a01b0390811660e0830190815294830154610100830152938152845180860186526002808401549095168152600383015481850152928101929092526004810154938201939093526005830154606082015260068301546080820152600783015493841660a08201529260c0840191600160401b90910460ff16908111156109c2576109c2612eb1565b60028111156109d3576109d3612eb1565b90525092915050565b67ffffffffffffffff811660009081526001602052604081206109fe906122c8565b92915050565b67ffffffffffffffff8416600090815260016020526040812080548692869290916001600160a01b03163314610a7c5760405162461bcd60e51b815260206004820152600b60248201527f4348414c5f53454e4445520000000000000000000000000000000000000000006044820152606401610395565b610a85846109dc565b15610ad25760405162461bcd60e51b815260206004820152600d60248201527f4348414c5f444541444c494e45000000000000000000000000000000000000006044820152606401610395565b6000826002811115610ae657610ae6612eb1565b03610b535760006007820154600160401b900460ff166002811115610b0d57610b0d612eb1565b1415604051806040016040528060078152602001661393d7d0d2105360ca1b81525090610b4d5760405162461bcd60e51b81526004016103959190613440565b50610c70565b6001826002811115610b6757610b67612eb1565b03610be05760016007820154600160401b900460ff166002811115610b8e57610b8e612eb1565b14610bdb5760405162461bcd60e51b815260206004820152600e60248201527f4348414c5f4e4f545f424c4f434b0000000000000000000000000000000000006044820152606401610395565b610c70565b6002826002811115610bf457610bf4612eb1565b03610c685760026007820154600160401b900460ff166002811115610c1b57610c1b612eb1565b14610bdb5760405162461bcd60e51b815260206004820152601260248201527f4348414c5f4e4f545f455845435554494f4e00000000000000000000000000006044820152606401610395565b610c706133c6565b610cbe83356020850135610c8760408701876134a8565b808060200260200160405190810160405280939291908181526020018383602002808284376000920191909152506122e092505050565b816006015414610d105760405162461bcd60e51b815260206004820152600960248201527f4249535f535441544500000000000000000000000000000000000000000000006044820152606401610395565b6002610d1f60408501856134a8565b90501080610d4a57506001610d3760408501856134a8565b610d42929150613517565b836060013510155b15610d975760405162461bcd60e51b815260206004820152601160248201527f4241445f4348414c4c454e47455f504f530000000000000000000000000000006044820152606401610395565b600080610da389612317565b9150915060018111610df75760405162461bcd60e51b815260206004820152600960248201527f544f4f5f53484f525400000000000000000000000000000000000000000000006044820152606401610395565b806028811115610e05575060285b610e1081600161352a565b8814610e5e5760405162461bcd60e51b815260206004820152600c60248201527f57524f4e475f44454752454500000000000000000000000000000000000000006044820152606401610395565b50610ea88989896000818110610e7657610e76613219565b602002919091013590508a8a610e8d600182613517565b818110610e9c57610e9c613219565b905060200201356123a7565b610ee78a83838b8b808060200260200160405190810160405280939291908181526020018383602002808284376000920191909152506120db92505050565b50600090505b6007820154600160401b900460ff166002811115610f0d57610f0d612eb1565b03610f185750610fb2565b6040805180820190915281546001600160a01b03168152600182015460208201526004820154610f489042613517565b81602001818151610f599190613517565b90525060028201805483546001600160a01b0380831673ffffffffffffffffffffffffffffffffffffffff1992831617865560038601805460018801558551929093169116179091556020909101519055426004909101555b50505050505050565b67ffffffffffffffff84166000908152600160205260409020805485918591600291906001600160a01b031633146110355760405162461bcd60e51b815260206004820152600b60248201527f4348414c5f53454e4445520000000000000000000000000000000000000000006044820152606401610395565b61103e846109dc565b1561108b5760405162461bcd60e51b815260206004820152600d60248201527f4348414c5f444541444c494e45000000000000000000000000000000000000006044820152606401610395565b600082600281111561109f5761109f612eb1565b0361110c5760006007820154600160401b900460ff1660028111156110c6576110c6612eb1565b1415604051806040016040528060078152602001661393d7d0d2105360ca1b815250906111065760405162461bcd60e51b81526004016103959190613440565b50611229565b600182600281111561112057611120612eb1565b036111995760016007820154600160401b900460ff16600281111561114757611147612eb1565b146111945760405162461bcd60e51b815260206004820152600e60248201527f4348414c5f4e4f545f424c4f434b0000000000000000000000000000000000006044820152606401610395565b611229565b60028260028111156111ad576111ad612eb1565b036112215760026007820154600160401b900460ff1660028111156111d4576111d4612eb1565b146111945760405162461bcd60e51b815260206004820152601260248201527f4348414c5f4e4f545f455845435554494f4e00000000000000000000000000006044820152606401610395565b6112296133c6565b61124083356020850135610c8760408701876134a8565b8160060154146112925760405162461bcd60e51b815260206004820152600960248201527f4249535f535441544500000000000000000000000000000000000000000000006044820152606401610395565b60026112a160408501856134a8565b905010806112cc575060016112b960408501856134a8565b6112c4929150613517565b836060013510155b156113195760405162461bcd60e51b815260206004820152601160248201527f4241445f4348414c4c454e47455f504f530000000000000000000000000000006044820152606401610395565b67ffffffffffffffff88166000908152600160205260408120908061133d8a612317565b9092509050600181146113925760405162461bcd60e51b815260206004820152600860248201527f544f4f5f4c4f4e470000000000000000000000000000000000000000000000006044820152606401610395565b506005805460408051606081018252600786015467ffffffffffffffff1681526004546001600160a01b03908116602083015293860154818301526000939092169163b5112fd29185906113e8908f018f6134a8565b8f606001358181106113fc576113fc613219565b905060200201358d8d6040518663ffffffff1660e01b815260040161142595949392919061353d565b602060405180830381865afa158015611442573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190611466919061359f565b905061147560408b018b6134a8565b61148460608d0135600161352a565b81811061149357611493613219565b9050602002013581036114e85760405162461bcd60e51b815260206004820152600c60248201527f53414d455f4f53505f454e4400000000000000000000000000000000000000006044820152606401610395565b60405167ffffffffffffffff8c16907fc2cc42e04ff8c36de71c6a2937ea9f161dd0dd9e175f00caa26e5200643c781e90600090a261153f8b67ffffffffffffffff16600090815260016020526040812060060155565b5060009150610eed9050565b6001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001630036115e95760405162461bcd60e51b815260206004820152602c60248201527f46756e6374696f6e206d7573742062652063616c6c6564207468726f7567682060448201527f64656c656761746563616c6c00000000000000000000000000000000000000006064820152608401610395565b6002546001600160a01b0316156116425760405162461bcd60e51b815260206004820152600c60248201527f414c52454144595f494e495400000000000000000000000000000000000000006044820152606401610395565b6001600160a01b0384166116985760405162461bcd60e51b815260206004820152601260248201527f4e4f5f524553554c545f524543454956455200000000000000000000000000006044820152606401610395565b600280546001600160a01b0395861673ffffffffffffffffffffffffffffffffffffffff19918216179091556003805494861694821694909417909355600480549285169284169290921790915560058054919093169116179055565b67ffffffffffffffff8516600090815260016020819052604090912080548792879290916001600160a01b031633146117705760405162461bcd60e51b815260206004820152600b60248201527f4348414c5f53454e4445520000000000000000000000000000000000000000006044820152606401610395565b611779846109dc565b156117c65760405162461bcd60e51b815260206004820152600d60248201527f4348414c5f444541444c494e45000000000000000000000000000000000000006044820152606401610395565b60008260028111156117da576117da612eb1565b036118475760006007820154600160401b900460ff16600281111561180157611801612eb1565b1415604051806040016040528060078152602001661393d7d0d2105360ca1b815250906118415760405162461bcd60e51b81526004016103959190613440565b50611964565b600182600281111561185b5761185b612eb1565b036118d45760016007820154600160401b900460ff16600281111561188257611882612eb1565b146118cf5760405162461bcd60e51b815260206004820152600e60248201527f4348414c5f4e4f545f424c4f434b0000000000000000000000000000000000006044820152606401610395565b611964565b60028260028111156118e8576118e8612eb1565b0361195c5760026007820154600160401b900460ff16600281111561190f5761190f612eb1565b146118cf5760405162461bcd60e51b815260206004820152601260248201527f4348414c5f4e4f545f455845435554494f4e00000000000000000000000000006044820152606401610395565b6119646133c6565b61197b83356020850135610c8760408701876134a8565b8160060154146119cd5760405162461bcd60e51b815260206004820152600960248201527f4249535f535441544500000000000000000000000000000000000000000000006044820152606401610395565b60026119dc60408501856134a8565b90501080611a07575060016119f460408501856134a8565b6119ff929150613517565b836060013510155b15611a545760405162461bcd60e51b815260206004820152601160248201527f4241445f4348414c4c454e47455f504f530000000000000000000000000000006044820152606401610395565b6001851015611aa55760405162461bcd60e51b815260206004820152601360248201527f4348414c4c454e47455f544f4f5f53484f5254000000000000000000000000006044820152606401610395565b65080000000000851115611afb5760405162461bcd60e51b815260206004820152601260248201527f4348414c4c454e47455f544f4f5f4c4f4e4700000000000000000000000000006044820152606401610395565b611b3d88611b1d611b0f60208b018b61322f565b8960005b6020020135611fb2565b611b38611b3060408c0160208d0161322f565b8a6001611b13565b6123a7565b67ffffffffffffffff891660009081526001602052604081209080611b618b612317565b9150915080600114611bb55760405162461bcd60e51b815260206004820152600860248201527f544f4f5f4c4f4e470000000000000000000000000000000000000000000000006044820152606401610395565b6001611bc460208c018c61322f565b6002811115611bd557611bd5612eb1565b14611ca057611bea60408b0160208c0161322f565b6002811115611bfb57611bfb612eb1565b611c0860208c018c61322f565b6002811115611c1957611c19612eb1565b148015611c2a5750883560208a0135145b611c765760405162461bcd60e51b815260206004820152600d60248201527f48414c5445445f4348414e4745000000000000000000000000000000000000006044820152606401610395565b611c988c67ffffffffffffffff16600090815260016020526040812060060155565b505050611e38565b6002611cb260408c0160208d0161322f565b6002811115611cc357611cc3612eb1565b03611d1c57883560208a013514611d1c5760405162461bcd60e51b815260206004820152600c60248201527f4552524f525f4348414e474500000000000000000000000000000000000000006044820152606401610395565b6040805160028082526060820183526000926020830190803683375050506005850154909150611d4e908b35906124a2565b81600081518110611d6157611d61613219565b6020908102919091010152611d8f8b6001602002016020810190611d85919061322f565b60208c013561264e565b81600181518110611da257611da2613219565b60209081029190910101526007840180547fffffffffffffffffffffffffffffffffffffffffffffff00ffffffffffffffff1668020000000000000000179055611def8d60008b846120db565b8c67ffffffffffffffff167f24e032e170243bbea97e140174b22dc7e54fb85925afbf52c70e001cd6af16db84604051611e2b91815260200190565b60405180910390a2505050505b60006007820154600160401b900460ff166002811115611e5a57611e5a612eb1565b03611e655750611eff565b6040805180820190915281546001600160a01b03168152600182015460208201526004820154611e959042613517565b81602001818151611ea69190613517565b90525060028201805483546001600160a01b0380831673ffffffffffffffffffffffffffffffffffffffff1992831617865560038601805460018801558551929093169116179091556020909101519055426004909101555b5050505050505050565b80518051602091820151828401518051908401516040517f476c6f62616c2073746174653a0000000000000000000000000000000000000095810195909552602d850193909352604d8401919091527fffffffffffffffff00000000000000000000000000000000000000000000000060c091821b8116606d85015291901b166075820152600090607d015b604051602081830303815290604052805190602001209050919050565b60006001836002811115611fc857611fc8612eb1565b0361201e576040517f426c6f636b2073746174653a00000000000000000000000000000000000000006020820152602c8101839052604c015b6040516020818303038152906040528051906020012090506109fe565b600283600281111561203257612032612eb1565b0361206f576040517f426c6f636b2073746174652c206572726f7265643a0000000000000000000000602082015260358101839052605501612001565b60405162461bcd60e51b815260206004820152601060248201527f4241445f424c4f434b5f535441545553000000000000000000000000000000006044820152606401610395565b6020810151600090815b602002015192915050565b602081015160009060016120c1565b60018210156120ec576120ec6133c6565b6002815110156120fe576120fe6133c6565b600061210b8484846122e0565b67ffffffffffffffff8616600081815260016020526040908190206006018390555191925082917f86b34e9455464834eca718f62d4481437603bb929d8a78ccde5d1bc79fa06d6890612163908890889088906135b8565b60405180910390a35050505050565b67ffffffffffffffff8216600081815260016020819052604080832060028082018054835473ffffffffffffffffffffffffffffffffffffffff19808216865596850188905595811690915560038301869055600480840187905560058401879055600684019690965560078301805468ffffffffffffffffff19169055905492517f0357aa49000000000000000000000000000000000000000000000000000000008152948501959095526001600160a01b03948516602485018190529285166044850181905290949293909290911690630357aa4990606401600060405180830381600087803b15801561226757600080fd5b505af115801561227b573d6000803e3d6000fd5b505050508467ffffffffffffffff167ffdaece6c274a4b56af16761f83fd6b1062823192630ea08e019fdf9b2d747f40856040516122b9919061348e565b60405180910390a25050505050565b60018101546000906122d9836126eb565b1192915050565b60008383836040516020016122f79392919061360d565b6040516020818303038152906040528051906020012090505b9392505050565b60008080600161232a60408601866134a8565b612335929150613517565b9050612345816020860135613665565b9150612355606085013583613679565b61236090853561352a565b9250600261237160408601866134a8565b61237c929150613517565b8460600135036123a157612394816020860135613690565b61239e908361352a565b91505b50915091565b816123b560408501856134a8565b85606001358181106123c9576123c9613219565b905060200201351461241d5760405162461bcd60e51b815260206004820152600b60248201527f57524f4e475f53544152540000000000000000000000000000000000000000006044820152606401610395565b8061242b60408501856134a8565b61243a6060870135600161352a565b81811061244957612449613219565b905060200201350361249d5760405162461bcd60e51b815260206004820152600860248201527f53414d455f454e440000000000000000000000000000000000000000000000006044820152606401610395565b505050565b60408051600380825260808201909252600091829190816020015b60408051808201909152600080825260208201528152602001906001900390816124bd57505060408051808201825260008082526020918201819052825180840190935260048352908201529091508160008151811061251f5761251f613219565b60200260200101819052506125626000604080518082019091526000808252602082015250604080518082019091526000815263ffffffff909116602082015290565b8160018151811061257557612575613219565b60200260200101819052506125b86000604080518082019091526000808252602082015250604080518082019091526000815263ffffffff909116602082015290565b816002815181106125cb576125cb613219565b602090810291909101810191909152604080518083018252838152815180830190925280825260009282019290925261261b60408051606080820183529181019182529081526000602082015290565b604080518082019091526060815260006020820152612638612ce4565b612641816126fd565b9998505050505050505050565b6000600183600281111561266457612664612eb1565b036126a1576040517f4d616368696e652066696e69736865643a000000000000000000000000000000602082015260318101839052605101612001565b60028360028111156126b5576126b5612eb1565b0361206f576040517f4d616368696e65206572726f7265643a000000000000000000000000000000006020820152603001612001565b60008160040154426109fe9190613517565b6000808251600281111561271357612713612eb1565b0361285557600061274161272a8460200151612952565b6101408501516040860151919060001914156129e8565b9050600061276c6127558560800151612b52565b61014086015160a0870151919060001914156129e8565b905060008261277e8660600151612952565b60c087015160e0808901516101008a01516101208b01516101408c01516101608d01516040517f4d616368696e652072756e6e696e673a00000000000000000000000000000000602082015260308101999099526050890197909752607088018a905260908801959095527fffffffff0000000000000000000000000000000000000000000000000000000092841b831660b088015290831b821660b487015290911b1660b884015260bc83015260dc82015260fc0160408051601f19818403018152919052805160209091012095945050505050565b60018251600281111561286a5761286a612eb1565b036128ad5760c08201516040517f4d616368696e652066696e69736865643a00000000000000000000000000000060208201526031810191909152605101611f95565b6002825160028111156128c2576128c2612eb1565b036129055760c08201516040517f4d616368696e65206572726f7265643a0000000000000000000000000000000060208201526030810191909152605001611f95565b60405162461bcd60e51b815260206004820152600f60248201527f4241445f4d4143485f53544154555300000000000000000000000000000000006044820152606401610395565b919050565b60208101518151515160005b818110156129e157835161297b906129769083612bf6565b612c2e565b6040517f56616c756520737461636b3a00000000000000000000000000000000000000006020820152602c810191909152604c8101849052606c0160405160208183030381529060405280519060200120925080806129d9906136a4565b91505061295e565b5050919050565b600060018301612a3a5760405162461bcd60e51b815260206004820152601960248201527f4d554c5449535441434b5f4e4f535441434b5f414354495645000000000000006044820152606401610395565b8115612b00578351600101612a915760405162461bcd60e51b815260206004820152601760248201527f4d554c5449535441434b5f4e4f535441434b5f4d41494e0000000000000000006044820152606401610395565b8351602080860151604051612ae39392879291017f6d756c7469737461636b3a0000000000000000000000000000000000000000008152600b810193909352602b830191909152604b820152606b0190565b604051602081830303815290604052805190602001209050612310565b83516020808601516040517f6d756c7469737461636b3a00000000000000000000000000000000000000000092810192909252602b8201869052604b820192909252606b810191909152608b01612ae3565b602081015160005b825151811015612bf057612b8a83600001518281518110612b7d57612b7d613219565b6020026020010151612c4b565b6040517f537461636b206672616d6520737461636b3a000000000000000000000000000060208201526032810191909152605281018390526072016040516020818303038152906040528051906020012091508080612be8906136a4565b915050612b5a565b50919050565b60408051808201909152600080825260208201528251805183908110612c1e57612c1e613219565b6020026020010151905092915050565b600081600001518260200151604051602001611f959291906136be565b6000612c5a8260000151612c2e565b602080840151604080860151606087015191517f537461636b206672616d653a000000000000000000000000000000000000000094810194909452602c840194909452604c8301919091527fffffffff0000000000000000000000000000000000000000000000000000000060e093841b8116606c840152921b9091166070820152607401611f95565b6040805161018081019091528060008152602001612d1960408051606080820183529181019182529081526000602082015290565b8152604080518082018252600080825260208083019190915283015201612d5760408051606080820183529181019182529081526000602082015290565b8152602001612d7c604051806040016040528060608152602001600080191681525090565b815260408051808201825260008082526020808301829052840191909152908201819052606082018190526080820181905260a0820181905260c0820181905260e09091015290565b80604081018310156109fe57600080fd5b803567ffffffffffffffff8116811461294d57600080fd5b6001600160a01b038116811461072757600080fd5b600080600080600080600080610200898b031215612e2057600080fd5b88359750612e318a60208b01612dc5565b965061016089018a811115612e4557600080fd5b60608a019650612e5481612dd6565b955050610180890135612e6681612dee565b93506101a0890135612e7781612dee565b979a96995094979396929592945050506101c0820135916101e0013590565b600060208284031215612ea857600080fd5b61231082612dd6565b634e487b7160e01b600052602160045260246000fd5b60038110612ed757612ed7612eb1565b9052565b815180516001600160a01b0316825260209081015190820152610120810160208381015180516001600160a01b031660408501529081015160608401525060408301516080830152606083015160a0830152608083015160c083015267ffffffffffffffff60a08401511660e083015260c0830151612f5e610100840182612ec7565b5092915050565b600060208284031215612f7757600080fd5b5035919050565b87516001600160a01b0316815260208089015190820152610120810187516001600160a01b03166040830152602088015160608301528660808301528560a08301528460c083015267ffffffffffffffff841660e0830152610640610100830184612ec7565b600060808284031215612bf057600080fd5b6000806000806060858703121561300c57600080fd5b61301585612dd6565b9350602085013567ffffffffffffffff8082111561303257600080fd5b61303e88838901612fe4565b9450604087013591508082111561305457600080fd5b818701915087601f83011261306857600080fd5b81358181111561307757600080fd5b8860208260051b850101111561308c57600080fd5b95989497505060200194505050565b600080600080606085870312156130b157600080fd5b6130ba85612dd6565b9350602085013567ffffffffffffffff808211156130d757600080fd5b6130e388838901612fe4565b945060408701359150808211156130f957600080fd5b818701915087601f83011261310d57600080fd5b81358181111561311c57600080fd5b88602082850101111561308c57600080fd5b6000806000806080858703121561314457600080fd5b843561314f81612dee565b9350602085013561315f81612dee565b9250604085013561316f81612dee565b9150606085013561317f81612dee565b939692955090935050565b600080600080600060e086880312156131a257600080fd5b6131ab86612dd6565b9450602086013567ffffffffffffffff8111156131c757600080fd5b6131d388828901612fe4565b9450506131e38760408801612dc5565b92506131f28760808801612dc5565b9497939650919460c0013592915050565b634e487b7160e01b600052604160045260246000fd5b634e487b7160e01b600052603260045260246000fd5b60006020828403121561324157600080fd5b81356003811061231057600080fd5b6040805190810167ffffffffffffffff8111828210171561327357613273613203565b60405290565b600082601f83011261328a57600080fd5b6040516040810181811067ffffffffffffffff821117156132ad576132ad613203565b80604052508060408401858111156132c457600080fd5b845b818110156132e5576132d781612dd6565b8352602092830192016132c6565b509195945050505050565b60006080828403121561330257600080fd5b6040516040810181811067ffffffffffffffff8211171561332557613325613203565b604052601f8301841361333757600080fd5b61333f613250565b80604085018681111561335157600080fd5b855b8181101561336b578035845260209384019301613353565b508184526133798782613279565b6020850152509195945050505050565b634e487b7160e01b600052601160045260246000fd5b600067ffffffffffffffff8083168181036133bc576133bc613389565b6001019392505050565b634e487b7160e01b600052600160045260246000fd5b6040818337604082016040820160005b600281101561341d5767ffffffffffffffff61340783612dd6565b16835260209283019291909101906001016133ec565b5050505050565b610100810161343382856133dc565b61231060808301846133dc565b600060208083528351808285015260005b8181101561346d57858101830151858201604001528201613451565b506000604082860101526040601f19601f8301168501019250505092915050565b60208101600483106134a2576134a2612eb1565b91905290565b60008083357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe18436030181126134dd57600080fd5b83018035915067ffffffffffffffff8211156134f857600080fd5b6020019150600581901b360382131561351057600080fd5b9250929050565b818103818111156109fe576109fe613389565b808201808211156109fe576109fe613389565b855181526001600160a01b0360208701511660208201526040860151604082015284606082015283608082015260c060a08201528160c0820152818360e0830137600081830160e090810191909152601f909201601f19160101949350505050565b6000602082840312156135b157600080fd5b5051919050565b6000606082018583526020858185015260606040850152818551808452608086019150828701935060005b818110156135ff578451835293830193918301916001016135e3565b509098975050505050505050565b83815260006020848184015260408301845182860160005b8281101561364157815184529284019290840190600101613625565b509198975050505050505050565b634e487b7160e01b600052601260045260246000fd5b6000826136745761367461364f565b500490565b80820281158282048414176109fe576109fe613389565b60008261369f5761369f61364f565b500690565b600060001982036136b7576136b7613389565b5060010190565b7f56616c75653a000000000000000000000000000000000000000000000000000081526000600784106136f3576136f3612eb1565b5060f89290921b600683015260078201526027019056fea2646970667358221220b72a30653d56880ccaaf687295109dde061a1657777a1ae4e0814adc9d6004a864736f6c63430008110033",
+// ChallengeManagerMetaData contains all meta data concerning the ChallengeManager contract.
+var ChallengeManagerMetaData = &bind.MetaData{
+	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"NotOwner\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"challengeRoot\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"challengedSegmentStart\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"challengedSegmentLength\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes32[]\",\"name\":\"chainHashes\",\"type\":\"bytes32[]\"}],\"name\":\"Bisected\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"enumIChallengeManager.ChallengeTerminationType\",\"name\":\"kind\",\"type\":\"uint8\"}],\"name\":\"ChallengeEnded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"blockSteps\",\"type\":\"uint256\"}],\"name\":\"ExecutionChallengeBegun\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"bytes32[2]\",\"name\":\"bytes32Vals\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint64[2]\",\"name\":\"u64Vals\",\"type\":\"uint64[2]\"}],\"indexed\":false,\"internalType\":\"structGlobalState\",\"name\":\"startState\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"bytes32[2]\",\"name\":\"bytes32Vals\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint64[2]\",\"name\":\"u64Vals\",\"type\":\"uint64[2]\"}],\"indexed\":false,\"internalType\":\"structGlobalState\",\"name\":\"endState\",\"type\":\"tuple\"}],\"name\":\"InitiatedChallenge\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"OneStepProofCompleted\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"oldSegmentsStart\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"oldSegmentsLength\",\"type\":\"uint256\"},{\"internalType\":\"bytes32[]\",\"name\":\"oldSegments\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"challengePosition\",\"type\":\"uint256\"}],\"internalType\":\"structChallengeLib.SegmentSelection\",\"name\":\"selection\",\"type\":\"tuple\"},{\"internalType\":\"bytes32[]\",\"name\":\"newSegments\",\"type\":\"bytes32[]\"}],\"name\":\"bisectExecution\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"bridge\",\"outputs\":[{\"internalType\":\"contractIBridge\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"oldSegmentsStart\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"oldSegmentsLength\",\"type\":\"uint256\"},{\"internalType\":\"bytes32[]\",\"name\":\"oldSegments\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"challengePosition\",\"type\":\"uint256\"}],\"internalType\":\"structChallengeLib.SegmentSelection\",\"name\":\"selection\",\"type\":\"tuple\"},{\"internalType\":\"enumMachineStatus[2]\",\"name\":\"machineStatuses\",\"type\":\"uint8[2]\"},{\"internalType\":\"bytes32[2]\",\"name\":\"globalStateHashes\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint256\",\"name\":\"numSteps\",\"type\":\"uint256\"}],\"name\":\"challengeExecution\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"challengeInfo\",\"outputs\":[{\"components\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"timeLeft\",\"type\":\"uint256\"}],\"internalType\":\"structChallengeLib.Participant\",\"name\":\"current\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"timeLeft\",\"type\":\"uint256\"}],\"internalType\":\"structChallengeLib.Participant\",\"name\":\"next\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"lastMoveTimestamp\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"wasmModuleRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"challengeStateHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint64\",\"name\":\"maxInboxMessages\",\"type\":\"uint64\"},{\"internalType\":\"enumChallengeLib.ChallengeMode\",\"name\":\"mode\",\"type\":\"uint8\"}],\"internalType\":\"structChallengeLib.Challenge\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"challenges\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"timeLeft\",\"type\":\"uint256\"}],\"internalType\":\"structChallengeLib.Participant\",\"name\":\"current\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"timeLeft\",\"type\":\"uint256\"}],\"internalType\":\"structChallengeLib.Participant\",\"name\":\"next\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"lastMoveTimestamp\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"wasmModuleRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"challengeStateHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint64\",\"name\":\"maxInboxMessages\",\"type\":\"uint64\"},{\"internalType\":\"enumChallengeLib.ChallengeMode\",\"name\":\"mode\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"clearChallenge\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"wasmModuleRoot_\",\"type\":\"bytes32\"},{\"internalType\":\"enumMachineStatus[2]\",\"name\":\"startAndEndMachineStatuses_\",\"type\":\"uint8[2]\"},{\"components\":[{\"internalType\":\"bytes32[2]\",\"name\":\"bytes32Vals\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint64[2]\",\"name\":\"u64Vals\",\"type\":\"uint64[2]\"}],\"internalType\":\"structGlobalState[2]\",\"name\":\"startAndEndGlobalStates_\",\"type\":\"tuple[2]\"},{\"internalType\":\"uint64\",\"name\":\"numBlocks\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"asserter_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"challenger_\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"asserterTimeLeft_\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"challengerTimeLeft_\",\"type\":\"uint256\"}],\"name\":\"createChallenge\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"currentResponder\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"wasmModuleRoot\",\"type\":\"bytes32\"}],\"name\":\"getOsp\",\"outputs\":[{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIChallengeResultReceiver\",\"name\":\"resultReceiver_\",\"type\":\"address\"},{\"internalType\":\"contractISequencerInbox\",\"name\":\"sequencerInbox_\",\"type\":\"address\"},{\"internalType\":\"contractIBridge\",\"name\":\"bridge_\",\"type\":\"address\"},{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"osp_\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"isTimedOut\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"oldSegmentsStart\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"oldSegmentsLength\",\"type\":\"uint256\"},{\"internalType\":\"bytes32[]\",\"name\":\"oldSegments\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"challengePosition\",\"type\":\"uint256\"}],\"internalType\":\"structChallengeLib.SegmentSelection\",\"name\":\"selection\",\"type\":\"tuple\"},{\"internalType\":\"bytes\",\"name\":\"proof\",\"type\":\"bytes\"}],\"name\":\"oneStepProveExecution\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"osp\",\"outputs\":[{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"ospCond\",\"outputs\":[{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"osp_\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"condRoot\",\"type\":\"bytes32\"},{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"condOsp\",\"type\":\"address\"}],\"name\":\"postUpgradeInit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"resultReceiver\",\"outputs\":[{\"internalType\":\"contractIChallengeResultReceiver\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"sequencerInbox\",\"outputs\":[{\"internalType\":\"contractISequencerInbox\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"timeout\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalChallengesCreated\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
+	Bin: "0x60a08060405234602957306080526123de908161002f82396080518181816101b5015261078c0152f35b600080fdfe608080604052600436101561001357600080fd5b600090813560e01c90816314eab5e714610a1f575080631b45c86a146108c157806323a9ef23146108805780633504f1d7146108575780633690b011146108265780635038934d1461075057806356e9df97146106815780635ef489e61461065a5780637fd07a9c1461051a5780638f1d37761461047a5780639ede42b914610437578063a521b032146103b9578063d248d1241461033e578063dc74bf8b1461030b578063e78cea92146102e2578063ee35f327146102b9578063f26a62c614610290578063f8c8765e1461015e5763fb7be0a1146100f257600080fd5b3461015b5760031960e0368201126101575761010c610ea7565b90602435906001600160401b03821161015357608090823603011261014f573660841161014f573660c41161014f5761014c9160c43591600401906119fd565b80f35b8280fd5b8380fd5b5080fd5b80fd5b503461015b57608036600319011261015b576004356001600160a01b038181169182900361014f57602435818116809103610153576044359082821680920361028c5760643593838516809503610287576101dd847f0000000000000000000000000000000000000000000000000000000000000000163014156111a0565b6002549384166102535780156102195760018060a01b031980941617600255826003541617600355816004541617600455600554161760055580f35b60405162461bcd60e51b81526020600482015260126024820152712727afa922a9aaa62a2fa922a1a2a4ab22a960711b6044820152606490fd5b60405162461bcd60e51b815260206004820152600c60248201526b1053149150511657d253925560a21b6044820152606490fd5b600080fd5b8480fd5b503461015b578060031936011261015b576005546040516001600160a01b039091168152602090f35b503461015b578060031936011261015b576003546040516001600160a01b039091168152602090f35b503461015b578060031936011261015b576004546040516001600160a01b039091168152602090f35b503461015b57602036600319011261015b57602090600435815260068252604060018060a01b0391205416604051908152f35b503461015b5760031960603682011261015757610359610ea7565b906001600160401b03906024359082821161028c576080908236030112610153576044359282841161028c573660238501121561028c57836004013592831161028c57366024848601011161028c57602461014c940191600401906116e8565b503461015b57600319606036820112610157576103d4610ea7565b906001600160401b03906024359082821161028c576080908236030112610153576044359282841161028c573660238501121561028c57836004013592831161028c573660248460051b8601011161028c57602461014c940191600401906113a3565b503461015b57602036600319011261015b57602090610470906040906001600160401b03610463610ea7565b16815260018452206121b1565b6040519015158152f35b503461015b57602036600319011261015b5760406101209160043581526001602052206104a681610f93565b906104b360028201610f93565b90600481015490600581015460076006830154920154926104ec60ff8560401c16956104e26040518099610ed1565b6040880190610ed1565b608086015260a085015260c08401526001600160401b031660e083015261051281610ee9565b610100820152f35b503461015b57602080600319360112610157579061012091604061053c610ea7565b928060c0835161054b81610f3a565b845161055681610f09565b600081526000878201528152845161056d81610f09565b600081526000878201528682015282858201528260608201528260808201528260a08201520152600180831b038094168152600183522091604051926105b284610f3a565b6105bb81610f93565b84526105c960028201610f93565b9284019283526004810154906040850191825260058101546060860190815260076006830154926080880193845201549261063760ff60a0890195878116875260401c169660c089019761061c81610ee9565b885261062c604051809a51610ed1565b516040890190610ed1565b5160808701525160a08601525160c0850152511660e08301525161051281610ee9565b503461015b578060031936011261015b57546040516001600160401b039091168152602090f35b503461015b57602036600319011261015b5761069b610ea7565b6002546001600160a01b03163303610718576001600160401b031680825260016020526040808320600701546106e8911c60ff166106d881610ee9565b6106e06110ea565b90151561110d565b80825260016020526106fc60408320611201565b600080516020612369833981519152602060405160038152a280f35b60405162461bcd60e51b815260206004820152601060248201526f2727aa2fa922a9afa922a1a2a4ab22a960811b6044820152606490fd5b503461015b57606036600319011261015b576004356001600160a01b03818116918290036102875760443590808216809203610287576107b4817f0000000000000000000000000000000000000000000000000000000000000000163014156111a0565b7fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d610354168033036108085750602435835260066020526040832060018060a01b03199182825416179055600554161760055580f35b60449060405190631194af8760e11b82523360048301526024820152fd5b503461015b57602036600319011261015b576020610845600435611174565b6040516001600160a01b039091168152f35b503461015b578060031936011261015b576002546040516001600160a01b039091168152602090f35b503461015b57602036600319011261015b576020906001600160401b036108a5610ea7565b16815260018252604060018060a01b0391205416604051908152f35b503461015b57602080600319360112610157576001600160401b0390816108e6610ea7565b16918284526001825261090960ff600760408720015460401c166106d881610ee9565b8284526001825261091c604085206121b1565b156109e7578284526001825260408420908460018060a01b0392836002820154169361094b8183541692611201565b6002541693843b1561014f57606490836040519687948593630357aa4960e01b85528b6004860152602485015260448401525af180156109dc576109a6575b505060008051602061236983398151915290604051848152a280f35b81949294116109c857604052916000805160206123698339815191523861098a565b634e487b7160e01b82526041600452602482fd5b6040513d87823e3d90fd5b60405162461bcd60e51b815260048101839052601060248201526f54494d454f55545f444541444c494e4560801b6044820152606490fd5b90503461015757610200366003190112610157573660641161015757366101641161015757610164356001600160401b038116810361014f5761018435906001600160a01b03808316830361028c576101a435938185168503610e425781600254163303610e72575060405192610a9584610f55565b60028452604036602086013760046024351015610e42576080366063190112610e4257604051610ac481610f09565b3660831215610e5e57604051610ad981610f09565b803660a411610e3e576064905b60a48210610e6257505081523660c31215610e5e57604051610b0781610f09565b803660e411610e3e5760a4905b60e48210610e4657505081610b30916020610b38940152611f49565b602435611fc2565b610b418561106c565b5260046044351015610e4257610b68610b60610b5b610fc4565b611f49565b604435611fc2565b610b718561108f565b52855494610b876001600160401b03871661109f565b6001600160401b03199096166001600160401b0387169081178855610bad9015156110cd565b6001600160401b038681168852600160209081526040892060043560058201559190610bd7610fc4565b0151511692610be7604435610fba565b6002604435148015610d7a575b610d6a575b6007820194855493604051610c0d81610f09565b828416815260206101c435910152600284018260018060a01b03199416848254161790556101c4356003850155604051610c4681610f09565b91168082526101e4356020909201829052835490921690911782556001820155426004909101556001600160481b0319166001600160401b0390911617600160401b17905560408051906064823760a485604083015b60028210610d4257505050604060e460808301376101249460c082015b60028210610d1a57602086610d0887876001600160401b0384167f76604fe17af46c9b5f53ffe99ff23e0f655dab91886b07ac1fc0254319f7145a6101008aa26001600160401b0316836120c7565b6040516001600160401b039091168152f35b60019060209081906001600160401b03610d338b610ebd565b16815201970191019095610cb9565b60019060209081906001600160401b03610d5b87610ebd565b16815201930191019091610c9c565b92610d749061109f565b92610bf9565b5060803660e3190112610e3e57604051610d9381610f09565b366101031215610e2657604051610da981610f09565b803661012411610e3a5760e4905b6101248210610e2a5750508152366101431215610e26576040518091610ddc82610f09565b610124825b6101648210610e0757505060209081019190915201516001600160401b03161515610bf4565b8192935060209190610e198392610ebd565b8152019101839291610de1565b8980fd5b8135815260209182019101610db7565b8b80fd5b8880fd5b8580fd5b60208091610e5384610ebd565b815201910190610b14565b8680fd5b8135815260209182019101610ae6565b62461bcd60e51b815260206004820152601060248201526f13d3931657d493d313155417d0d2105360821b6044820152606490fd5b600435906001600160401b038216820361028757565b35906001600160401b038216820361028757565b80516001600160a01b03168252602090810151910152565b60031115610ef357565b634e487b7160e01b600052602160045260246000fd5b604081019081106001600160401b03821117610f2457604052565b634e487b7160e01b600052604160045260246000fd5b60e081019081106001600160401b03821117610f2457604052565b606081019081106001600160401b03821117610f2457604052565b601f909101601f19168101906001600160401b03821190821017610f2457604052565b90604051610fa081610f09565b82546001600160a01b031681526001909201546020830152565b60041115610ef357565b60803660e319011261028757604051610fdc81610f09565b36610103121561028757604051610ff281610f09565b80610124913683116102875760e4905b83821061105c5750508252366101431215610287576040519061102482610f09565b816101649136831161028757905b82821061104457505050602082015290565b6020809161105184610ebd565b815201910190611032565b8135815260209182019101611002565b8051156110795760200190565b634e487b7160e01b600052603260045260246000fd5b8051600110156110795760400190565b6001600160401b039081169081146110b75760010190565b634e487b7160e01b600052601160045260246000fd5b156110d457565b634e487b7160e01b600052600160045260246000fd5b604051906110f782610f09565b60078252661393d7d0d2105360ca1b6020830152565b156111155750565b6040519062461bcd60e51b82528160208060048301528251908160248401526000935b82851061115b575050604492506000838284010152601f80199101168101030190fd5b8481018201518686016044015293810193859350611138565b6000908152600660205260409020546001600160a01b039081168061119b57506005541690565b905090565b156111a757565b60405162461bcd60e51b815260206004820152602c60248201527f46756e6374696f6e206d7573742062652063616c6c6564207468726f7567682060448201526b19195b1959d85d1958d85b1b60a21b6064820152608490fd5b60076000918281558260018201558260028201558260038201558260048201558260058201558260068201550155565b1561123857565b60405162461bcd60e51b815260206004820152600b60248201526a21a420a62fa9a2a72222a960a91b6044820152606490fd5b1561127257565b60405162461bcd60e51b815260206004820152600d60248201526c4348414c5f444541444c494e4560981b6044820152606490fd5b903590601e198136030182121561028757018035906001600160401b03821161028757602001918160051b3603831361028757565b9092916001600160401b038411610f24578360051b602092602060405161130582850182610f70565b809781520191810192831161028757905b8282106113235750505050565b81358152908301908301611316565b1561133957565b60405162461bcd60e51b81526020600482015260096024820152684249535f535441544560b81b6044820152606490fd5b919082039182116110b757565b6060906020815260116020820152704241445f4348414c4c454e47455f504f5360781b60408201520190565b6001600160401b0316600081815260016020818152604080842080546001600160a01b039993989497919692959391906113e0908b163314611231565b8284528789526113fa6113f48786206121b1565b1561126b565b600787019461141260ff8754891c166106d881610ee9565b6006880154611447888401916114418d61143661142f86896112a7565b36916112dc565b9087013587356121c8565b14611332565b600261145382856112a7565b905010908115611692575b506116765761146c82612221565b9390928a85111561164657846028861161163e575b8b81018091116115e357820361160b5781156115f75760001982018281116115e35782916114ba61142f9286956114c4979b989b6116d8565b35908435906122b6565b906114d1898410156110cd565b6114df6002835110156110cd565b6114ea8284876121c8565b94848252898b528560068984200155875193606085019185528b85015260608885015282518091528a608085019301915b8a8c8383106115d15750505050508160ff9695949392600080516020612389833981519152920390a354901c1661155181610ee9565b156115cb5760039161156282610f93565b94600483019561158161157688544261136a565b96820196875161136a565b9586905260028401926115a9565b505182546001600160a01b03191691161790550155429055565b835485546001600160a01b03191690841617855585850154908501553861158f565b50505050565b8451865294850194909301920161151b565b634e487b7160e01b88526011600452602488fd5b634e487b7160e01b87526032600452602487fd5b885162461bcd60e51b8152600481018d9052600c60248201526b57524f4e475f44454752454560a01b6044820152606490fd5b506028611481565b885162461bcd60e51b8152600481018d905260096024820152681513d3d7d4d213d49560ba1b6044820152606490fd5b865162461bcd60e51b81528061168e60048201611377565b0390fd5b61169d9150836112a7565b6000198101915081116116b757606083013510153861145e565b634e487b7160e01b86526011600452602486fd5b919082018092116110b757565b91908110156110795760051b0190565b6001600160401b03908116600081815260016020818152604080842080546001600160a01b039a93999498919792969395949192919061172b908c163314611231565b838552888a5261173f6113f48887206121b1565b6007880195600260ff88548a1c1661175681610ee9565b0361198d57908a93929161178760068b01546114418b87019761177c61142f8a8a6112a7565b9088013588356121c8565b600261179386866112a7565b9050108015611969575b611951578c8b95938a60c48f9495866118189997848e8e81528d8a5220956117cf6117c78b612221565b909e146119c6565b6007886117df60058a0154611174565b1697015416928760045416958051946117f786610f09565b85528985019687526118098c8c6112a7565b9d9060608d01359e8f916116d8565b3590519d8e998a988997635d3adcfb60e01b8952516004890152511660248701526044860152606485015260a060848501528160a48501528484013781810183018d9052601f01601f191681010301915afa938415611947578694611916575b5090611883916112a7565b908983018093116116b7579061189992916116d8565b35146118e357908160ff9493927fc2cc42e04ff8c36de71c6a2937ea9f161dd0dd9e175f00caa26e5200643c781e8380a281528587526006838220015554901c1661155181610ee9565b835162461bcd60e51b815260048101889052600c60248201526b14d0535157d3d4d417d1539160a21b6044820152606490fd5b9093508a81813d8311611940575b61192e8183610f70565b81010312610e42575192611883611878565b503d611924565b88513d88823e3d90fd5b885162461bcd60e51b81528061168e60048201611377565b5061197485856112a7565b6000198101915081116115e3576060850135101561179d565b875162461bcd60e51b8152600481018c9052601260248201527121a420a62fa727aa2fa2ac22a1aaaa24a7a760711b6044820152606490fd5b156119cd57565b60405162461bcd60e51b8152602060048201526008602482015267544f4f5f4c4f4e4760c01b6044820152606490fd5b6001600160401b038116600081815260016020526040808220805490966001600160a01b039692959394909391611a379088163314611231565b84526001602052611a4c6113f48686206121b1565b6007870193600160ff8654881c16611a6381610ee9565b03611b9d57600688015490611a9187850192611441611a8561142f86896112a7565b602088013588356121c8565b6002611a9d83866112a7565b905010918215611b60575b5050611b485791611abd9160ff959493611bd2565b54901c16611aca81610ee9565b15611b44576003611ada83610f93565b926004810193611aeb85544261136a565b93611afb6020830195865161136a565b948590526002830191611b22565b5182546001600160a01b03191691161790550155429055565b825484546001600160a01b031916908316178455848401546001850155611b09565b5050565b845162461bcd60e51b81528061168e60048201611377565b611b6c919250846112a7565b60001981019291508211611b895750606083013510153880611aa8565b634e487b7160e01b81526011600452602490fd5b855162461bcd60e51b815260206004820152600e60248201526d4348414c5f4e4f545f424c4f434b60901b6044820152606490fd5b9291909260018210611f0e576001602b1b8211611ed45760443590600492838310156102875760843591611c068385611fc2565b96606435938685101561028757611c5698600195611c3260a43592611c2b8484611fc2565b90866122b6565b868060401b038516986000938a8552602099898b52611c5e60409e8f882098612221565b909b146119c6565b611c6781610fba565b60018103611e5a5750908291611c828e999897969594610fba565b60028314611e0a575b88519d8e611c9881610f55565b600281528c369101376005860154906001600160a01b03611cb883611174565b16918a51916301265ef960e21b83528483015260248201528b81604481855afa908115611e0057918f9492918d94928891611dc4575b50611cfc604494959661106c565b528a5163d8558b8760e01b81529586948593611d1782610fba565b84015260248301525afa918215611db9578092611d86575b5050916007611d7f94928b94611d677f24e032e170243bbea97e140174b22dc7e54fb85925afbf52c70e001cd6af16db9b9c9d61108f565b5201805460ff60401b1916600160411b1790556120c7565b51908152a2565b9091508782813d8311611db2575b611d9e8183610f70565b8101031261015b5750516007611d7f611d2f565b503d611d94565b8651903d90823e3d90fd5b929480929496508391503d8311611df9575b611de08183610f70565b81010312610e4257518e938c9390929091611cfc611cee565b503d611dd6565b8a513d88823e3d90fd5b909192809495969798508103611e2857908c97969594939291611c8b565b8c5162461bcd60e51b81528083018b9052600c60248201526b4552524f525f4348414e474560a01b6044820152606490fd5b93955095509550919899979550611e7082610fba565b611e7981610fba565b149182611eca575b505015611e975750835260019052812060060155565b835162461bcd60e51b8152908101839052600d60248201526c48414c5445445f4348414e474560981b6044820152606490fd5b1490503880611e81565b60405162461bcd60e51b81526020600482015260126024820152714348414c4c454e47455f544f4f5f4c4f4e4760701b6044820152606490fd5b60405162461bcd60e51b815260206004820152601360248201527210d2105313115391d157d513d3d7d4d213d495606a1b6044820152606490fd5b8051906020808351930151910151602081519101516040519260208401946c23b637b130b61039ba30ba329d60991b8652602d850152604d84015260018060c01b0319809260c01b16606d84015260c01b166075820152605d81526080810181811060018060401b03821117610f245760405251902090565b611fcb81610fba565b60018103612006575060405160208101916b213637b1b59039ba30ba329d60a11b8352602c820152602c815261200081610f55565b51902090565b61200f81610fba565b6002810361204d5750604051602081019174213637b1b59039ba30ba32961032b93937b932b21d60591b835260358201526035815261200081610f55565b6003915061205a81610fba565b0361208f57604051602081019074213637b1b59039ba30ba3296103a37b7903330b91d60591b82526015815261200081610f09565b60405162461bcd60e51b815260206004820152601060248201526f4241445f424c4f434b5f53544154555360801b6044820152606490fd5b916001916120d860018210156110cd565b6120e66002835110156110cd565b604051906020938483019160009283815281604086015260608501948651958888018097875b81811061219e57505050816121299103601f198101835282610f70565b5190209660018060401b031695868452600181528760066040862001556040519560608701928588528288015260606040880152518092526080860194935b82811061218b5750505050509080600080516020612389833981519152920390a3565b8451865294810194938101938301612168565b82518452928b0192918b0191870161210c565b60016121c160048301544261136a565b9101541090565b9190604051809260209260208301958652604083015260608201602082519192019360005b82811061220a57505050612000925003601f198101835282610f70565b8551845294810194869450928101926001016121ed565b90604082019061223182846112a7565b6000198101915081116110b757602084013581156122a05781810493606086013590818602908682048314871517156110b7576122726122789289356116cb565b976112a7565b600119810192915082116110b7571461228f575050565b9061229d92939106906116cb565b90565b634e487b7160e01b600052601260045260246000fd5b6122d89160408201906122c982846112a7565b949060608501359586916116d8565b3503612335576122e7916112a7565b6001839293018092116110b7576122fd926116d8565b351461230557565b60405162461bcd60e51b815260206004820152600860248201526714d0535157d1539160c21b6044820152606490fd5b60405162461bcd60e51b815260206004820152600b60248201526a15d493d391d7d4d510549560aa1b6044820152606490fdfefdaece6c274a4b56af16761f83fd6b1062823192630ea08e019fdf9b2d747f4086b34e9455464834eca718f62d4481437603bb929d8a78ccde5d1bc79fa06d68a264697066735822122002b6f457b4eb6c78e5c08187c2ee72c8ad73e74470fd1f3a8a1461683166409464736f6c63430008190033",
 }
 
-// OldChallengeManagerABI is the input ABI used to generate the binding from.
-// Deprecated: Use OldChallengeManagerMetaData.ABI instead.
-var OldChallengeManagerABI = OldChallengeManagerMetaData.ABI
+// ChallengeManagerABI is the input ABI used to generate the binding from.
+// Deprecated: Use ChallengeManagerMetaData.ABI instead.
+var ChallengeManagerABI = ChallengeManagerMetaData.ABI
 
-// OldChallengeManagerBin is the compiled bytecode used for deploying new contracts.
-// Deprecated: Use OldChallengeManagerMetaData.Bin instead.
-var OldChallengeManagerBin = OldChallengeManagerMetaData.Bin
+// ChallengeManagerBin is the compiled bytecode used for deploying new contracts.
+// Deprecated: Use ChallengeManagerMetaData.Bin instead.
+var ChallengeManagerBin = ChallengeManagerMetaData.Bin
 
-// DeployOldChallengeManager deploys a new Ethereum contract, binding an instance of OldChallengeManager to it.
-func DeployOldChallengeManager(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *OldChallengeManager, error) {
-	parsed, err := OldChallengeManagerMetaData.GetAbi()
+// DeployChallengeManager deploys a new Ethereum contract, binding an instance of ChallengeManager to it.
+func DeployChallengeManager(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *ChallengeManager, error) {
+	parsed, err := ChallengeManagerMetaData.GetAbi()
 	if err != nil {
 		return common.Address{}, nil, nil, err
 	}
@@ -1493,111 +257,111 @@ func DeployOldChallengeManager(auth *bind.TransactOpts, backend bind.ContractBac
 		return common.Address{}, nil, nil, errors.New("GetABI returned nil")
 	}
 
-	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(OldChallengeManagerBin), backend)
+	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(ChallengeManagerBin), backend)
 	if err != nil {
 		return common.Address{}, nil, nil, err
 	}
-	return address, tx, &OldChallengeManager{OldChallengeManagerCaller: OldChallengeManagerCaller{contract: contract}, OldChallengeManagerTransactor: OldChallengeManagerTransactor{contract: contract}, OldChallengeManagerFilterer: OldChallengeManagerFilterer{contract: contract}}, nil
+	return address, tx, &ChallengeManager{ChallengeManagerCaller: ChallengeManagerCaller{contract: contract}, ChallengeManagerTransactor: ChallengeManagerTransactor{contract: contract}, ChallengeManagerFilterer: ChallengeManagerFilterer{contract: contract}}, nil
 }
 
-// OldChallengeManager is an auto generated Go binding around an Ethereum contract.
-type OldChallengeManager struct {
-	OldChallengeManagerCaller     // Read-only binding to the contract
-	OldChallengeManagerTransactor // Write-only binding to the contract
-	OldChallengeManagerFilterer   // Log filterer for contract events
+// ChallengeManager is an auto generated Go binding around an Ethereum contract.
+type ChallengeManager struct {
+	ChallengeManagerCaller     // Read-only binding to the contract
+	ChallengeManagerTransactor // Write-only binding to the contract
+	ChallengeManagerFilterer   // Log filterer for contract events
 }
 
-// OldChallengeManagerCaller is an auto generated read-only Go binding around an Ethereum contract.
-type OldChallengeManagerCaller struct {
+// ChallengeManagerCaller is an auto generated read-only Go binding around an Ethereum contract.
+type ChallengeManagerCaller struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// OldChallengeManagerTransactor is an auto generated write-only Go binding around an Ethereum contract.
-type OldChallengeManagerTransactor struct {
+// ChallengeManagerTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type ChallengeManagerTransactor struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// OldChallengeManagerFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
-type OldChallengeManagerFilterer struct {
+// ChallengeManagerFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type ChallengeManagerFilterer struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// OldChallengeManagerSession is an auto generated Go binding around an Ethereum contract,
+// ChallengeManagerSession is an auto generated Go binding around an Ethereum contract,
 // with pre-set call and transact options.
-type OldChallengeManagerSession struct {
-	Contract     *OldChallengeManager // Generic contract binding to set the session for
-	CallOpts     bind.CallOpts        // Call options to use throughout this session
-	TransactOpts bind.TransactOpts    // Transaction auth options to use throughout this session
+type ChallengeManagerSession struct {
+	Contract     *ChallengeManager // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts     // Call options to use throughout this session
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
 }
 
-// OldChallengeManagerCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// ChallengeManagerCallerSession is an auto generated read-only Go binding around an Ethereum contract,
 // with pre-set call options.
-type OldChallengeManagerCallerSession struct {
-	Contract *OldChallengeManagerCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts              // Call options to use throughout this session
+type ChallengeManagerCallerSession struct {
+	Contract *ChallengeManagerCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts           // Call options to use throughout this session
 }
 
-// OldChallengeManagerTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// ChallengeManagerTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
 // with pre-set transact options.
-type OldChallengeManagerTransactorSession struct {
-	Contract     *OldChallengeManagerTransactor // Generic contract transactor binding to set the session for
-	TransactOpts bind.TransactOpts              // Transaction auth options to use throughout this session
+type ChallengeManagerTransactorSession struct {
+	Contract     *ChallengeManagerTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts           // Transaction auth options to use throughout this session
 }
 
-// OldChallengeManagerRaw is an auto generated low-level Go binding around an Ethereum contract.
-type OldChallengeManagerRaw struct {
-	Contract *OldChallengeManager // Generic contract binding to access the raw methods on
+// ChallengeManagerRaw is an auto generated low-level Go binding around an Ethereum contract.
+type ChallengeManagerRaw struct {
+	Contract *ChallengeManager // Generic contract binding to access the raw methods on
 }
 
-// OldChallengeManagerCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
-type OldChallengeManagerCallerRaw struct {
-	Contract *OldChallengeManagerCaller // Generic read-only contract binding to access the raw methods on
+// ChallengeManagerCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type ChallengeManagerCallerRaw struct {
+	Contract *ChallengeManagerCaller // Generic read-only contract binding to access the raw methods on
 }
 
-// OldChallengeManagerTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
-type OldChallengeManagerTransactorRaw struct {
-	Contract *OldChallengeManagerTransactor // Generic write-only contract binding to access the raw methods on
+// ChallengeManagerTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type ChallengeManagerTransactorRaw struct {
+	Contract *ChallengeManagerTransactor // Generic write-only contract binding to access the raw methods on
 }
 
-// NewOldChallengeManager creates a new instance of OldChallengeManager, bound to a specific deployed contract.
-func NewOldChallengeManager(address common.Address, backend bind.ContractBackend) (*OldChallengeManager, error) {
-	contract, err := bindOldChallengeManager(address, backend, backend, backend)
+// NewChallengeManager creates a new instance of ChallengeManager, bound to a specific deployed contract.
+func NewChallengeManager(address common.Address, backend bind.ContractBackend) (*ChallengeManager, error) {
+	contract, err := bindChallengeManager(address, backend, backend, backend)
 	if err != nil {
 		return nil, err
 	}
-	return &OldChallengeManager{OldChallengeManagerCaller: OldChallengeManagerCaller{contract: contract}, OldChallengeManagerTransactor: OldChallengeManagerTransactor{contract: contract}, OldChallengeManagerFilterer: OldChallengeManagerFilterer{contract: contract}}, nil
+	return &ChallengeManager{ChallengeManagerCaller: ChallengeManagerCaller{contract: contract}, ChallengeManagerTransactor: ChallengeManagerTransactor{contract: contract}, ChallengeManagerFilterer: ChallengeManagerFilterer{contract: contract}}, nil
 }
 
-// NewOldChallengeManagerCaller creates a new read-only instance of OldChallengeManager, bound to a specific deployed contract.
-func NewOldChallengeManagerCaller(address common.Address, caller bind.ContractCaller) (*OldChallengeManagerCaller, error) {
-	contract, err := bindOldChallengeManager(address, caller, nil, nil)
+// NewChallengeManagerCaller creates a new read-only instance of ChallengeManager, bound to a specific deployed contract.
+func NewChallengeManagerCaller(address common.Address, caller bind.ContractCaller) (*ChallengeManagerCaller, error) {
+	contract, err := bindChallengeManager(address, caller, nil, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &OldChallengeManagerCaller{contract: contract}, nil
+	return &ChallengeManagerCaller{contract: contract}, nil
 }
 
-// NewOldChallengeManagerTransactor creates a new write-only instance of OldChallengeManager, bound to a specific deployed contract.
-func NewOldChallengeManagerTransactor(address common.Address, transactor bind.ContractTransactor) (*OldChallengeManagerTransactor, error) {
-	contract, err := bindOldChallengeManager(address, nil, transactor, nil)
+// NewChallengeManagerTransactor creates a new write-only instance of ChallengeManager, bound to a specific deployed contract.
+func NewChallengeManagerTransactor(address common.Address, transactor bind.ContractTransactor) (*ChallengeManagerTransactor, error) {
+	contract, err := bindChallengeManager(address, nil, transactor, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &OldChallengeManagerTransactor{contract: contract}, nil
+	return &ChallengeManagerTransactor{contract: contract}, nil
 }
 
-// NewOldChallengeManagerFilterer creates a new log filterer instance of OldChallengeManager, bound to a specific deployed contract.
-func NewOldChallengeManagerFilterer(address common.Address, filterer bind.ContractFilterer) (*OldChallengeManagerFilterer, error) {
-	contract, err := bindOldChallengeManager(address, nil, nil, filterer)
+// NewChallengeManagerFilterer creates a new log filterer instance of ChallengeManager, bound to a specific deployed contract.
+func NewChallengeManagerFilterer(address common.Address, filterer bind.ContractFilterer) (*ChallengeManagerFilterer, error) {
+	contract, err := bindChallengeManager(address, nil, nil, filterer)
 	if err != nil {
 		return nil, err
 	}
-	return &OldChallengeManagerFilterer{contract: contract}, nil
+	return &ChallengeManagerFilterer{contract: contract}, nil
 }
 
-// bindOldChallengeManager binds a generic wrapper to an already deployed contract.
-func bindOldChallengeManager(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := OldChallengeManagerMetaData.GetAbi()
+// bindChallengeManager binds a generic wrapper to an already deployed contract.
+func bindChallengeManager(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := ChallengeManagerMetaData.GetAbi()
 	if err != nil {
 		return nil, err
 	}
@@ -1608,46 +372,46 @@ func bindOldChallengeManager(address common.Address, caller bind.ContractCaller,
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_OldChallengeManager *OldChallengeManagerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _OldChallengeManager.Contract.OldChallengeManagerCaller.contract.Call(opts, result, method, params...)
+func (_ChallengeManager *ChallengeManagerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _ChallengeManager.Contract.ChallengeManagerCaller.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_OldChallengeManager *OldChallengeManagerRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.OldChallengeManagerTransactor.contract.Transfer(opts)
+func (_ChallengeManager *ChallengeManagerRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.ChallengeManagerTransactor.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_OldChallengeManager *OldChallengeManagerRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.OldChallengeManagerTransactor.contract.Transact(opts, method, params...)
+func (_ChallengeManager *ChallengeManagerRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.ChallengeManagerTransactor.contract.Transact(opts, method, params...)
 }
 
 // Call invokes the (constant) contract method with params as input values and
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_OldChallengeManager *OldChallengeManagerCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _OldChallengeManager.Contract.contract.Call(opts, result, method, params...)
+func (_ChallengeManager *ChallengeManagerCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _ChallengeManager.Contract.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_OldChallengeManager *OldChallengeManagerTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.contract.Transfer(opts)
+func (_ChallengeManager *ChallengeManagerTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_OldChallengeManager *OldChallengeManagerTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.contract.Transact(opts, method, params...)
+func (_ChallengeManager *ChallengeManagerTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.contract.Transact(opts, method, params...)
 }
 
 // Bridge is a free data retrieval call binding the contract method 0xe78cea92.
 //
 // Solidity: function bridge() view returns(address)
-func (_OldChallengeManager *OldChallengeManagerCaller) Bridge(opts *bind.CallOpts) (common.Address, error) {
+func (_ChallengeManager *ChallengeManagerCaller) Bridge(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
-	err := _OldChallengeManager.contract.Call(opts, &out, "bridge")
+	err := _ChallengeManager.contract.Call(opts, &out, "bridge")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -1662,29 +426,29 @@ func (_OldChallengeManager *OldChallengeManagerCaller) Bridge(opts *bind.CallOpt
 // Bridge is a free data retrieval call binding the contract method 0xe78cea92.
 //
 // Solidity: function bridge() view returns(address)
-func (_OldChallengeManager *OldChallengeManagerSession) Bridge() (common.Address, error) {
-	return _OldChallengeManager.Contract.Bridge(&_OldChallengeManager.CallOpts)
+func (_ChallengeManager *ChallengeManagerSession) Bridge() (common.Address, error) {
+	return _ChallengeManager.Contract.Bridge(&_ChallengeManager.CallOpts)
 }
 
 // Bridge is a free data retrieval call binding the contract method 0xe78cea92.
 //
 // Solidity: function bridge() view returns(address)
-func (_OldChallengeManager *OldChallengeManagerCallerSession) Bridge() (common.Address, error) {
-	return _OldChallengeManager.Contract.Bridge(&_OldChallengeManager.CallOpts)
+func (_ChallengeManager *ChallengeManagerCallerSession) Bridge() (common.Address, error) {
+	return _ChallengeManager.Contract.Bridge(&_ChallengeManager.CallOpts)
 }
 
 // ChallengeInfo is a free data retrieval call binding the contract method 0x7fd07a9c.
 //
 // Solidity: function challengeInfo(uint64 challengeIndex) view returns(((address,uint256),(address,uint256),uint256,bytes32,bytes32,uint64,uint8))
-func (_OldChallengeManager *OldChallengeManagerCaller) ChallengeInfo(opts *bind.CallOpts, challengeIndex uint64) (OldChallengeLibChallenge, error) {
+func (_ChallengeManager *ChallengeManagerCaller) ChallengeInfo(opts *bind.CallOpts, challengeIndex uint64) (ChallengeLibChallenge, error) {
 	var out []interface{}
-	err := _OldChallengeManager.contract.Call(opts, &out, "challengeInfo", challengeIndex)
+	err := _ChallengeManager.contract.Call(opts, &out, "challengeInfo", challengeIndex)
 
 	if err != nil {
-		return *new(OldChallengeLibChallenge), err
+		return *new(ChallengeLibChallenge), err
 	}
 
-	out0 := *abi.ConvertType(out[0], new(OldChallengeLibChallenge)).(*OldChallengeLibChallenge)
+	out0 := *abi.ConvertType(out[0], new(ChallengeLibChallenge)).(*ChallengeLibChallenge)
 
 	return out0, err
 
@@ -1693,23 +457,23 @@ func (_OldChallengeManager *OldChallengeManagerCaller) ChallengeInfo(opts *bind.
 // ChallengeInfo is a free data retrieval call binding the contract method 0x7fd07a9c.
 //
 // Solidity: function challengeInfo(uint64 challengeIndex) view returns(((address,uint256),(address,uint256),uint256,bytes32,bytes32,uint64,uint8))
-func (_OldChallengeManager *OldChallengeManagerSession) ChallengeInfo(challengeIndex uint64) (OldChallengeLibChallenge, error) {
-	return _OldChallengeManager.Contract.ChallengeInfo(&_OldChallengeManager.CallOpts, challengeIndex)
+func (_ChallengeManager *ChallengeManagerSession) ChallengeInfo(challengeIndex uint64) (ChallengeLibChallenge, error) {
+	return _ChallengeManager.Contract.ChallengeInfo(&_ChallengeManager.CallOpts, challengeIndex)
 }
 
 // ChallengeInfo is a free data retrieval call binding the contract method 0x7fd07a9c.
 //
 // Solidity: function challengeInfo(uint64 challengeIndex) view returns(((address,uint256),(address,uint256),uint256,bytes32,bytes32,uint64,uint8))
-func (_OldChallengeManager *OldChallengeManagerCallerSession) ChallengeInfo(challengeIndex uint64) (OldChallengeLibChallenge, error) {
-	return _OldChallengeManager.Contract.ChallengeInfo(&_OldChallengeManager.CallOpts, challengeIndex)
+func (_ChallengeManager *ChallengeManagerCallerSession) ChallengeInfo(challengeIndex uint64) (ChallengeLibChallenge, error) {
+	return _ChallengeManager.Contract.ChallengeInfo(&_ChallengeManager.CallOpts, challengeIndex)
 }
 
 // Challenges is a free data retrieval call binding the contract method 0x8f1d3776.
 //
 // Solidity: function challenges(uint256 ) view returns((address,uint256) current, (address,uint256) next, uint256 lastMoveTimestamp, bytes32 wasmModuleRoot, bytes32 challengeStateHash, uint64 maxInboxMessages, uint8 mode)
-func (_OldChallengeManager *OldChallengeManagerCaller) Challenges(opts *bind.CallOpts, arg0 *big.Int) (struct {
-	Current            OldChallengeLibParticipant
-	Next               OldChallengeLibParticipant
+func (_ChallengeManager *ChallengeManagerCaller) Challenges(opts *bind.CallOpts, arg0 *big.Int) (struct {
+	Current            ChallengeLibParticipant
+	Next               ChallengeLibParticipant
 	LastMoveTimestamp  *big.Int
 	WasmModuleRoot     [32]byte
 	ChallengeStateHash [32]byte
@@ -1717,11 +481,11 @@ func (_OldChallengeManager *OldChallengeManagerCaller) Challenges(opts *bind.Cal
 	Mode               uint8
 }, error) {
 	var out []interface{}
-	err := _OldChallengeManager.contract.Call(opts, &out, "challenges", arg0)
+	err := _ChallengeManager.contract.Call(opts, &out, "challenges", arg0)
 
 	outstruct := new(struct {
-		Current            OldChallengeLibParticipant
-		Next               OldChallengeLibParticipant
+		Current            ChallengeLibParticipant
+		Next               ChallengeLibParticipant
 		LastMoveTimestamp  *big.Int
 		WasmModuleRoot     [32]byte
 		ChallengeStateHash [32]byte
@@ -1732,8 +496,8 @@ func (_OldChallengeManager *OldChallengeManagerCaller) Challenges(opts *bind.Cal
 		return *outstruct, err
 	}
 
-	outstruct.Current = *abi.ConvertType(out[0], new(OldChallengeLibParticipant)).(*OldChallengeLibParticipant)
-	outstruct.Next = *abi.ConvertType(out[1], new(OldChallengeLibParticipant)).(*OldChallengeLibParticipant)
+	outstruct.Current = *abi.ConvertType(out[0], new(ChallengeLibParticipant)).(*ChallengeLibParticipant)
+	outstruct.Next = *abi.ConvertType(out[1], new(ChallengeLibParticipant)).(*ChallengeLibParticipant)
 	outstruct.LastMoveTimestamp = *abi.ConvertType(out[2], new(*big.Int)).(**big.Int)
 	outstruct.WasmModuleRoot = *abi.ConvertType(out[3], new([32]byte)).(*[32]byte)
 	outstruct.ChallengeStateHash = *abi.ConvertType(out[4], new([32]byte)).(*[32]byte)
@@ -1747,39 +511,39 @@ func (_OldChallengeManager *OldChallengeManagerCaller) Challenges(opts *bind.Cal
 // Challenges is a free data retrieval call binding the contract method 0x8f1d3776.
 //
 // Solidity: function challenges(uint256 ) view returns((address,uint256) current, (address,uint256) next, uint256 lastMoveTimestamp, bytes32 wasmModuleRoot, bytes32 challengeStateHash, uint64 maxInboxMessages, uint8 mode)
-func (_OldChallengeManager *OldChallengeManagerSession) Challenges(arg0 *big.Int) (struct {
-	Current            OldChallengeLibParticipant
-	Next               OldChallengeLibParticipant
+func (_ChallengeManager *ChallengeManagerSession) Challenges(arg0 *big.Int) (struct {
+	Current            ChallengeLibParticipant
+	Next               ChallengeLibParticipant
 	LastMoveTimestamp  *big.Int
 	WasmModuleRoot     [32]byte
 	ChallengeStateHash [32]byte
 	MaxInboxMessages   uint64
 	Mode               uint8
 }, error) {
-	return _OldChallengeManager.Contract.Challenges(&_OldChallengeManager.CallOpts, arg0)
+	return _ChallengeManager.Contract.Challenges(&_ChallengeManager.CallOpts, arg0)
 }
 
 // Challenges is a free data retrieval call binding the contract method 0x8f1d3776.
 //
 // Solidity: function challenges(uint256 ) view returns((address,uint256) current, (address,uint256) next, uint256 lastMoveTimestamp, bytes32 wasmModuleRoot, bytes32 challengeStateHash, uint64 maxInboxMessages, uint8 mode)
-func (_OldChallengeManager *OldChallengeManagerCallerSession) Challenges(arg0 *big.Int) (struct {
-	Current            OldChallengeLibParticipant
-	Next               OldChallengeLibParticipant
+func (_ChallengeManager *ChallengeManagerCallerSession) Challenges(arg0 *big.Int) (struct {
+	Current            ChallengeLibParticipant
+	Next               ChallengeLibParticipant
 	LastMoveTimestamp  *big.Int
 	WasmModuleRoot     [32]byte
 	ChallengeStateHash [32]byte
 	MaxInboxMessages   uint64
 	Mode               uint8
 }, error) {
-	return _OldChallengeManager.Contract.Challenges(&_OldChallengeManager.CallOpts, arg0)
+	return _ChallengeManager.Contract.Challenges(&_ChallengeManager.CallOpts, arg0)
 }
 
 // CurrentResponder is a free data retrieval call binding the contract method 0x23a9ef23.
 //
 // Solidity: function currentResponder(uint64 challengeIndex) view returns(address)
-func (_OldChallengeManager *OldChallengeManagerCaller) CurrentResponder(opts *bind.CallOpts, challengeIndex uint64) (common.Address, error) {
+func (_ChallengeManager *ChallengeManagerCaller) CurrentResponder(opts *bind.CallOpts, challengeIndex uint64) (common.Address, error) {
 	var out []interface{}
-	err := _OldChallengeManager.contract.Call(opts, &out, "currentResponder", challengeIndex)
+	err := _ChallengeManager.contract.Call(opts, &out, "currentResponder", challengeIndex)
 
 	if err != nil {
 		return *new(common.Address), err
@@ -1794,23 +558,54 @@ func (_OldChallengeManager *OldChallengeManagerCaller) CurrentResponder(opts *bi
 // CurrentResponder is a free data retrieval call binding the contract method 0x23a9ef23.
 //
 // Solidity: function currentResponder(uint64 challengeIndex) view returns(address)
-func (_OldChallengeManager *OldChallengeManagerSession) CurrentResponder(challengeIndex uint64) (common.Address, error) {
-	return _OldChallengeManager.Contract.CurrentResponder(&_OldChallengeManager.CallOpts, challengeIndex)
+func (_ChallengeManager *ChallengeManagerSession) CurrentResponder(challengeIndex uint64) (common.Address, error) {
+	return _ChallengeManager.Contract.CurrentResponder(&_ChallengeManager.CallOpts, challengeIndex)
 }
 
 // CurrentResponder is a free data retrieval call binding the contract method 0x23a9ef23.
 //
 // Solidity: function currentResponder(uint64 challengeIndex) view returns(address)
-func (_OldChallengeManager *OldChallengeManagerCallerSession) CurrentResponder(challengeIndex uint64) (common.Address, error) {
-	return _OldChallengeManager.Contract.CurrentResponder(&_OldChallengeManager.CallOpts, challengeIndex)
+func (_ChallengeManager *ChallengeManagerCallerSession) CurrentResponder(challengeIndex uint64) (common.Address, error) {
+	return _ChallengeManager.Contract.CurrentResponder(&_ChallengeManager.CallOpts, challengeIndex)
+}
+
+// GetOsp is a free data retrieval call binding the contract method 0x3690b011.
+//
+// Solidity: function getOsp(bytes32 wasmModuleRoot) view returns(address)
+func (_ChallengeManager *ChallengeManagerCaller) GetOsp(opts *bind.CallOpts, wasmModuleRoot [32]byte) (common.Address, error) {
+	var out []interface{}
+	err := _ChallengeManager.contract.Call(opts, &out, "getOsp", wasmModuleRoot)
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// GetOsp is a free data retrieval call binding the contract method 0x3690b011.
+//
+// Solidity: function getOsp(bytes32 wasmModuleRoot) view returns(address)
+func (_ChallengeManager *ChallengeManagerSession) GetOsp(wasmModuleRoot [32]byte) (common.Address, error) {
+	return _ChallengeManager.Contract.GetOsp(&_ChallengeManager.CallOpts, wasmModuleRoot)
+}
+
+// GetOsp is a free data retrieval call binding the contract method 0x3690b011.
+//
+// Solidity: function getOsp(bytes32 wasmModuleRoot) view returns(address)
+func (_ChallengeManager *ChallengeManagerCallerSession) GetOsp(wasmModuleRoot [32]byte) (common.Address, error) {
+	return _ChallengeManager.Contract.GetOsp(&_ChallengeManager.CallOpts, wasmModuleRoot)
 }
 
 // IsTimedOut is a free data retrieval call binding the contract method 0x9ede42b9.
 //
 // Solidity: function isTimedOut(uint64 challengeIndex) view returns(bool)
-func (_OldChallengeManager *OldChallengeManagerCaller) IsTimedOut(opts *bind.CallOpts, challengeIndex uint64) (bool, error) {
+func (_ChallengeManager *ChallengeManagerCaller) IsTimedOut(opts *bind.CallOpts, challengeIndex uint64) (bool, error) {
 	var out []interface{}
-	err := _OldChallengeManager.contract.Call(opts, &out, "isTimedOut", challengeIndex)
+	err := _ChallengeManager.contract.Call(opts, &out, "isTimedOut", challengeIndex)
 
 	if err != nil {
 		return *new(bool), err
@@ -1825,23 +620,23 @@ func (_OldChallengeManager *OldChallengeManagerCaller) IsTimedOut(opts *bind.Cal
 // IsTimedOut is a free data retrieval call binding the contract method 0x9ede42b9.
 //
 // Solidity: function isTimedOut(uint64 challengeIndex) view returns(bool)
-func (_OldChallengeManager *OldChallengeManagerSession) IsTimedOut(challengeIndex uint64) (bool, error) {
-	return _OldChallengeManager.Contract.IsTimedOut(&_OldChallengeManager.CallOpts, challengeIndex)
+func (_ChallengeManager *ChallengeManagerSession) IsTimedOut(challengeIndex uint64) (bool, error) {
+	return _ChallengeManager.Contract.IsTimedOut(&_ChallengeManager.CallOpts, challengeIndex)
 }
 
 // IsTimedOut is a free data retrieval call binding the contract method 0x9ede42b9.
 //
 // Solidity: function isTimedOut(uint64 challengeIndex) view returns(bool)
-func (_OldChallengeManager *OldChallengeManagerCallerSession) IsTimedOut(challengeIndex uint64) (bool, error) {
-	return _OldChallengeManager.Contract.IsTimedOut(&_OldChallengeManager.CallOpts, challengeIndex)
+func (_ChallengeManager *ChallengeManagerCallerSession) IsTimedOut(challengeIndex uint64) (bool, error) {
+	return _ChallengeManager.Contract.IsTimedOut(&_ChallengeManager.CallOpts, challengeIndex)
 }
 
 // Osp is a free data retrieval call binding the contract method 0xf26a62c6.
 //
 // Solidity: function osp() view returns(address)
-func (_OldChallengeManager *OldChallengeManagerCaller) Osp(opts *bind.CallOpts) (common.Address, error) {
+func (_ChallengeManager *ChallengeManagerCaller) Osp(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
-	err := _OldChallengeManager.contract.Call(opts, &out, "osp")
+	err := _ChallengeManager.contract.Call(opts, &out, "osp")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -1856,23 +651,54 @@ func (_OldChallengeManager *OldChallengeManagerCaller) Osp(opts *bind.CallOpts) 
 // Osp is a free data retrieval call binding the contract method 0xf26a62c6.
 //
 // Solidity: function osp() view returns(address)
-func (_OldChallengeManager *OldChallengeManagerSession) Osp() (common.Address, error) {
-	return _OldChallengeManager.Contract.Osp(&_OldChallengeManager.CallOpts)
+func (_ChallengeManager *ChallengeManagerSession) Osp() (common.Address, error) {
+	return _ChallengeManager.Contract.Osp(&_ChallengeManager.CallOpts)
 }
 
 // Osp is a free data retrieval call binding the contract method 0xf26a62c6.
 //
 // Solidity: function osp() view returns(address)
-func (_OldChallengeManager *OldChallengeManagerCallerSession) Osp() (common.Address, error) {
-	return _OldChallengeManager.Contract.Osp(&_OldChallengeManager.CallOpts)
+func (_ChallengeManager *ChallengeManagerCallerSession) Osp() (common.Address, error) {
+	return _ChallengeManager.Contract.Osp(&_ChallengeManager.CallOpts)
+}
+
+// OspCond is a free data retrieval call binding the contract method 0xdc74bf8b.
+//
+// Solidity: function ospCond(bytes32 ) view returns(address)
+func (_ChallengeManager *ChallengeManagerCaller) OspCond(opts *bind.CallOpts, arg0 [32]byte) (common.Address, error) {
+	var out []interface{}
+	err := _ChallengeManager.contract.Call(opts, &out, "ospCond", arg0)
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// OspCond is a free data retrieval call binding the contract method 0xdc74bf8b.
+//
+// Solidity: function ospCond(bytes32 ) view returns(address)
+func (_ChallengeManager *ChallengeManagerSession) OspCond(arg0 [32]byte) (common.Address, error) {
+	return _ChallengeManager.Contract.OspCond(&_ChallengeManager.CallOpts, arg0)
+}
+
+// OspCond is a free data retrieval call binding the contract method 0xdc74bf8b.
+//
+// Solidity: function ospCond(bytes32 ) view returns(address)
+func (_ChallengeManager *ChallengeManagerCallerSession) OspCond(arg0 [32]byte) (common.Address, error) {
+	return _ChallengeManager.Contract.OspCond(&_ChallengeManager.CallOpts, arg0)
 }
 
 // ResultReceiver is a free data retrieval call binding the contract method 0x3504f1d7.
 //
 // Solidity: function resultReceiver() view returns(address)
-func (_OldChallengeManager *OldChallengeManagerCaller) ResultReceiver(opts *bind.CallOpts) (common.Address, error) {
+func (_ChallengeManager *ChallengeManagerCaller) ResultReceiver(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
-	err := _OldChallengeManager.contract.Call(opts, &out, "resultReceiver")
+	err := _ChallengeManager.contract.Call(opts, &out, "resultReceiver")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -1887,23 +713,23 @@ func (_OldChallengeManager *OldChallengeManagerCaller) ResultReceiver(opts *bind
 // ResultReceiver is a free data retrieval call binding the contract method 0x3504f1d7.
 //
 // Solidity: function resultReceiver() view returns(address)
-func (_OldChallengeManager *OldChallengeManagerSession) ResultReceiver() (common.Address, error) {
-	return _OldChallengeManager.Contract.ResultReceiver(&_OldChallengeManager.CallOpts)
+func (_ChallengeManager *ChallengeManagerSession) ResultReceiver() (common.Address, error) {
+	return _ChallengeManager.Contract.ResultReceiver(&_ChallengeManager.CallOpts)
 }
 
 // ResultReceiver is a free data retrieval call binding the contract method 0x3504f1d7.
 //
 // Solidity: function resultReceiver() view returns(address)
-func (_OldChallengeManager *OldChallengeManagerCallerSession) ResultReceiver() (common.Address, error) {
-	return _OldChallengeManager.Contract.ResultReceiver(&_OldChallengeManager.CallOpts)
+func (_ChallengeManager *ChallengeManagerCallerSession) ResultReceiver() (common.Address, error) {
+	return _ChallengeManager.Contract.ResultReceiver(&_ChallengeManager.CallOpts)
 }
 
 // SequencerInbox is a free data retrieval call binding the contract method 0xee35f327.
 //
 // Solidity: function sequencerInbox() view returns(address)
-func (_OldChallengeManager *OldChallengeManagerCaller) SequencerInbox(opts *bind.CallOpts) (common.Address, error) {
+func (_ChallengeManager *ChallengeManagerCaller) SequencerInbox(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
-	err := _OldChallengeManager.contract.Call(opts, &out, "sequencerInbox")
+	err := _ChallengeManager.contract.Call(opts, &out, "sequencerInbox")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -1918,23 +744,23 @@ func (_OldChallengeManager *OldChallengeManagerCaller) SequencerInbox(opts *bind
 // SequencerInbox is a free data retrieval call binding the contract method 0xee35f327.
 //
 // Solidity: function sequencerInbox() view returns(address)
-func (_OldChallengeManager *OldChallengeManagerSession) SequencerInbox() (common.Address, error) {
-	return _OldChallengeManager.Contract.SequencerInbox(&_OldChallengeManager.CallOpts)
+func (_ChallengeManager *ChallengeManagerSession) SequencerInbox() (common.Address, error) {
+	return _ChallengeManager.Contract.SequencerInbox(&_ChallengeManager.CallOpts)
 }
 
 // SequencerInbox is a free data retrieval call binding the contract method 0xee35f327.
 //
 // Solidity: function sequencerInbox() view returns(address)
-func (_OldChallengeManager *OldChallengeManagerCallerSession) SequencerInbox() (common.Address, error) {
-	return _OldChallengeManager.Contract.SequencerInbox(&_OldChallengeManager.CallOpts)
+func (_ChallengeManager *ChallengeManagerCallerSession) SequencerInbox() (common.Address, error) {
+	return _ChallengeManager.Contract.SequencerInbox(&_ChallengeManager.CallOpts)
 }
 
 // TotalChallengesCreated is a free data retrieval call binding the contract method 0x5ef489e6.
 //
 // Solidity: function totalChallengesCreated() view returns(uint64)
-func (_OldChallengeManager *OldChallengeManagerCaller) TotalChallengesCreated(opts *bind.CallOpts) (uint64, error) {
+func (_ChallengeManager *ChallengeManagerCaller) TotalChallengesCreated(opts *bind.CallOpts) (uint64, error) {
 	var out []interface{}
-	err := _OldChallengeManager.contract.Call(opts, &out, "totalChallengesCreated")
+	err := _ChallengeManager.contract.Call(opts, &out, "totalChallengesCreated")
 
 	if err != nil {
 		return *new(uint64), err
@@ -1949,167 +775,188 @@ func (_OldChallengeManager *OldChallengeManagerCaller) TotalChallengesCreated(op
 // TotalChallengesCreated is a free data retrieval call binding the contract method 0x5ef489e6.
 //
 // Solidity: function totalChallengesCreated() view returns(uint64)
-func (_OldChallengeManager *OldChallengeManagerSession) TotalChallengesCreated() (uint64, error) {
-	return _OldChallengeManager.Contract.TotalChallengesCreated(&_OldChallengeManager.CallOpts)
+func (_ChallengeManager *ChallengeManagerSession) TotalChallengesCreated() (uint64, error) {
+	return _ChallengeManager.Contract.TotalChallengesCreated(&_ChallengeManager.CallOpts)
 }
 
 // TotalChallengesCreated is a free data retrieval call binding the contract method 0x5ef489e6.
 //
 // Solidity: function totalChallengesCreated() view returns(uint64)
-func (_OldChallengeManager *OldChallengeManagerCallerSession) TotalChallengesCreated() (uint64, error) {
-	return _OldChallengeManager.Contract.TotalChallengesCreated(&_OldChallengeManager.CallOpts)
+func (_ChallengeManager *ChallengeManagerCallerSession) TotalChallengesCreated() (uint64, error) {
+	return _ChallengeManager.Contract.TotalChallengesCreated(&_ChallengeManager.CallOpts)
 }
 
 // BisectExecution is a paid mutator transaction binding the contract method 0xa521b032.
 //
 // Solidity: function bisectExecution(uint64 challengeIndex, (uint256,uint256,bytes32[],uint256) selection, bytes32[] newSegments) returns()
-func (_OldChallengeManager *OldChallengeManagerTransactor) BisectExecution(opts *bind.TransactOpts, challengeIndex uint64, selection OldChallengeLibSegmentSelection, newSegments [][32]byte) (*types.Transaction, error) {
-	return _OldChallengeManager.contract.Transact(opts, "bisectExecution", challengeIndex, selection, newSegments)
+func (_ChallengeManager *ChallengeManagerTransactor) BisectExecution(opts *bind.TransactOpts, challengeIndex uint64, selection ChallengeLibSegmentSelection, newSegments [][32]byte) (*types.Transaction, error) {
+	return _ChallengeManager.contract.Transact(opts, "bisectExecution", challengeIndex, selection, newSegments)
 }
 
 // BisectExecution is a paid mutator transaction binding the contract method 0xa521b032.
 //
 // Solidity: function bisectExecution(uint64 challengeIndex, (uint256,uint256,bytes32[],uint256) selection, bytes32[] newSegments) returns()
-func (_OldChallengeManager *OldChallengeManagerSession) BisectExecution(challengeIndex uint64, selection OldChallengeLibSegmentSelection, newSegments [][32]byte) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.BisectExecution(&_OldChallengeManager.TransactOpts, challengeIndex, selection, newSegments)
+func (_ChallengeManager *ChallengeManagerSession) BisectExecution(challengeIndex uint64, selection ChallengeLibSegmentSelection, newSegments [][32]byte) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.BisectExecution(&_ChallengeManager.TransactOpts, challengeIndex, selection, newSegments)
 }
 
 // BisectExecution is a paid mutator transaction binding the contract method 0xa521b032.
 //
 // Solidity: function bisectExecution(uint64 challengeIndex, (uint256,uint256,bytes32[],uint256) selection, bytes32[] newSegments) returns()
-func (_OldChallengeManager *OldChallengeManagerTransactorSession) BisectExecution(challengeIndex uint64, selection OldChallengeLibSegmentSelection, newSegments [][32]byte) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.BisectExecution(&_OldChallengeManager.TransactOpts, challengeIndex, selection, newSegments)
+func (_ChallengeManager *ChallengeManagerTransactorSession) BisectExecution(challengeIndex uint64, selection ChallengeLibSegmentSelection, newSegments [][32]byte) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.BisectExecution(&_ChallengeManager.TransactOpts, challengeIndex, selection, newSegments)
 }
 
 // ChallengeExecution is a paid mutator transaction binding the contract method 0xfb7be0a1.
 //
 // Solidity: function challengeExecution(uint64 challengeIndex, (uint256,uint256,bytes32[],uint256) selection, uint8[2] machineStatuses, bytes32[2] globalStateHashes, uint256 numSteps) returns()
-func (_OldChallengeManager *OldChallengeManagerTransactor) ChallengeExecution(opts *bind.TransactOpts, challengeIndex uint64, selection OldChallengeLibSegmentSelection, machineStatuses [2]uint8, globalStateHashes [2][32]byte, numSteps *big.Int) (*types.Transaction, error) {
-	return _OldChallengeManager.contract.Transact(opts, "challengeExecution", challengeIndex, selection, machineStatuses, globalStateHashes, numSteps)
+func (_ChallengeManager *ChallengeManagerTransactor) ChallengeExecution(opts *bind.TransactOpts, challengeIndex uint64, selection ChallengeLibSegmentSelection, machineStatuses [2]uint8, globalStateHashes [2][32]byte, numSteps *big.Int) (*types.Transaction, error) {
+	return _ChallengeManager.contract.Transact(opts, "challengeExecution", challengeIndex, selection, machineStatuses, globalStateHashes, numSteps)
 }
 
 // ChallengeExecution is a paid mutator transaction binding the contract method 0xfb7be0a1.
 //
 // Solidity: function challengeExecution(uint64 challengeIndex, (uint256,uint256,bytes32[],uint256) selection, uint8[2] machineStatuses, bytes32[2] globalStateHashes, uint256 numSteps) returns()
-func (_OldChallengeManager *OldChallengeManagerSession) ChallengeExecution(challengeIndex uint64, selection OldChallengeLibSegmentSelection, machineStatuses [2]uint8, globalStateHashes [2][32]byte, numSteps *big.Int) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.ChallengeExecution(&_OldChallengeManager.TransactOpts, challengeIndex, selection, machineStatuses, globalStateHashes, numSteps)
+func (_ChallengeManager *ChallengeManagerSession) ChallengeExecution(challengeIndex uint64, selection ChallengeLibSegmentSelection, machineStatuses [2]uint8, globalStateHashes [2][32]byte, numSteps *big.Int) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.ChallengeExecution(&_ChallengeManager.TransactOpts, challengeIndex, selection, machineStatuses, globalStateHashes, numSteps)
 }
 
 // ChallengeExecution is a paid mutator transaction binding the contract method 0xfb7be0a1.
 //
 // Solidity: function challengeExecution(uint64 challengeIndex, (uint256,uint256,bytes32[],uint256) selection, uint8[2] machineStatuses, bytes32[2] globalStateHashes, uint256 numSteps) returns()
-func (_OldChallengeManager *OldChallengeManagerTransactorSession) ChallengeExecution(challengeIndex uint64, selection OldChallengeLibSegmentSelection, machineStatuses [2]uint8, globalStateHashes [2][32]byte, numSteps *big.Int) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.ChallengeExecution(&_OldChallengeManager.TransactOpts, challengeIndex, selection, machineStatuses, globalStateHashes, numSteps)
+func (_ChallengeManager *ChallengeManagerTransactorSession) ChallengeExecution(challengeIndex uint64, selection ChallengeLibSegmentSelection, machineStatuses [2]uint8, globalStateHashes [2][32]byte, numSteps *big.Int) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.ChallengeExecution(&_ChallengeManager.TransactOpts, challengeIndex, selection, machineStatuses, globalStateHashes, numSteps)
 }
 
 // ClearChallenge is a paid mutator transaction binding the contract method 0x56e9df97.
 //
 // Solidity: function clearChallenge(uint64 challengeIndex) returns()
-func (_OldChallengeManager *OldChallengeManagerTransactor) ClearChallenge(opts *bind.TransactOpts, challengeIndex uint64) (*types.Transaction, error) {
-	return _OldChallengeManager.contract.Transact(opts, "clearChallenge", challengeIndex)
+func (_ChallengeManager *ChallengeManagerTransactor) ClearChallenge(opts *bind.TransactOpts, challengeIndex uint64) (*types.Transaction, error) {
+	return _ChallengeManager.contract.Transact(opts, "clearChallenge", challengeIndex)
 }
 
 // ClearChallenge is a paid mutator transaction binding the contract method 0x56e9df97.
 //
 // Solidity: function clearChallenge(uint64 challengeIndex) returns()
-func (_OldChallengeManager *OldChallengeManagerSession) ClearChallenge(challengeIndex uint64) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.ClearChallenge(&_OldChallengeManager.TransactOpts, challengeIndex)
+func (_ChallengeManager *ChallengeManagerSession) ClearChallenge(challengeIndex uint64) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.ClearChallenge(&_ChallengeManager.TransactOpts, challengeIndex)
 }
 
 // ClearChallenge is a paid mutator transaction binding the contract method 0x56e9df97.
 //
 // Solidity: function clearChallenge(uint64 challengeIndex) returns()
-func (_OldChallengeManager *OldChallengeManagerTransactorSession) ClearChallenge(challengeIndex uint64) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.ClearChallenge(&_OldChallengeManager.TransactOpts, challengeIndex)
+func (_ChallengeManager *ChallengeManagerTransactorSession) ClearChallenge(challengeIndex uint64) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.ClearChallenge(&_ChallengeManager.TransactOpts, challengeIndex)
 }
 
 // CreateChallenge is a paid mutator transaction binding the contract method 0x14eab5e7.
 //
 // Solidity: function createChallenge(bytes32 wasmModuleRoot_, uint8[2] startAndEndMachineStatuses_, (bytes32[2],uint64[2])[2] startAndEndGlobalStates_, uint64 numBlocks, address asserter_, address challenger_, uint256 asserterTimeLeft_, uint256 challengerTimeLeft_) returns(uint64)
-func (_OldChallengeManager *OldChallengeManagerTransactor) CreateChallenge(opts *bind.TransactOpts, wasmModuleRoot_ [32]byte, startAndEndMachineStatuses_ [2]uint8, startAndEndGlobalStates_ [2]GlobalState, numBlocks uint64, asserter_ common.Address, challenger_ common.Address, asserterTimeLeft_ *big.Int, challengerTimeLeft_ *big.Int) (*types.Transaction, error) {
-	return _OldChallengeManager.contract.Transact(opts, "createChallenge", wasmModuleRoot_, startAndEndMachineStatuses_, startAndEndGlobalStates_, numBlocks, asserter_, challenger_, asserterTimeLeft_, challengerTimeLeft_)
+func (_ChallengeManager *ChallengeManagerTransactor) CreateChallenge(opts *bind.TransactOpts, wasmModuleRoot_ [32]byte, startAndEndMachineStatuses_ [2]uint8, startAndEndGlobalStates_ [2]GlobalState, numBlocks uint64, asserter_ common.Address, challenger_ common.Address, asserterTimeLeft_ *big.Int, challengerTimeLeft_ *big.Int) (*types.Transaction, error) {
+	return _ChallengeManager.contract.Transact(opts, "createChallenge", wasmModuleRoot_, startAndEndMachineStatuses_, startAndEndGlobalStates_, numBlocks, asserter_, challenger_, asserterTimeLeft_, challengerTimeLeft_)
 }
 
 // CreateChallenge is a paid mutator transaction binding the contract method 0x14eab5e7.
 //
 // Solidity: function createChallenge(bytes32 wasmModuleRoot_, uint8[2] startAndEndMachineStatuses_, (bytes32[2],uint64[2])[2] startAndEndGlobalStates_, uint64 numBlocks, address asserter_, address challenger_, uint256 asserterTimeLeft_, uint256 challengerTimeLeft_) returns(uint64)
-func (_OldChallengeManager *OldChallengeManagerSession) CreateChallenge(wasmModuleRoot_ [32]byte, startAndEndMachineStatuses_ [2]uint8, startAndEndGlobalStates_ [2]GlobalState, numBlocks uint64, asserter_ common.Address, challenger_ common.Address, asserterTimeLeft_ *big.Int, challengerTimeLeft_ *big.Int) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.CreateChallenge(&_OldChallengeManager.TransactOpts, wasmModuleRoot_, startAndEndMachineStatuses_, startAndEndGlobalStates_, numBlocks, asserter_, challenger_, asserterTimeLeft_, challengerTimeLeft_)
+func (_ChallengeManager *ChallengeManagerSession) CreateChallenge(wasmModuleRoot_ [32]byte, startAndEndMachineStatuses_ [2]uint8, startAndEndGlobalStates_ [2]GlobalState, numBlocks uint64, asserter_ common.Address, challenger_ common.Address, asserterTimeLeft_ *big.Int, challengerTimeLeft_ *big.Int) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.CreateChallenge(&_ChallengeManager.TransactOpts, wasmModuleRoot_, startAndEndMachineStatuses_, startAndEndGlobalStates_, numBlocks, asserter_, challenger_, asserterTimeLeft_, challengerTimeLeft_)
 }
 
 // CreateChallenge is a paid mutator transaction binding the contract method 0x14eab5e7.
 //
 // Solidity: function createChallenge(bytes32 wasmModuleRoot_, uint8[2] startAndEndMachineStatuses_, (bytes32[2],uint64[2])[2] startAndEndGlobalStates_, uint64 numBlocks, address asserter_, address challenger_, uint256 asserterTimeLeft_, uint256 challengerTimeLeft_) returns(uint64)
-func (_OldChallengeManager *OldChallengeManagerTransactorSession) CreateChallenge(wasmModuleRoot_ [32]byte, startAndEndMachineStatuses_ [2]uint8, startAndEndGlobalStates_ [2]GlobalState, numBlocks uint64, asserter_ common.Address, challenger_ common.Address, asserterTimeLeft_ *big.Int, challengerTimeLeft_ *big.Int) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.CreateChallenge(&_OldChallengeManager.TransactOpts, wasmModuleRoot_, startAndEndMachineStatuses_, startAndEndGlobalStates_, numBlocks, asserter_, challenger_, asserterTimeLeft_, challengerTimeLeft_)
+func (_ChallengeManager *ChallengeManagerTransactorSession) CreateChallenge(wasmModuleRoot_ [32]byte, startAndEndMachineStatuses_ [2]uint8, startAndEndGlobalStates_ [2]GlobalState, numBlocks uint64, asserter_ common.Address, challenger_ common.Address, asserterTimeLeft_ *big.Int, challengerTimeLeft_ *big.Int) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.CreateChallenge(&_ChallengeManager.TransactOpts, wasmModuleRoot_, startAndEndMachineStatuses_, startAndEndGlobalStates_, numBlocks, asserter_, challenger_, asserterTimeLeft_, challengerTimeLeft_)
 }
 
 // Initialize is a paid mutator transaction binding the contract method 0xf8c8765e.
 //
 // Solidity: function initialize(address resultReceiver_, address sequencerInbox_, address bridge_, address osp_) returns()
-func (_OldChallengeManager *OldChallengeManagerTransactor) Initialize(opts *bind.TransactOpts, resultReceiver_ common.Address, sequencerInbox_ common.Address, bridge_ common.Address, osp_ common.Address) (*types.Transaction, error) {
-	return _OldChallengeManager.contract.Transact(opts, "initialize", resultReceiver_, sequencerInbox_, bridge_, osp_)
+func (_ChallengeManager *ChallengeManagerTransactor) Initialize(opts *bind.TransactOpts, resultReceiver_ common.Address, sequencerInbox_ common.Address, bridge_ common.Address, osp_ common.Address) (*types.Transaction, error) {
+	return _ChallengeManager.contract.Transact(opts, "initialize", resultReceiver_, sequencerInbox_, bridge_, osp_)
 }
 
 // Initialize is a paid mutator transaction binding the contract method 0xf8c8765e.
 //
 // Solidity: function initialize(address resultReceiver_, address sequencerInbox_, address bridge_, address osp_) returns()
-func (_OldChallengeManager *OldChallengeManagerSession) Initialize(resultReceiver_ common.Address, sequencerInbox_ common.Address, bridge_ common.Address, osp_ common.Address) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.Initialize(&_OldChallengeManager.TransactOpts, resultReceiver_, sequencerInbox_, bridge_, osp_)
+func (_ChallengeManager *ChallengeManagerSession) Initialize(resultReceiver_ common.Address, sequencerInbox_ common.Address, bridge_ common.Address, osp_ common.Address) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.Initialize(&_ChallengeManager.TransactOpts, resultReceiver_, sequencerInbox_, bridge_, osp_)
 }
 
 // Initialize is a paid mutator transaction binding the contract method 0xf8c8765e.
 //
 // Solidity: function initialize(address resultReceiver_, address sequencerInbox_, address bridge_, address osp_) returns()
-func (_OldChallengeManager *OldChallengeManagerTransactorSession) Initialize(resultReceiver_ common.Address, sequencerInbox_ common.Address, bridge_ common.Address, osp_ common.Address) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.Initialize(&_OldChallengeManager.TransactOpts, resultReceiver_, sequencerInbox_, bridge_, osp_)
+func (_ChallengeManager *ChallengeManagerTransactorSession) Initialize(resultReceiver_ common.Address, sequencerInbox_ common.Address, bridge_ common.Address, osp_ common.Address) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.Initialize(&_ChallengeManager.TransactOpts, resultReceiver_, sequencerInbox_, bridge_, osp_)
 }
 
 // OneStepProveExecution is a paid mutator transaction binding the contract method 0xd248d124.
 //
 // Solidity: function oneStepProveExecution(uint64 challengeIndex, (uint256,uint256,bytes32[],uint256) selection, bytes proof) returns()
-func (_OldChallengeManager *OldChallengeManagerTransactor) OneStepProveExecution(opts *bind.TransactOpts, challengeIndex uint64, selection OldChallengeLibSegmentSelection, proof []byte) (*types.Transaction, error) {
-	return _OldChallengeManager.contract.Transact(opts, "oneStepProveExecution", challengeIndex, selection, proof)
+func (_ChallengeManager *ChallengeManagerTransactor) OneStepProveExecution(opts *bind.TransactOpts, challengeIndex uint64, selection ChallengeLibSegmentSelection, proof []byte) (*types.Transaction, error) {
+	return _ChallengeManager.contract.Transact(opts, "oneStepProveExecution", challengeIndex, selection, proof)
 }
 
 // OneStepProveExecution is a paid mutator transaction binding the contract method 0xd248d124.
 //
 // Solidity: function oneStepProveExecution(uint64 challengeIndex, (uint256,uint256,bytes32[],uint256) selection, bytes proof) returns()
-func (_OldChallengeManager *OldChallengeManagerSession) OneStepProveExecution(challengeIndex uint64, selection OldChallengeLibSegmentSelection, proof []byte) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.OneStepProveExecution(&_OldChallengeManager.TransactOpts, challengeIndex, selection, proof)
+func (_ChallengeManager *ChallengeManagerSession) OneStepProveExecution(challengeIndex uint64, selection ChallengeLibSegmentSelection, proof []byte) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.OneStepProveExecution(&_ChallengeManager.TransactOpts, challengeIndex, selection, proof)
 }
 
 // OneStepProveExecution is a paid mutator transaction binding the contract method 0xd248d124.
 //
 // Solidity: function oneStepProveExecution(uint64 challengeIndex, (uint256,uint256,bytes32[],uint256) selection, bytes proof) returns()
-func (_OldChallengeManager *OldChallengeManagerTransactorSession) OneStepProveExecution(challengeIndex uint64, selection OldChallengeLibSegmentSelection, proof []byte) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.OneStepProveExecution(&_OldChallengeManager.TransactOpts, challengeIndex, selection, proof)
+func (_ChallengeManager *ChallengeManagerTransactorSession) OneStepProveExecution(challengeIndex uint64, selection ChallengeLibSegmentSelection, proof []byte) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.OneStepProveExecution(&_ChallengeManager.TransactOpts, challengeIndex, selection, proof)
+}
+
+// PostUpgradeInit is a paid mutator transaction binding the contract method 0x5038934d.
+//
+// Solidity: function postUpgradeInit(address osp_, bytes32 condRoot, address condOsp) returns()
+func (_ChallengeManager *ChallengeManagerTransactor) PostUpgradeInit(opts *bind.TransactOpts, osp_ common.Address, condRoot [32]byte, condOsp common.Address) (*types.Transaction, error) {
+	return _ChallengeManager.contract.Transact(opts, "postUpgradeInit", osp_, condRoot, condOsp)
+}
+
+// PostUpgradeInit is a paid mutator transaction binding the contract method 0x5038934d.
+//
+// Solidity: function postUpgradeInit(address osp_, bytes32 condRoot, address condOsp) returns()
+func (_ChallengeManager *ChallengeManagerSession) PostUpgradeInit(osp_ common.Address, condRoot [32]byte, condOsp common.Address) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.PostUpgradeInit(&_ChallengeManager.TransactOpts, osp_, condRoot, condOsp)
+}
+
+// PostUpgradeInit is a paid mutator transaction binding the contract method 0x5038934d.
+//
+// Solidity: function postUpgradeInit(address osp_, bytes32 condRoot, address condOsp) returns()
+func (_ChallengeManager *ChallengeManagerTransactorSession) PostUpgradeInit(osp_ common.Address, condRoot [32]byte, condOsp common.Address) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.PostUpgradeInit(&_ChallengeManager.TransactOpts, osp_, condRoot, condOsp)
 }
 
 // Timeout is a paid mutator transaction binding the contract method 0x1b45c86a.
 //
 // Solidity: function timeout(uint64 challengeIndex) returns()
-func (_OldChallengeManager *OldChallengeManagerTransactor) Timeout(opts *bind.TransactOpts, challengeIndex uint64) (*types.Transaction, error) {
-	return _OldChallengeManager.contract.Transact(opts, "timeout", challengeIndex)
+func (_ChallengeManager *ChallengeManagerTransactor) Timeout(opts *bind.TransactOpts, challengeIndex uint64) (*types.Transaction, error) {
+	return _ChallengeManager.contract.Transact(opts, "timeout", challengeIndex)
 }
 
 // Timeout is a paid mutator transaction binding the contract method 0x1b45c86a.
 //
 // Solidity: function timeout(uint64 challengeIndex) returns()
-func (_OldChallengeManager *OldChallengeManagerSession) Timeout(challengeIndex uint64) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.Timeout(&_OldChallengeManager.TransactOpts, challengeIndex)
+func (_ChallengeManager *ChallengeManagerSession) Timeout(challengeIndex uint64) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.Timeout(&_ChallengeManager.TransactOpts, challengeIndex)
 }
 
 // Timeout is a paid mutator transaction binding the contract method 0x1b45c86a.
 //
 // Solidity: function timeout(uint64 challengeIndex) returns()
-func (_OldChallengeManager *OldChallengeManagerTransactorSession) Timeout(challengeIndex uint64) (*types.Transaction, error) {
-	return _OldChallengeManager.Contract.Timeout(&_OldChallengeManager.TransactOpts, challengeIndex)
+func (_ChallengeManager *ChallengeManagerTransactorSession) Timeout(challengeIndex uint64) (*types.Transaction, error) {
+	return _ChallengeManager.Contract.Timeout(&_ChallengeManager.TransactOpts, challengeIndex)
 }
 
-// OldChallengeManagerBisectedIterator is returned from FilterBisected and is used to iterate over the raw logs and unpacked data for Bisected events raised by the OldChallengeManager contract.
-type OldChallengeManagerBisectedIterator struct {
-	Event *OldChallengeManagerBisected // Event containing the contract specifics and raw log
+// ChallengeManagerBisectedIterator is returned from FilterBisected and is used to iterate over the raw logs and unpacked data for Bisected events raised by the ChallengeManager contract.
+type ChallengeManagerBisectedIterator struct {
+	Event *ChallengeManagerBisected // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -2123,7 +970,7 @@ type OldChallengeManagerBisectedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *OldChallengeManagerBisectedIterator) Next() bool {
+func (it *ChallengeManagerBisectedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -2132,7 +979,7 @@ func (it *OldChallengeManagerBisectedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(OldChallengeManagerBisected)
+			it.Event = new(ChallengeManagerBisected)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -2147,7 +994,7 @@ func (it *OldChallengeManagerBisectedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(OldChallengeManagerBisected)
+		it.Event = new(ChallengeManagerBisected)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -2163,19 +1010,19 @@ func (it *OldChallengeManagerBisectedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *OldChallengeManagerBisectedIterator) Error() error {
+func (it *ChallengeManagerBisectedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *OldChallengeManagerBisectedIterator) Close() error {
+func (it *ChallengeManagerBisectedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// OldChallengeManagerBisected represents a Bisected event raised by the OldChallengeManager contract.
-type OldChallengeManagerBisected struct {
+// ChallengeManagerBisected represents a Bisected event raised by the ChallengeManager contract.
+type ChallengeManagerBisected struct {
 	ChallengeIndex          uint64
 	ChallengeRoot           [32]byte
 	ChallengedSegmentStart  *big.Int
@@ -2187,7 +1034,7 @@ type OldChallengeManagerBisected struct {
 // FilterBisected is a free log retrieval operation binding the contract event 0x86b34e9455464834eca718f62d4481437603bb929d8a78ccde5d1bc79fa06d68.
 //
 // Solidity: event Bisected(uint64 indexed challengeIndex, bytes32 indexed challengeRoot, uint256 challengedSegmentStart, uint256 challengedSegmentLength, bytes32[] chainHashes)
-func (_OldChallengeManager *OldChallengeManagerFilterer) FilterBisected(opts *bind.FilterOpts, challengeIndex []uint64, challengeRoot [][32]byte) (*OldChallengeManagerBisectedIterator, error) {
+func (_ChallengeManager *ChallengeManagerFilterer) FilterBisected(opts *bind.FilterOpts, challengeIndex []uint64, challengeRoot [][32]byte) (*ChallengeManagerBisectedIterator, error) {
 
 	var challengeIndexRule []interface{}
 	for _, challengeIndexItem := range challengeIndex {
@@ -2198,17 +1045,17 @@ func (_OldChallengeManager *OldChallengeManagerFilterer) FilterBisected(opts *bi
 		challengeRootRule = append(challengeRootRule, challengeRootItem)
 	}
 
-	logs, sub, err := _OldChallengeManager.contract.FilterLogs(opts, "Bisected", challengeIndexRule, challengeRootRule)
+	logs, sub, err := _ChallengeManager.contract.FilterLogs(opts, "Bisected", challengeIndexRule, challengeRootRule)
 	if err != nil {
 		return nil, err
 	}
-	return &OldChallengeManagerBisectedIterator{contract: _OldChallengeManager.contract, event: "Bisected", logs: logs, sub: sub}, nil
+	return &ChallengeManagerBisectedIterator{contract: _ChallengeManager.contract, event: "Bisected", logs: logs, sub: sub}, nil
 }
 
 // WatchBisected is a free log subscription operation binding the contract event 0x86b34e9455464834eca718f62d4481437603bb929d8a78ccde5d1bc79fa06d68.
 //
 // Solidity: event Bisected(uint64 indexed challengeIndex, bytes32 indexed challengeRoot, uint256 challengedSegmentStart, uint256 challengedSegmentLength, bytes32[] chainHashes)
-func (_OldChallengeManager *OldChallengeManagerFilterer) WatchBisected(opts *bind.WatchOpts, sink chan<- *OldChallengeManagerBisected, challengeIndex []uint64, challengeRoot [][32]byte) (event.Subscription, error) {
+func (_ChallengeManager *ChallengeManagerFilterer) WatchBisected(opts *bind.WatchOpts, sink chan<- *ChallengeManagerBisected, challengeIndex []uint64, challengeRoot [][32]byte) (event.Subscription, error) {
 
 	var challengeIndexRule []interface{}
 	for _, challengeIndexItem := range challengeIndex {
@@ -2219,7 +1066,7 @@ func (_OldChallengeManager *OldChallengeManagerFilterer) WatchBisected(opts *bin
 		challengeRootRule = append(challengeRootRule, challengeRootItem)
 	}
 
-	logs, sub, err := _OldChallengeManager.contract.WatchLogs(opts, "Bisected", challengeIndexRule, challengeRootRule)
+	logs, sub, err := _ChallengeManager.contract.WatchLogs(opts, "Bisected", challengeIndexRule, challengeRootRule)
 	if err != nil {
 		return nil, err
 	}
@@ -2229,8 +1076,8 @@ func (_OldChallengeManager *OldChallengeManagerFilterer) WatchBisected(opts *bin
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(OldChallengeManagerBisected)
-				if err := _OldChallengeManager.contract.UnpackLog(event, "Bisected", log); err != nil {
+				event := new(ChallengeManagerBisected)
+				if err := _ChallengeManager.contract.UnpackLog(event, "Bisected", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -2254,18 +1101,18 @@ func (_OldChallengeManager *OldChallengeManagerFilterer) WatchBisected(opts *bin
 // ParseBisected is a log parse operation binding the contract event 0x86b34e9455464834eca718f62d4481437603bb929d8a78ccde5d1bc79fa06d68.
 //
 // Solidity: event Bisected(uint64 indexed challengeIndex, bytes32 indexed challengeRoot, uint256 challengedSegmentStart, uint256 challengedSegmentLength, bytes32[] chainHashes)
-func (_OldChallengeManager *OldChallengeManagerFilterer) ParseBisected(log types.Log) (*OldChallengeManagerBisected, error) {
-	event := new(OldChallengeManagerBisected)
-	if err := _OldChallengeManager.contract.UnpackLog(event, "Bisected", log); err != nil {
+func (_ChallengeManager *ChallengeManagerFilterer) ParseBisected(log types.Log) (*ChallengeManagerBisected, error) {
+	event := new(ChallengeManagerBisected)
+	if err := _ChallengeManager.contract.UnpackLog(event, "Bisected", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// OldChallengeManagerChallengeEndedIterator is returned from FilterChallengeEnded and is used to iterate over the raw logs and unpacked data for ChallengeEnded events raised by the OldChallengeManager contract.
-type OldChallengeManagerChallengeEndedIterator struct {
-	Event *OldChallengeManagerChallengeEnded // Event containing the contract specifics and raw log
+// ChallengeManagerChallengeEndedIterator is returned from FilterChallengeEnded and is used to iterate over the raw logs and unpacked data for ChallengeEnded events raised by the ChallengeManager contract.
+type ChallengeManagerChallengeEndedIterator struct {
+	Event *ChallengeManagerChallengeEnded // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -2279,7 +1126,7 @@ type OldChallengeManagerChallengeEndedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *OldChallengeManagerChallengeEndedIterator) Next() bool {
+func (it *ChallengeManagerChallengeEndedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -2288,7 +1135,7 @@ func (it *OldChallengeManagerChallengeEndedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(OldChallengeManagerChallengeEnded)
+			it.Event = new(ChallengeManagerChallengeEnded)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -2303,7 +1150,7 @@ func (it *OldChallengeManagerChallengeEndedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(OldChallengeManagerChallengeEnded)
+		it.Event = new(ChallengeManagerChallengeEnded)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -2319,19 +1166,19 @@ func (it *OldChallengeManagerChallengeEndedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *OldChallengeManagerChallengeEndedIterator) Error() error {
+func (it *ChallengeManagerChallengeEndedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *OldChallengeManagerChallengeEndedIterator) Close() error {
+func (it *ChallengeManagerChallengeEndedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// OldChallengeManagerChallengeEnded represents a ChallengeEnded event raised by the OldChallengeManager contract.
-type OldChallengeManagerChallengeEnded struct {
+// ChallengeManagerChallengeEnded represents a ChallengeEnded event raised by the ChallengeManager contract.
+type ChallengeManagerChallengeEnded struct {
 	ChallengeIndex uint64
 	Kind           uint8
 	Raw            types.Log // Blockchain specific contextual infos
@@ -2340,31 +1187,31 @@ type OldChallengeManagerChallengeEnded struct {
 // FilterChallengeEnded is a free log retrieval operation binding the contract event 0xfdaece6c274a4b56af16761f83fd6b1062823192630ea08e019fdf9b2d747f40.
 //
 // Solidity: event ChallengeEnded(uint64 indexed challengeIndex, uint8 kind)
-func (_OldChallengeManager *OldChallengeManagerFilterer) FilterChallengeEnded(opts *bind.FilterOpts, challengeIndex []uint64) (*OldChallengeManagerChallengeEndedIterator, error) {
+func (_ChallengeManager *ChallengeManagerFilterer) FilterChallengeEnded(opts *bind.FilterOpts, challengeIndex []uint64) (*ChallengeManagerChallengeEndedIterator, error) {
 
 	var challengeIndexRule []interface{}
 	for _, challengeIndexItem := range challengeIndex {
 		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
 	}
 
-	logs, sub, err := _OldChallengeManager.contract.FilterLogs(opts, "ChallengeEnded", challengeIndexRule)
+	logs, sub, err := _ChallengeManager.contract.FilterLogs(opts, "ChallengeEnded", challengeIndexRule)
 	if err != nil {
 		return nil, err
 	}
-	return &OldChallengeManagerChallengeEndedIterator{contract: _OldChallengeManager.contract, event: "ChallengeEnded", logs: logs, sub: sub}, nil
+	return &ChallengeManagerChallengeEndedIterator{contract: _ChallengeManager.contract, event: "ChallengeEnded", logs: logs, sub: sub}, nil
 }
 
 // WatchChallengeEnded is a free log subscription operation binding the contract event 0xfdaece6c274a4b56af16761f83fd6b1062823192630ea08e019fdf9b2d747f40.
 //
 // Solidity: event ChallengeEnded(uint64 indexed challengeIndex, uint8 kind)
-func (_OldChallengeManager *OldChallengeManagerFilterer) WatchChallengeEnded(opts *bind.WatchOpts, sink chan<- *OldChallengeManagerChallengeEnded, challengeIndex []uint64) (event.Subscription, error) {
+func (_ChallengeManager *ChallengeManagerFilterer) WatchChallengeEnded(opts *bind.WatchOpts, sink chan<- *ChallengeManagerChallengeEnded, challengeIndex []uint64) (event.Subscription, error) {
 
 	var challengeIndexRule []interface{}
 	for _, challengeIndexItem := range challengeIndex {
 		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
 	}
 
-	logs, sub, err := _OldChallengeManager.contract.WatchLogs(opts, "ChallengeEnded", challengeIndexRule)
+	logs, sub, err := _ChallengeManager.contract.WatchLogs(opts, "ChallengeEnded", challengeIndexRule)
 	if err != nil {
 		return nil, err
 	}
@@ -2374,8 +1221,8 @@ func (_OldChallengeManager *OldChallengeManagerFilterer) WatchChallengeEnded(opt
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(OldChallengeManagerChallengeEnded)
-				if err := _OldChallengeManager.contract.UnpackLog(event, "ChallengeEnded", log); err != nil {
+				event := new(ChallengeManagerChallengeEnded)
+				if err := _ChallengeManager.contract.UnpackLog(event, "ChallengeEnded", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -2399,18 +1246,18 @@ func (_OldChallengeManager *OldChallengeManagerFilterer) WatchChallengeEnded(opt
 // ParseChallengeEnded is a log parse operation binding the contract event 0xfdaece6c274a4b56af16761f83fd6b1062823192630ea08e019fdf9b2d747f40.
 //
 // Solidity: event ChallengeEnded(uint64 indexed challengeIndex, uint8 kind)
-func (_OldChallengeManager *OldChallengeManagerFilterer) ParseChallengeEnded(log types.Log) (*OldChallengeManagerChallengeEnded, error) {
-	event := new(OldChallengeManagerChallengeEnded)
-	if err := _OldChallengeManager.contract.UnpackLog(event, "ChallengeEnded", log); err != nil {
+func (_ChallengeManager *ChallengeManagerFilterer) ParseChallengeEnded(log types.Log) (*ChallengeManagerChallengeEnded, error) {
+	event := new(ChallengeManagerChallengeEnded)
+	if err := _ChallengeManager.contract.UnpackLog(event, "ChallengeEnded", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// OldChallengeManagerExecutionChallengeBegunIterator is returned from FilterExecutionChallengeBegun and is used to iterate over the raw logs and unpacked data for ExecutionChallengeBegun events raised by the OldChallengeManager contract.
-type OldChallengeManagerExecutionChallengeBegunIterator struct {
-	Event *OldChallengeManagerExecutionChallengeBegun // Event containing the contract specifics and raw log
+// ChallengeManagerExecutionChallengeBegunIterator is returned from FilterExecutionChallengeBegun and is used to iterate over the raw logs and unpacked data for ExecutionChallengeBegun events raised by the ChallengeManager contract.
+type ChallengeManagerExecutionChallengeBegunIterator struct {
+	Event *ChallengeManagerExecutionChallengeBegun // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -2424,7 +1271,7 @@ type OldChallengeManagerExecutionChallengeBegunIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *OldChallengeManagerExecutionChallengeBegunIterator) Next() bool {
+func (it *ChallengeManagerExecutionChallengeBegunIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -2433,7 +1280,7 @@ func (it *OldChallengeManagerExecutionChallengeBegunIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(OldChallengeManagerExecutionChallengeBegun)
+			it.Event = new(ChallengeManagerExecutionChallengeBegun)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -2448,7 +1295,7 @@ func (it *OldChallengeManagerExecutionChallengeBegunIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(OldChallengeManagerExecutionChallengeBegun)
+		it.Event = new(ChallengeManagerExecutionChallengeBegun)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -2464,19 +1311,19 @@ func (it *OldChallengeManagerExecutionChallengeBegunIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *OldChallengeManagerExecutionChallengeBegunIterator) Error() error {
+func (it *ChallengeManagerExecutionChallengeBegunIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *OldChallengeManagerExecutionChallengeBegunIterator) Close() error {
+func (it *ChallengeManagerExecutionChallengeBegunIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// OldChallengeManagerExecutionChallengeBegun represents a ExecutionChallengeBegun event raised by the OldChallengeManager contract.
-type OldChallengeManagerExecutionChallengeBegun struct {
+// ChallengeManagerExecutionChallengeBegun represents a ExecutionChallengeBegun event raised by the ChallengeManager contract.
+type ChallengeManagerExecutionChallengeBegun struct {
 	ChallengeIndex uint64
 	BlockSteps     *big.Int
 	Raw            types.Log // Blockchain specific contextual infos
@@ -2485,31 +1332,31 @@ type OldChallengeManagerExecutionChallengeBegun struct {
 // FilterExecutionChallengeBegun is a free log retrieval operation binding the contract event 0x24e032e170243bbea97e140174b22dc7e54fb85925afbf52c70e001cd6af16db.
 //
 // Solidity: event ExecutionChallengeBegun(uint64 indexed challengeIndex, uint256 blockSteps)
-func (_OldChallengeManager *OldChallengeManagerFilterer) FilterExecutionChallengeBegun(opts *bind.FilterOpts, challengeIndex []uint64) (*OldChallengeManagerExecutionChallengeBegunIterator, error) {
+func (_ChallengeManager *ChallengeManagerFilterer) FilterExecutionChallengeBegun(opts *bind.FilterOpts, challengeIndex []uint64) (*ChallengeManagerExecutionChallengeBegunIterator, error) {
 
 	var challengeIndexRule []interface{}
 	for _, challengeIndexItem := range challengeIndex {
 		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
 	}
 
-	logs, sub, err := _OldChallengeManager.contract.FilterLogs(opts, "ExecutionChallengeBegun", challengeIndexRule)
+	logs, sub, err := _ChallengeManager.contract.FilterLogs(opts, "ExecutionChallengeBegun", challengeIndexRule)
 	if err != nil {
 		return nil, err
 	}
-	return &OldChallengeManagerExecutionChallengeBegunIterator{contract: _OldChallengeManager.contract, event: "ExecutionChallengeBegun", logs: logs, sub: sub}, nil
+	return &ChallengeManagerExecutionChallengeBegunIterator{contract: _ChallengeManager.contract, event: "ExecutionChallengeBegun", logs: logs, sub: sub}, nil
 }
 
 // WatchExecutionChallengeBegun is a free log subscription operation binding the contract event 0x24e032e170243bbea97e140174b22dc7e54fb85925afbf52c70e001cd6af16db.
 //
 // Solidity: event ExecutionChallengeBegun(uint64 indexed challengeIndex, uint256 blockSteps)
-func (_OldChallengeManager *OldChallengeManagerFilterer) WatchExecutionChallengeBegun(opts *bind.WatchOpts, sink chan<- *OldChallengeManagerExecutionChallengeBegun, challengeIndex []uint64) (event.Subscription, error) {
+func (_ChallengeManager *ChallengeManagerFilterer) WatchExecutionChallengeBegun(opts *bind.WatchOpts, sink chan<- *ChallengeManagerExecutionChallengeBegun, challengeIndex []uint64) (event.Subscription, error) {
 
 	var challengeIndexRule []interface{}
 	for _, challengeIndexItem := range challengeIndex {
 		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
 	}
 
-	logs, sub, err := _OldChallengeManager.contract.WatchLogs(opts, "ExecutionChallengeBegun", challengeIndexRule)
+	logs, sub, err := _ChallengeManager.contract.WatchLogs(opts, "ExecutionChallengeBegun", challengeIndexRule)
 	if err != nil {
 		return nil, err
 	}
@@ -2519,8 +1366,8 @@ func (_OldChallengeManager *OldChallengeManagerFilterer) WatchExecutionChallenge
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(OldChallengeManagerExecutionChallengeBegun)
-				if err := _OldChallengeManager.contract.UnpackLog(event, "ExecutionChallengeBegun", log); err != nil {
+				event := new(ChallengeManagerExecutionChallengeBegun)
+				if err := _ChallengeManager.contract.UnpackLog(event, "ExecutionChallengeBegun", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -2544,18 +1391,18 @@ func (_OldChallengeManager *OldChallengeManagerFilterer) WatchExecutionChallenge
 // ParseExecutionChallengeBegun is a log parse operation binding the contract event 0x24e032e170243bbea97e140174b22dc7e54fb85925afbf52c70e001cd6af16db.
 //
 // Solidity: event ExecutionChallengeBegun(uint64 indexed challengeIndex, uint256 blockSteps)
-func (_OldChallengeManager *OldChallengeManagerFilterer) ParseExecutionChallengeBegun(log types.Log) (*OldChallengeManagerExecutionChallengeBegun, error) {
-	event := new(OldChallengeManagerExecutionChallengeBegun)
-	if err := _OldChallengeManager.contract.UnpackLog(event, "ExecutionChallengeBegun", log); err != nil {
+func (_ChallengeManager *ChallengeManagerFilterer) ParseExecutionChallengeBegun(log types.Log) (*ChallengeManagerExecutionChallengeBegun, error) {
+	event := new(ChallengeManagerExecutionChallengeBegun)
+	if err := _ChallengeManager.contract.UnpackLog(event, "ExecutionChallengeBegun", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// OldChallengeManagerInitiatedChallengeIterator is returned from FilterInitiatedChallenge and is used to iterate over the raw logs and unpacked data for InitiatedChallenge events raised by the OldChallengeManager contract.
-type OldChallengeManagerInitiatedChallengeIterator struct {
-	Event *OldChallengeManagerInitiatedChallenge // Event containing the contract specifics and raw log
+// ChallengeManagerInitiatedChallengeIterator is returned from FilterInitiatedChallenge and is used to iterate over the raw logs and unpacked data for InitiatedChallenge events raised by the ChallengeManager contract.
+type ChallengeManagerInitiatedChallengeIterator struct {
+	Event *ChallengeManagerInitiatedChallenge // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -2569,7 +1416,7 @@ type OldChallengeManagerInitiatedChallengeIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *OldChallengeManagerInitiatedChallengeIterator) Next() bool {
+func (it *ChallengeManagerInitiatedChallengeIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -2578,7 +1425,7 @@ func (it *OldChallengeManagerInitiatedChallengeIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(OldChallengeManagerInitiatedChallenge)
+			it.Event = new(ChallengeManagerInitiatedChallenge)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -2593,7 +1440,7 @@ func (it *OldChallengeManagerInitiatedChallengeIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(OldChallengeManagerInitiatedChallenge)
+		it.Event = new(ChallengeManagerInitiatedChallenge)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -2609,19 +1456,19 @@ func (it *OldChallengeManagerInitiatedChallengeIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *OldChallengeManagerInitiatedChallengeIterator) Error() error {
+func (it *ChallengeManagerInitiatedChallengeIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *OldChallengeManagerInitiatedChallengeIterator) Close() error {
+func (it *ChallengeManagerInitiatedChallengeIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// OldChallengeManagerInitiatedChallenge represents a InitiatedChallenge event raised by the OldChallengeManager contract.
-type OldChallengeManagerInitiatedChallenge struct {
+// ChallengeManagerInitiatedChallenge represents a InitiatedChallenge event raised by the ChallengeManager contract.
+type ChallengeManagerInitiatedChallenge struct {
 	ChallengeIndex uint64
 	StartState     GlobalState
 	EndState       GlobalState
@@ -2631,31 +1478,31 @@ type OldChallengeManagerInitiatedChallenge struct {
 // FilterInitiatedChallenge is a free log retrieval operation binding the contract event 0x76604fe17af46c9b5f53ffe99ff23e0f655dab91886b07ac1fc0254319f7145a.
 //
 // Solidity: event InitiatedChallenge(uint64 indexed challengeIndex, (bytes32[2],uint64[2]) startState, (bytes32[2],uint64[2]) endState)
-func (_OldChallengeManager *OldChallengeManagerFilterer) FilterInitiatedChallenge(opts *bind.FilterOpts, challengeIndex []uint64) (*OldChallengeManagerInitiatedChallengeIterator, error) {
+func (_ChallengeManager *ChallengeManagerFilterer) FilterInitiatedChallenge(opts *bind.FilterOpts, challengeIndex []uint64) (*ChallengeManagerInitiatedChallengeIterator, error) {
 
 	var challengeIndexRule []interface{}
 	for _, challengeIndexItem := range challengeIndex {
 		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
 	}
 
-	logs, sub, err := _OldChallengeManager.contract.FilterLogs(opts, "InitiatedChallenge", challengeIndexRule)
+	logs, sub, err := _ChallengeManager.contract.FilterLogs(opts, "InitiatedChallenge", challengeIndexRule)
 	if err != nil {
 		return nil, err
 	}
-	return &OldChallengeManagerInitiatedChallengeIterator{contract: _OldChallengeManager.contract, event: "InitiatedChallenge", logs: logs, sub: sub}, nil
+	return &ChallengeManagerInitiatedChallengeIterator{contract: _ChallengeManager.contract, event: "InitiatedChallenge", logs: logs, sub: sub}, nil
 }
 
 // WatchInitiatedChallenge is a free log subscription operation binding the contract event 0x76604fe17af46c9b5f53ffe99ff23e0f655dab91886b07ac1fc0254319f7145a.
 //
 // Solidity: event InitiatedChallenge(uint64 indexed challengeIndex, (bytes32[2],uint64[2]) startState, (bytes32[2],uint64[2]) endState)
-func (_OldChallengeManager *OldChallengeManagerFilterer) WatchInitiatedChallenge(opts *bind.WatchOpts, sink chan<- *OldChallengeManagerInitiatedChallenge, challengeIndex []uint64) (event.Subscription, error) {
+func (_ChallengeManager *ChallengeManagerFilterer) WatchInitiatedChallenge(opts *bind.WatchOpts, sink chan<- *ChallengeManagerInitiatedChallenge, challengeIndex []uint64) (event.Subscription, error) {
 
 	var challengeIndexRule []interface{}
 	for _, challengeIndexItem := range challengeIndex {
 		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
 	}
 
-	logs, sub, err := _OldChallengeManager.contract.WatchLogs(opts, "InitiatedChallenge", challengeIndexRule)
+	logs, sub, err := _ChallengeManager.contract.WatchLogs(opts, "InitiatedChallenge", challengeIndexRule)
 	if err != nil {
 		return nil, err
 	}
@@ -2665,8 +1512,8 @@ func (_OldChallengeManager *OldChallengeManagerFilterer) WatchInitiatedChallenge
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(OldChallengeManagerInitiatedChallenge)
-				if err := _OldChallengeManager.contract.UnpackLog(event, "InitiatedChallenge", log); err != nil {
+				event := new(ChallengeManagerInitiatedChallenge)
+				if err := _ChallengeManager.contract.UnpackLog(event, "InitiatedChallenge", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -2690,18 +1537,18 @@ func (_OldChallengeManager *OldChallengeManagerFilterer) WatchInitiatedChallenge
 // ParseInitiatedChallenge is a log parse operation binding the contract event 0x76604fe17af46c9b5f53ffe99ff23e0f655dab91886b07ac1fc0254319f7145a.
 //
 // Solidity: event InitiatedChallenge(uint64 indexed challengeIndex, (bytes32[2],uint64[2]) startState, (bytes32[2],uint64[2]) endState)
-func (_OldChallengeManager *OldChallengeManagerFilterer) ParseInitiatedChallenge(log types.Log) (*OldChallengeManagerInitiatedChallenge, error) {
-	event := new(OldChallengeManagerInitiatedChallenge)
-	if err := _OldChallengeManager.contract.UnpackLog(event, "InitiatedChallenge", log); err != nil {
+func (_ChallengeManager *ChallengeManagerFilterer) ParseInitiatedChallenge(log types.Log) (*ChallengeManagerInitiatedChallenge, error) {
+	event := new(ChallengeManagerInitiatedChallenge)
+	if err := _ChallengeManager.contract.UnpackLog(event, "InitiatedChallenge", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// OldChallengeManagerOneStepProofCompletedIterator is returned from FilterOneStepProofCompleted and is used to iterate over the raw logs and unpacked data for OneStepProofCompleted events raised by the OldChallengeManager contract.
-type OldChallengeManagerOneStepProofCompletedIterator struct {
-	Event *OldChallengeManagerOneStepProofCompleted // Event containing the contract specifics and raw log
+// ChallengeManagerOneStepProofCompletedIterator is returned from FilterOneStepProofCompleted and is used to iterate over the raw logs and unpacked data for OneStepProofCompleted events raised by the ChallengeManager contract.
+type ChallengeManagerOneStepProofCompletedIterator struct {
+	Event *ChallengeManagerOneStepProofCompleted // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -2715,7 +1562,7 @@ type OldChallengeManagerOneStepProofCompletedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *OldChallengeManagerOneStepProofCompletedIterator) Next() bool {
+func (it *ChallengeManagerOneStepProofCompletedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -2724,7 +1571,7 @@ func (it *OldChallengeManagerOneStepProofCompletedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(OldChallengeManagerOneStepProofCompleted)
+			it.Event = new(ChallengeManagerOneStepProofCompleted)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -2739,7 +1586,7 @@ func (it *OldChallengeManagerOneStepProofCompletedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(OldChallengeManagerOneStepProofCompleted)
+		it.Event = new(ChallengeManagerOneStepProofCompleted)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -2755,19 +1602,19 @@ func (it *OldChallengeManagerOneStepProofCompletedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *OldChallengeManagerOneStepProofCompletedIterator) Error() error {
+func (it *ChallengeManagerOneStepProofCompletedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *OldChallengeManagerOneStepProofCompletedIterator) Close() error {
+func (it *ChallengeManagerOneStepProofCompletedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// OldChallengeManagerOneStepProofCompleted represents a OneStepProofCompleted event raised by the OldChallengeManager contract.
-type OldChallengeManagerOneStepProofCompleted struct {
+// ChallengeManagerOneStepProofCompleted represents a OneStepProofCompleted event raised by the ChallengeManager contract.
+type ChallengeManagerOneStepProofCompleted struct {
 	ChallengeIndex uint64
 	Raw            types.Log // Blockchain specific contextual infos
 }
@@ -2775,31 +1622,31 @@ type OldChallengeManagerOneStepProofCompleted struct {
 // FilterOneStepProofCompleted is a free log retrieval operation binding the contract event 0xc2cc42e04ff8c36de71c6a2937ea9f161dd0dd9e175f00caa26e5200643c781e.
 //
 // Solidity: event OneStepProofCompleted(uint64 indexed challengeIndex)
-func (_OldChallengeManager *OldChallengeManagerFilterer) FilterOneStepProofCompleted(opts *bind.FilterOpts, challengeIndex []uint64) (*OldChallengeManagerOneStepProofCompletedIterator, error) {
+func (_ChallengeManager *ChallengeManagerFilterer) FilterOneStepProofCompleted(opts *bind.FilterOpts, challengeIndex []uint64) (*ChallengeManagerOneStepProofCompletedIterator, error) {
 
 	var challengeIndexRule []interface{}
 	for _, challengeIndexItem := range challengeIndex {
 		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
 	}
 
-	logs, sub, err := _OldChallengeManager.contract.FilterLogs(opts, "OneStepProofCompleted", challengeIndexRule)
+	logs, sub, err := _ChallengeManager.contract.FilterLogs(opts, "OneStepProofCompleted", challengeIndexRule)
 	if err != nil {
 		return nil, err
 	}
-	return &OldChallengeManagerOneStepProofCompletedIterator{contract: _OldChallengeManager.contract, event: "OneStepProofCompleted", logs: logs, sub: sub}, nil
+	return &ChallengeManagerOneStepProofCompletedIterator{contract: _ChallengeManager.contract, event: "OneStepProofCompleted", logs: logs, sub: sub}, nil
 }
 
 // WatchOneStepProofCompleted is a free log subscription operation binding the contract event 0xc2cc42e04ff8c36de71c6a2937ea9f161dd0dd9e175f00caa26e5200643c781e.
 //
 // Solidity: event OneStepProofCompleted(uint64 indexed challengeIndex)
-func (_OldChallengeManager *OldChallengeManagerFilterer) WatchOneStepProofCompleted(opts *bind.WatchOpts, sink chan<- *OldChallengeManagerOneStepProofCompleted, challengeIndex []uint64) (event.Subscription, error) {
+func (_ChallengeManager *ChallengeManagerFilterer) WatchOneStepProofCompleted(opts *bind.WatchOpts, sink chan<- *ChallengeManagerOneStepProofCompleted, challengeIndex []uint64) (event.Subscription, error) {
 
 	var challengeIndexRule []interface{}
 	for _, challengeIndexItem := range challengeIndex {
 		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
 	}
 
-	logs, sub, err := _OldChallengeManager.contract.WatchLogs(opts, "OneStepProofCompleted", challengeIndexRule)
+	logs, sub, err := _ChallengeManager.contract.WatchLogs(opts, "OneStepProofCompleted", challengeIndexRule)
 	if err != nil {
 		return nil, err
 	}
@@ -2809,8 +1656,8 @@ func (_OldChallengeManager *OldChallengeManagerFilterer) WatchOneStepProofComple
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(OldChallengeManagerOneStepProofCompleted)
-				if err := _OldChallengeManager.contract.UnpackLog(event, "OneStepProofCompleted", log); err != nil {
+				event := new(ChallengeManagerOneStepProofCompleted)
+				if err := _ChallengeManager.contract.UnpackLog(event, "OneStepProofCompleted", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -2834,11 +1681,1330 @@ func (_OldChallengeManager *OldChallengeManagerFilterer) WatchOneStepProofComple
 // ParseOneStepProofCompleted is a log parse operation binding the contract event 0xc2cc42e04ff8c36de71c6a2937ea9f161dd0dd9e175f00caa26e5200643c781e.
 //
 // Solidity: event OneStepProofCompleted(uint64 indexed challengeIndex)
-func (_OldChallengeManager *OldChallengeManagerFilterer) ParseOneStepProofCompleted(log types.Log) (*OldChallengeManagerOneStepProofCompleted, error) {
-	event := new(OldChallengeManagerOneStepProofCompleted)
-	if err := _OldChallengeManager.contract.UnpackLog(event, "OneStepProofCompleted", log); err != nil {
+func (_ChallengeManager *ChallengeManagerFilterer) ParseOneStepProofCompleted(log types.Log) (*ChallengeManagerOneStepProofCompleted, error) {
+	event := new(ChallengeManagerOneStepProofCompleted)
+	if err := _ChallengeManager.contract.UnpackLog(event, "OneStepProofCompleted", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
+}
+
+// IChallengeManagerMetaData contains all meta data concerning the IChallengeManager contract.
+var IChallengeManagerMetaData = &bind.MetaData{
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"challengeRoot\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"challengedSegmentStart\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"challengedSegmentLength\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes32[]\",\"name\":\"chainHashes\",\"type\":\"bytes32[]\"}],\"name\":\"Bisected\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"enumIChallengeManager.ChallengeTerminationType\",\"name\":\"kind\",\"type\":\"uint8\"}],\"name\":\"ChallengeEnded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"blockSteps\",\"type\":\"uint256\"}],\"name\":\"ExecutionChallengeBegun\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"bytes32[2]\",\"name\":\"bytes32Vals\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint64[2]\",\"name\":\"u64Vals\",\"type\":\"uint64[2]\"}],\"indexed\":false,\"internalType\":\"structGlobalState\",\"name\":\"startState\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"bytes32[2]\",\"name\":\"bytes32Vals\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint64[2]\",\"name\":\"u64Vals\",\"type\":\"uint64[2]\"}],\"indexed\":false,\"internalType\":\"structGlobalState\",\"name\":\"endState\",\"type\":\"tuple\"}],\"name\":\"InitiatedChallenge\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"OneStepProofCompleted\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex_\",\"type\":\"uint64\"}],\"name\":\"challengeInfo\",\"outputs\":[{\"components\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"timeLeft\",\"type\":\"uint256\"}],\"internalType\":\"structChallengeLib.Participant\",\"name\":\"current\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"timeLeft\",\"type\":\"uint256\"}],\"internalType\":\"structChallengeLib.Participant\",\"name\":\"next\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"lastMoveTimestamp\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"wasmModuleRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"challengeStateHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint64\",\"name\":\"maxInboxMessages\",\"type\":\"uint64\"},{\"internalType\":\"enumChallengeLib.ChallengeMode\",\"name\":\"mode\",\"type\":\"uint8\"}],\"internalType\":\"structChallengeLib.Challenge\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex_\",\"type\":\"uint64\"}],\"name\":\"clearChallenge\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"wasmModuleRoot_\",\"type\":\"bytes32\"},{\"internalType\":\"enumMachineStatus[2]\",\"name\":\"startAndEndMachineStatuses_\",\"type\":\"uint8[2]\"},{\"components\":[{\"internalType\":\"bytes32[2]\",\"name\":\"bytes32Vals\",\"type\":\"bytes32[2]\"},{\"internalType\":\"uint64[2]\",\"name\":\"u64Vals\",\"type\":\"uint64[2]\"}],\"internalType\":\"structGlobalState[2]\",\"name\":\"startAndEndGlobalStates_\",\"type\":\"tuple[2]\"},{\"internalType\":\"uint64\",\"name\":\"numBlocks\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"asserter_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"challenger_\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"asserterTimeLeft_\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"challengerTimeLeft_\",\"type\":\"uint256\"}],\"name\":\"createChallenge\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"currentResponder\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"wasmModuleRoot\",\"type\":\"bytes32\"}],\"name\":\"getOsp\",\"outputs\":[{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIChallengeResultReceiver\",\"name\":\"resultReceiver_\",\"type\":\"address\"},{\"internalType\":\"contractISequencerInbox\",\"name\":\"sequencerInbox_\",\"type\":\"address\"},{\"internalType\":\"contractIBridge\",\"name\":\"bridge_\",\"type\":\"address\"},{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"osp_\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex\",\"type\":\"uint64\"}],\"name\":\"isTimedOut\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"osp\",\"outputs\":[{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"osp_\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"condRoot\",\"type\":\"bytes32\"},{\"internalType\":\"contractIOneStepProofEntry\",\"name\":\"condOsp\",\"type\":\"address\"}],\"name\":\"postUpgradeInit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"challengeIndex_\",\"type\":\"uint64\"}],\"name\":\"timeout\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+}
+
+// IChallengeManagerABI is the input ABI used to generate the binding from.
+// Deprecated: Use IChallengeManagerMetaData.ABI instead.
+var IChallengeManagerABI = IChallengeManagerMetaData.ABI
+
+// IChallengeManager is an auto generated Go binding around an Ethereum contract.
+type IChallengeManager struct {
+	IChallengeManagerCaller     // Read-only binding to the contract
+	IChallengeManagerTransactor // Write-only binding to the contract
+	IChallengeManagerFilterer   // Log filterer for contract events
+}
+
+// IChallengeManagerCaller is an auto generated read-only Go binding around an Ethereum contract.
+type IChallengeManagerCaller struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// IChallengeManagerTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type IChallengeManagerTransactor struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// IChallengeManagerFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type IChallengeManagerFilterer struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// IChallengeManagerSession is an auto generated Go binding around an Ethereum contract,
+// with pre-set call and transact options.
+type IChallengeManagerSession struct {
+	Contract     *IChallengeManager // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts      // Call options to use throughout this session
+	TransactOpts bind.TransactOpts  // Transaction auth options to use throughout this session
+}
+
+// IChallengeManagerCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// with pre-set call options.
+type IChallengeManagerCallerSession struct {
+	Contract *IChallengeManagerCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts            // Call options to use throughout this session
+}
+
+// IChallengeManagerTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// with pre-set transact options.
+type IChallengeManagerTransactorSession struct {
+	Contract     *IChallengeManagerTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts            // Transaction auth options to use throughout this session
+}
+
+// IChallengeManagerRaw is an auto generated low-level Go binding around an Ethereum contract.
+type IChallengeManagerRaw struct {
+	Contract *IChallengeManager // Generic contract binding to access the raw methods on
+}
+
+// IChallengeManagerCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type IChallengeManagerCallerRaw struct {
+	Contract *IChallengeManagerCaller // Generic read-only contract binding to access the raw methods on
+}
+
+// IChallengeManagerTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type IChallengeManagerTransactorRaw struct {
+	Contract *IChallengeManagerTransactor // Generic write-only contract binding to access the raw methods on
+}
+
+// NewIChallengeManager creates a new instance of IChallengeManager, bound to a specific deployed contract.
+func NewIChallengeManager(address common.Address, backend bind.ContractBackend) (*IChallengeManager, error) {
+	contract, err := bindIChallengeManager(address, backend, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &IChallengeManager{IChallengeManagerCaller: IChallengeManagerCaller{contract: contract}, IChallengeManagerTransactor: IChallengeManagerTransactor{contract: contract}, IChallengeManagerFilterer: IChallengeManagerFilterer{contract: contract}}, nil
+}
+
+// NewIChallengeManagerCaller creates a new read-only instance of IChallengeManager, bound to a specific deployed contract.
+func NewIChallengeManagerCaller(address common.Address, caller bind.ContractCaller) (*IChallengeManagerCaller, error) {
+	contract, err := bindIChallengeManager(address, caller, nil, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &IChallengeManagerCaller{contract: contract}, nil
+}
+
+// NewIChallengeManagerTransactor creates a new write-only instance of IChallengeManager, bound to a specific deployed contract.
+func NewIChallengeManagerTransactor(address common.Address, transactor bind.ContractTransactor) (*IChallengeManagerTransactor, error) {
+	contract, err := bindIChallengeManager(address, nil, transactor, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &IChallengeManagerTransactor{contract: contract}, nil
+}
+
+// NewIChallengeManagerFilterer creates a new log filterer instance of IChallengeManager, bound to a specific deployed contract.
+func NewIChallengeManagerFilterer(address common.Address, filterer bind.ContractFilterer) (*IChallengeManagerFilterer, error) {
+	contract, err := bindIChallengeManager(address, nil, nil, filterer)
+	if err != nil {
+		return nil, err
+	}
+	return &IChallengeManagerFilterer{contract: contract}, nil
+}
+
+// bindIChallengeManager binds a generic wrapper to an already deployed contract.
+func bindIChallengeManager(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := IChallengeManagerMetaData.GetAbi()
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, *parsed, caller, transactor, filterer), nil
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_IChallengeManager *IChallengeManagerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IChallengeManager.Contract.IChallengeManagerCaller.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_IChallengeManager *IChallengeManagerRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.IChallengeManagerTransactor.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_IChallengeManager *IChallengeManagerRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.IChallengeManagerTransactor.contract.Transact(opts, method, params...)
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_IChallengeManager *IChallengeManagerCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IChallengeManager.Contract.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_IChallengeManager *IChallengeManagerTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_IChallengeManager *IChallengeManagerTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.contract.Transact(opts, method, params...)
+}
+
+// ChallengeInfo is a free data retrieval call binding the contract method 0x7fd07a9c.
+//
+// Solidity: function challengeInfo(uint64 challengeIndex_) view returns(((address,uint256),(address,uint256),uint256,bytes32,bytes32,uint64,uint8))
+func (_IChallengeManager *IChallengeManagerCaller) ChallengeInfo(opts *bind.CallOpts, challengeIndex_ uint64) (ChallengeLibChallenge, error) {
+	var out []interface{}
+	err := _IChallengeManager.contract.Call(opts, &out, "challengeInfo", challengeIndex_)
+
+	if err != nil {
+		return *new(ChallengeLibChallenge), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(ChallengeLibChallenge)).(*ChallengeLibChallenge)
+
+	return out0, err
+
+}
+
+// ChallengeInfo is a free data retrieval call binding the contract method 0x7fd07a9c.
+//
+// Solidity: function challengeInfo(uint64 challengeIndex_) view returns(((address,uint256),(address,uint256),uint256,bytes32,bytes32,uint64,uint8))
+func (_IChallengeManager *IChallengeManagerSession) ChallengeInfo(challengeIndex_ uint64) (ChallengeLibChallenge, error) {
+	return _IChallengeManager.Contract.ChallengeInfo(&_IChallengeManager.CallOpts, challengeIndex_)
+}
+
+// ChallengeInfo is a free data retrieval call binding the contract method 0x7fd07a9c.
+//
+// Solidity: function challengeInfo(uint64 challengeIndex_) view returns(((address,uint256),(address,uint256),uint256,bytes32,bytes32,uint64,uint8))
+func (_IChallengeManager *IChallengeManagerCallerSession) ChallengeInfo(challengeIndex_ uint64) (ChallengeLibChallenge, error) {
+	return _IChallengeManager.Contract.ChallengeInfo(&_IChallengeManager.CallOpts, challengeIndex_)
+}
+
+// CurrentResponder is a free data retrieval call binding the contract method 0x23a9ef23.
+//
+// Solidity: function currentResponder(uint64 challengeIndex) view returns(address)
+func (_IChallengeManager *IChallengeManagerCaller) CurrentResponder(opts *bind.CallOpts, challengeIndex uint64) (common.Address, error) {
+	var out []interface{}
+	err := _IChallengeManager.contract.Call(opts, &out, "currentResponder", challengeIndex)
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// CurrentResponder is a free data retrieval call binding the contract method 0x23a9ef23.
+//
+// Solidity: function currentResponder(uint64 challengeIndex) view returns(address)
+func (_IChallengeManager *IChallengeManagerSession) CurrentResponder(challengeIndex uint64) (common.Address, error) {
+	return _IChallengeManager.Contract.CurrentResponder(&_IChallengeManager.CallOpts, challengeIndex)
+}
+
+// CurrentResponder is a free data retrieval call binding the contract method 0x23a9ef23.
+//
+// Solidity: function currentResponder(uint64 challengeIndex) view returns(address)
+func (_IChallengeManager *IChallengeManagerCallerSession) CurrentResponder(challengeIndex uint64) (common.Address, error) {
+	return _IChallengeManager.Contract.CurrentResponder(&_IChallengeManager.CallOpts, challengeIndex)
+}
+
+// GetOsp is a free data retrieval call binding the contract method 0x3690b011.
+//
+// Solidity: function getOsp(bytes32 wasmModuleRoot) view returns(address)
+func (_IChallengeManager *IChallengeManagerCaller) GetOsp(opts *bind.CallOpts, wasmModuleRoot [32]byte) (common.Address, error) {
+	var out []interface{}
+	err := _IChallengeManager.contract.Call(opts, &out, "getOsp", wasmModuleRoot)
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// GetOsp is a free data retrieval call binding the contract method 0x3690b011.
+//
+// Solidity: function getOsp(bytes32 wasmModuleRoot) view returns(address)
+func (_IChallengeManager *IChallengeManagerSession) GetOsp(wasmModuleRoot [32]byte) (common.Address, error) {
+	return _IChallengeManager.Contract.GetOsp(&_IChallengeManager.CallOpts, wasmModuleRoot)
+}
+
+// GetOsp is a free data retrieval call binding the contract method 0x3690b011.
+//
+// Solidity: function getOsp(bytes32 wasmModuleRoot) view returns(address)
+func (_IChallengeManager *IChallengeManagerCallerSession) GetOsp(wasmModuleRoot [32]byte) (common.Address, error) {
+	return _IChallengeManager.Contract.GetOsp(&_IChallengeManager.CallOpts, wasmModuleRoot)
+}
+
+// IsTimedOut is a free data retrieval call binding the contract method 0x9ede42b9.
+//
+// Solidity: function isTimedOut(uint64 challengeIndex) view returns(bool)
+func (_IChallengeManager *IChallengeManagerCaller) IsTimedOut(opts *bind.CallOpts, challengeIndex uint64) (bool, error) {
+	var out []interface{}
+	err := _IChallengeManager.contract.Call(opts, &out, "isTimedOut", challengeIndex)
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
+}
+
+// IsTimedOut is a free data retrieval call binding the contract method 0x9ede42b9.
+//
+// Solidity: function isTimedOut(uint64 challengeIndex) view returns(bool)
+func (_IChallengeManager *IChallengeManagerSession) IsTimedOut(challengeIndex uint64) (bool, error) {
+	return _IChallengeManager.Contract.IsTimedOut(&_IChallengeManager.CallOpts, challengeIndex)
+}
+
+// IsTimedOut is a free data retrieval call binding the contract method 0x9ede42b9.
+//
+// Solidity: function isTimedOut(uint64 challengeIndex) view returns(bool)
+func (_IChallengeManager *IChallengeManagerCallerSession) IsTimedOut(challengeIndex uint64) (bool, error) {
+	return _IChallengeManager.Contract.IsTimedOut(&_IChallengeManager.CallOpts, challengeIndex)
+}
+
+// Osp is a free data retrieval call binding the contract method 0xf26a62c6.
+//
+// Solidity: function osp() view returns(address)
+func (_IChallengeManager *IChallengeManagerCaller) Osp(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _IChallengeManager.contract.Call(opts, &out, "osp")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// Osp is a free data retrieval call binding the contract method 0xf26a62c6.
+//
+// Solidity: function osp() view returns(address)
+func (_IChallengeManager *IChallengeManagerSession) Osp() (common.Address, error) {
+	return _IChallengeManager.Contract.Osp(&_IChallengeManager.CallOpts)
+}
+
+// Osp is a free data retrieval call binding the contract method 0xf26a62c6.
+//
+// Solidity: function osp() view returns(address)
+func (_IChallengeManager *IChallengeManagerCallerSession) Osp() (common.Address, error) {
+	return _IChallengeManager.Contract.Osp(&_IChallengeManager.CallOpts)
+}
+
+// ClearChallenge is a paid mutator transaction binding the contract method 0x56e9df97.
+//
+// Solidity: function clearChallenge(uint64 challengeIndex_) returns()
+func (_IChallengeManager *IChallengeManagerTransactor) ClearChallenge(opts *bind.TransactOpts, challengeIndex_ uint64) (*types.Transaction, error) {
+	return _IChallengeManager.contract.Transact(opts, "clearChallenge", challengeIndex_)
+}
+
+// ClearChallenge is a paid mutator transaction binding the contract method 0x56e9df97.
+//
+// Solidity: function clearChallenge(uint64 challengeIndex_) returns()
+func (_IChallengeManager *IChallengeManagerSession) ClearChallenge(challengeIndex_ uint64) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.ClearChallenge(&_IChallengeManager.TransactOpts, challengeIndex_)
+}
+
+// ClearChallenge is a paid mutator transaction binding the contract method 0x56e9df97.
+//
+// Solidity: function clearChallenge(uint64 challengeIndex_) returns()
+func (_IChallengeManager *IChallengeManagerTransactorSession) ClearChallenge(challengeIndex_ uint64) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.ClearChallenge(&_IChallengeManager.TransactOpts, challengeIndex_)
+}
+
+// CreateChallenge is a paid mutator transaction binding the contract method 0x14eab5e7.
+//
+// Solidity: function createChallenge(bytes32 wasmModuleRoot_, uint8[2] startAndEndMachineStatuses_, (bytes32[2],uint64[2])[2] startAndEndGlobalStates_, uint64 numBlocks, address asserter_, address challenger_, uint256 asserterTimeLeft_, uint256 challengerTimeLeft_) returns(uint64)
+func (_IChallengeManager *IChallengeManagerTransactor) CreateChallenge(opts *bind.TransactOpts, wasmModuleRoot_ [32]byte, startAndEndMachineStatuses_ [2]uint8, startAndEndGlobalStates_ [2]GlobalState, numBlocks uint64, asserter_ common.Address, challenger_ common.Address, asserterTimeLeft_ *big.Int, challengerTimeLeft_ *big.Int) (*types.Transaction, error) {
+	return _IChallengeManager.contract.Transact(opts, "createChallenge", wasmModuleRoot_, startAndEndMachineStatuses_, startAndEndGlobalStates_, numBlocks, asserter_, challenger_, asserterTimeLeft_, challengerTimeLeft_)
+}
+
+// CreateChallenge is a paid mutator transaction binding the contract method 0x14eab5e7.
+//
+// Solidity: function createChallenge(bytes32 wasmModuleRoot_, uint8[2] startAndEndMachineStatuses_, (bytes32[2],uint64[2])[2] startAndEndGlobalStates_, uint64 numBlocks, address asserter_, address challenger_, uint256 asserterTimeLeft_, uint256 challengerTimeLeft_) returns(uint64)
+func (_IChallengeManager *IChallengeManagerSession) CreateChallenge(wasmModuleRoot_ [32]byte, startAndEndMachineStatuses_ [2]uint8, startAndEndGlobalStates_ [2]GlobalState, numBlocks uint64, asserter_ common.Address, challenger_ common.Address, asserterTimeLeft_ *big.Int, challengerTimeLeft_ *big.Int) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.CreateChallenge(&_IChallengeManager.TransactOpts, wasmModuleRoot_, startAndEndMachineStatuses_, startAndEndGlobalStates_, numBlocks, asserter_, challenger_, asserterTimeLeft_, challengerTimeLeft_)
+}
+
+// CreateChallenge is a paid mutator transaction binding the contract method 0x14eab5e7.
+//
+// Solidity: function createChallenge(bytes32 wasmModuleRoot_, uint8[2] startAndEndMachineStatuses_, (bytes32[2],uint64[2])[2] startAndEndGlobalStates_, uint64 numBlocks, address asserter_, address challenger_, uint256 asserterTimeLeft_, uint256 challengerTimeLeft_) returns(uint64)
+func (_IChallengeManager *IChallengeManagerTransactorSession) CreateChallenge(wasmModuleRoot_ [32]byte, startAndEndMachineStatuses_ [2]uint8, startAndEndGlobalStates_ [2]GlobalState, numBlocks uint64, asserter_ common.Address, challenger_ common.Address, asserterTimeLeft_ *big.Int, challengerTimeLeft_ *big.Int) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.CreateChallenge(&_IChallengeManager.TransactOpts, wasmModuleRoot_, startAndEndMachineStatuses_, startAndEndGlobalStates_, numBlocks, asserter_, challenger_, asserterTimeLeft_, challengerTimeLeft_)
+}
+
+// Initialize is a paid mutator transaction binding the contract method 0xf8c8765e.
+//
+// Solidity: function initialize(address resultReceiver_, address sequencerInbox_, address bridge_, address osp_) returns()
+func (_IChallengeManager *IChallengeManagerTransactor) Initialize(opts *bind.TransactOpts, resultReceiver_ common.Address, sequencerInbox_ common.Address, bridge_ common.Address, osp_ common.Address) (*types.Transaction, error) {
+	return _IChallengeManager.contract.Transact(opts, "initialize", resultReceiver_, sequencerInbox_, bridge_, osp_)
+}
+
+// Initialize is a paid mutator transaction binding the contract method 0xf8c8765e.
+//
+// Solidity: function initialize(address resultReceiver_, address sequencerInbox_, address bridge_, address osp_) returns()
+func (_IChallengeManager *IChallengeManagerSession) Initialize(resultReceiver_ common.Address, sequencerInbox_ common.Address, bridge_ common.Address, osp_ common.Address) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.Initialize(&_IChallengeManager.TransactOpts, resultReceiver_, sequencerInbox_, bridge_, osp_)
+}
+
+// Initialize is a paid mutator transaction binding the contract method 0xf8c8765e.
+//
+// Solidity: function initialize(address resultReceiver_, address sequencerInbox_, address bridge_, address osp_) returns()
+func (_IChallengeManager *IChallengeManagerTransactorSession) Initialize(resultReceiver_ common.Address, sequencerInbox_ common.Address, bridge_ common.Address, osp_ common.Address) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.Initialize(&_IChallengeManager.TransactOpts, resultReceiver_, sequencerInbox_, bridge_, osp_)
+}
+
+// PostUpgradeInit is a paid mutator transaction binding the contract method 0x5038934d.
+//
+// Solidity: function postUpgradeInit(address osp_, bytes32 condRoot, address condOsp) returns()
+func (_IChallengeManager *IChallengeManagerTransactor) PostUpgradeInit(opts *bind.TransactOpts, osp_ common.Address, condRoot [32]byte, condOsp common.Address) (*types.Transaction, error) {
+	return _IChallengeManager.contract.Transact(opts, "postUpgradeInit", osp_, condRoot, condOsp)
+}
+
+// PostUpgradeInit is a paid mutator transaction binding the contract method 0x5038934d.
+//
+// Solidity: function postUpgradeInit(address osp_, bytes32 condRoot, address condOsp) returns()
+func (_IChallengeManager *IChallengeManagerSession) PostUpgradeInit(osp_ common.Address, condRoot [32]byte, condOsp common.Address) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.PostUpgradeInit(&_IChallengeManager.TransactOpts, osp_, condRoot, condOsp)
+}
+
+// PostUpgradeInit is a paid mutator transaction binding the contract method 0x5038934d.
+//
+// Solidity: function postUpgradeInit(address osp_, bytes32 condRoot, address condOsp) returns()
+func (_IChallengeManager *IChallengeManagerTransactorSession) PostUpgradeInit(osp_ common.Address, condRoot [32]byte, condOsp common.Address) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.PostUpgradeInit(&_IChallengeManager.TransactOpts, osp_, condRoot, condOsp)
+}
+
+// Timeout is a paid mutator transaction binding the contract method 0x1b45c86a.
+//
+// Solidity: function timeout(uint64 challengeIndex_) returns()
+func (_IChallengeManager *IChallengeManagerTransactor) Timeout(opts *bind.TransactOpts, challengeIndex_ uint64) (*types.Transaction, error) {
+	return _IChallengeManager.contract.Transact(opts, "timeout", challengeIndex_)
+}
+
+// Timeout is a paid mutator transaction binding the contract method 0x1b45c86a.
+//
+// Solidity: function timeout(uint64 challengeIndex_) returns()
+func (_IChallengeManager *IChallengeManagerSession) Timeout(challengeIndex_ uint64) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.Timeout(&_IChallengeManager.TransactOpts, challengeIndex_)
+}
+
+// Timeout is a paid mutator transaction binding the contract method 0x1b45c86a.
+//
+// Solidity: function timeout(uint64 challengeIndex_) returns()
+func (_IChallengeManager *IChallengeManagerTransactorSession) Timeout(challengeIndex_ uint64) (*types.Transaction, error) {
+	return _IChallengeManager.Contract.Timeout(&_IChallengeManager.TransactOpts, challengeIndex_)
+}
+
+// IChallengeManagerBisectedIterator is returned from FilterBisected and is used to iterate over the raw logs and unpacked data for Bisected events raised by the IChallengeManager contract.
+type IChallengeManagerBisectedIterator struct {
+	Event *IChallengeManagerBisected // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *IChallengeManagerBisectedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(IChallengeManagerBisected)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(IChallengeManagerBisected)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *IChallengeManagerBisectedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *IChallengeManagerBisectedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// IChallengeManagerBisected represents a Bisected event raised by the IChallengeManager contract.
+type IChallengeManagerBisected struct {
+	ChallengeIndex          uint64
+	ChallengeRoot           [32]byte
+	ChallengedSegmentStart  *big.Int
+	ChallengedSegmentLength *big.Int
+	ChainHashes             [][32]byte
+	Raw                     types.Log // Blockchain specific contextual infos
+}
+
+// FilterBisected is a free log retrieval operation binding the contract event 0x86b34e9455464834eca718f62d4481437603bb929d8a78ccde5d1bc79fa06d68.
+//
+// Solidity: event Bisected(uint64 indexed challengeIndex, bytes32 indexed challengeRoot, uint256 challengedSegmentStart, uint256 challengedSegmentLength, bytes32[] chainHashes)
+func (_IChallengeManager *IChallengeManagerFilterer) FilterBisected(opts *bind.FilterOpts, challengeIndex []uint64, challengeRoot [][32]byte) (*IChallengeManagerBisectedIterator, error) {
+
+	var challengeIndexRule []interface{}
+	for _, challengeIndexItem := range challengeIndex {
+		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
+	}
+	var challengeRootRule []interface{}
+	for _, challengeRootItem := range challengeRoot {
+		challengeRootRule = append(challengeRootRule, challengeRootItem)
+	}
+
+	logs, sub, err := _IChallengeManager.contract.FilterLogs(opts, "Bisected", challengeIndexRule, challengeRootRule)
+	if err != nil {
+		return nil, err
+	}
+	return &IChallengeManagerBisectedIterator{contract: _IChallengeManager.contract, event: "Bisected", logs: logs, sub: sub}, nil
+}
+
+// WatchBisected is a free log subscription operation binding the contract event 0x86b34e9455464834eca718f62d4481437603bb929d8a78ccde5d1bc79fa06d68.
+//
+// Solidity: event Bisected(uint64 indexed challengeIndex, bytes32 indexed challengeRoot, uint256 challengedSegmentStart, uint256 challengedSegmentLength, bytes32[] chainHashes)
+func (_IChallengeManager *IChallengeManagerFilterer) WatchBisected(opts *bind.WatchOpts, sink chan<- *IChallengeManagerBisected, challengeIndex []uint64, challengeRoot [][32]byte) (event.Subscription, error) {
+
+	var challengeIndexRule []interface{}
+	for _, challengeIndexItem := range challengeIndex {
+		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
+	}
+	var challengeRootRule []interface{}
+	for _, challengeRootItem := range challengeRoot {
+		challengeRootRule = append(challengeRootRule, challengeRootItem)
+	}
+
+	logs, sub, err := _IChallengeManager.contract.WatchLogs(opts, "Bisected", challengeIndexRule, challengeRootRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(IChallengeManagerBisected)
+				if err := _IChallengeManager.contract.UnpackLog(event, "Bisected", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseBisected is a log parse operation binding the contract event 0x86b34e9455464834eca718f62d4481437603bb929d8a78ccde5d1bc79fa06d68.
+//
+// Solidity: event Bisected(uint64 indexed challengeIndex, bytes32 indexed challengeRoot, uint256 challengedSegmentStart, uint256 challengedSegmentLength, bytes32[] chainHashes)
+func (_IChallengeManager *IChallengeManagerFilterer) ParseBisected(log types.Log) (*IChallengeManagerBisected, error) {
+	event := new(IChallengeManagerBisected)
+	if err := _IChallengeManager.contract.UnpackLog(event, "Bisected", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// IChallengeManagerChallengeEndedIterator is returned from FilterChallengeEnded and is used to iterate over the raw logs and unpacked data for ChallengeEnded events raised by the IChallengeManager contract.
+type IChallengeManagerChallengeEndedIterator struct {
+	Event *IChallengeManagerChallengeEnded // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *IChallengeManagerChallengeEndedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(IChallengeManagerChallengeEnded)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(IChallengeManagerChallengeEnded)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *IChallengeManagerChallengeEndedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *IChallengeManagerChallengeEndedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// IChallengeManagerChallengeEnded represents a ChallengeEnded event raised by the IChallengeManager contract.
+type IChallengeManagerChallengeEnded struct {
+	ChallengeIndex uint64
+	Kind           uint8
+	Raw            types.Log // Blockchain specific contextual infos
+}
+
+// FilterChallengeEnded is a free log retrieval operation binding the contract event 0xfdaece6c274a4b56af16761f83fd6b1062823192630ea08e019fdf9b2d747f40.
+//
+// Solidity: event ChallengeEnded(uint64 indexed challengeIndex, uint8 kind)
+func (_IChallengeManager *IChallengeManagerFilterer) FilterChallengeEnded(opts *bind.FilterOpts, challengeIndex []uint64) (*IChallengeManagerChallengeEndedIterator, error) {
+
+	var challengeIndexRule []interface{}
+	for _, challengeIndexItem := range challengeIndex {
+		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
+	}
+
+	logs, sub, err := _IChallengeManager.contract.FilterLogs(opts, "ChallengeEnded", challengeIndexRule)
+	if err != nil {
+		return nil, err
+	}
+	return &IChallengeManagerChallengeEndedIterator{contract: _IChallengeManager.contract, event: "ChallengeEnded", logs: logs, sub: sub}, nil
+}
+
+// WatchChallengeEnded is a free log subscription operation binding the contract event 0xfdaece6c274a4b56af16761f83fd6b1062823192630ea08e019fdf9b2d747f40.
+//
+// Solidity: event ChallengeEnded(uint64 indexed challengeIndex, uint8 kind)
+func (_IChallengeManager *IChallengeManagerFilterer) WatchChallengeEnded(opts *bind.WatchOpts, sink chan<- *IChallengeManagerChallengeEnded, challengeIndex []uint64) (event.Subscription, error) {
+
+	var challengeIndexRule []interface{}
+	for _, challengeIndexItem := range challengeIndex {
+		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
+	}
+
+	logs, sub, err := _IChallengeManager.contract.WatchLogs(opts, "ChallengeEnded", challengeIndexRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(IChallengeManagerChallengeEnded)
+				if err := _IChallengeManager.contract.UnpackLog(event, "ChallengeEnded", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseChallengeEnded is a log parse operation binding the contract event 0xfdaece6c274a4b56af16761f83fd6b1062823192630ea08e019fdf9b2d747f40.
+//
+// Solidity: event ChallengeEnded(uint64 indexed challengeIndex, uint8 kind)
+func (_IChallengeManager *IChallengeManagerFilterer) ParseChallengeEnded(log types.Log) (*IChallengeManagerChallengeEnded, error) {
+	event := new(IChallengeManagerChallengeEnded)
+	if err := _IChallengeManager.contract.UnpackLog(event, "ChallengeEnded", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// IChallengeManagerExecutionChallengeBegunIterator is returned from FilterExecutionChallengeBegun and is used to iterate over the raw logs and unpacked data for ExecutionChallengeBegun events raised by the IChallengeManager contract.
+type IChallengeManagerExecutionChallengeBegunIterator struct {
+	Event *IChallengeManagerExecutionChallengeBegun // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *IChallengeManagerExecutionChallengeBegunIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(IChallengeManagerExecutionChallengeBegun)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(IChallengeManagerExecutionChallengeBegun)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *IChallengeManagerExecutionChallengeBegunIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *IChallengeManagerExecutionChallengeBegunIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// IChallengeManagerExecutionChallengeBegun represents a ExecutionChallengeBegun event raised by the IChallengeManager contract.
+type IChallengeManagerExecutionChallengeBegun struct {
+	ChallengeIndex uint64
+	BlockSteps     *big.Int
+	Raw            types.Log // Blockchain specific contextual infos
+}
+
+// FilterExecutionChallengeBegun is a free log retrieval operation binding the contract event 0x24e032e170243bbea97e140174b22dc7e54fb85925afbf52c70e001cd6af16db.
+//
+// Solidity: event ExecutionChallengeBegun(uint64 indexed challengeIndex, uint256 blockSteps)
+func (_IChallengeManager *IChallengeManagerFilterer) FilterExecutionChallengeBegun(opts *bind.FilterOpts, challengeIndex []uint64) (*IChallengeManagerExecutionChallengeBegunIterator, error) {
+
+	var challengeIndexRule []interface{}
+	for _, challengeIndexItem := range challengeIndex {
+		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
+	}
+
+	logs, sub, err := _IChallengeManager.contract.FilterLogs(opts, "ExecutionChallengeBegun", challengeIndexRule)
+	if err != nil {
+		return nil, err
+	}
+	return &IChallengeManagerExecutionChallengeBegunIterator{contract: _IChallengeManager.contract, event: "ExecutionChallengeBegun", logs: logs, sub: sub}, nil
+}
+
+// WatchExecutionChallengeBegun is a free log subscription operation binding the contract event 0x24e032e170243bbea97e140174b22dc7e54fb85925afbf52c70e001cd6af16db.
+//
+// Solidity: event ExecutionChallengeBegun(uint64 indexed challengeIndex, uint256 blockSteps)
+func (_IChallengeManager *IChallengeManagerFilterer) WatchExecutionChallengeBegun(opts *bind.WatchOpts, sink chan<- *IChallengeManagerExecutionChallengeBegun, challengeIndex []uint64) (event.Subscription, error) {
+
+	var challengeIndexRule []interface{}
+	for _, challengeIndexItem := range challengeIndex {
+		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
+	}
+
+	logs, sub, err := _IChallengeManager.contract.WatchLogs(opts, "ExecutionChallengeBegun", challengeIndexRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(IChallengeManagerExecutionChallengeBegun)
+				if err := _IChallengeManager.contract.UnpackLog(event, "ExecutionChallengeBegun", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseExecutionChallengeBegun is a log parse operation binding the contract event 0x24e032e170243bbea97e140174b22dc7e54fb85925afbf52c70e001cd6af16db.
+//
+// Solidity: event ExecutionChallengeBegun(uint64 indexed challengeIndex, uint256 blockSteps)
+func (_IChallengeManager *IChallengeManagerFilterer) ParseExecutionChallengeBegun(log types.Log) (*IChallengeManagerExecutionChallengeBegun, error) {
+	event := new(IChallengeManagerExecutionChallengeBegun)
+	if err := _IChallengeManager.contract.UnpackLog(event, "ExecutionChallengeBegun", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// IChallengeManagerInitiatedChallengeIterator is returned from FilterInitiatedChallenge and is used to iterate over the raw logs and unpacked data for InitiatedChallenge events raised by the IChallengeManager contract.
+type IChallengeManagerInitiatedChallengeIterator struct {
+	Event *IChallengeManagerInitiatedChallenge // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *IChallengeManagerInitiatedChallengeIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(IChallengeManagerInitiatedChallenge)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(IChallengeManagerInitiatedChallenge)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *IChallengeManagerInitiatedChallengeIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *IChallengeManagerInitiatedChallengeIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// IChallengeManagerInitiatedChallenge represents a InitiatedChallenge event raised by the IChallengeManager contract.
+type IChallengeManagerInitiatedChallenge struct {
+	ChallengeIndex uint64
+	StartState     GlobalState
+	EndState       GlobalState
+	Raw            types.Log // Blockchain specific contextual infos
+}
+
+// FilterInitiatedChallenge is a free log retrieval operation binding the contract event 0x76604fe17af46c9b5f53ffe99ff23e0f655dab91886b07ac1fc0254319f7145a.
+//
+// Solidity: event InitiatedChallenge(uint64 indexed challengeIndex, (bytes32[2],uint64[2]) startState, (bytes32[2],uint64[2]) endState)
+func (_IChallengeManager *IChallengeManagerFilterer) FilterInitiatedChallenge(opts *bind.FilterOpts, challengeIndex []uint64) (*IChallengeManagerInitiatedChallengeIterator, error) {
+
+	var challengeIndexRule []interface{}
+	for _, challengeIndexItem := range challengeIndex {
+		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
+	}
+
+	logs, sub, err := _IChallengeManager.contract.FilterLogs(opts, "InitiatedChallenge", challengeIndexRule)
+	if err != nil {
+		return nil, err
+	}
+	return &IChallengeManagerInitiatedChallengeIterator{contract: _IChallengeManager.contract, event: "InitiatedChallenge", logs: logs, sub: sub}, nil
+}
+
+// WatchInitiatedChallenge is a free log subscription operation binding the contract event 0x76604fe17af46c9b5f53ffe99ff23e0f655dab91886b07ac1fc0254319f7145a.
+//
+// Solidity: event InitiatedChallenge(uint64 indexed challengeIndex, (bytes32[2],uint64[2]) startState, (bytes32[2],uint64[2]) endState)
+func (_IChallengeManager *IChallengeManagerFilterer) WatchInitiatedChallenge(opts *bind.WatchOpts, sink chan<- *IChallengeManagerInitiatedChallenge, challengeIndex []uint64) (event.Subscription, error) {
+
+	var challengeIndexRule []interface{}
+	for _, challengeIndexItem := range challengeIndex {
+		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
+	}
+
+	logs, sub, err := _IChallengeManager.contract.WatchLogs(opts, "InitiatedChallenge", challengeIndexRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(IChallengeManagerInitiatedChallenge)
+				if err := _IChallengeManager.contract.UnpackLog(event, "InitiatedChallenge", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseInitiatedChallenge is a log parse operation binding the contract event 0x76604fe17af46c9b5f53ffe99ff23e0f655dab91886b07ac1fc0254319f7145a.
+//
+// Solidity: event InitiatedChallenge(uint64 indexed challengeIndex, (bytes32[2],uint64[2]) startState, (bytes32[2],uint64[2]) endState)
+func (_IChallengeManager *IChallengeManagerFilterer) ParseInitiatedChallenge(log types.Log) (*IChallengeManagerInitiatedChallenge, error) {
+	event := new(IChallengeManagerInitiatedChallenge)
+	if err := _IChallengeManager.contract.UnpackLog(event, "InitiatedChallenge", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// IChallengeManagerOneStepProofCompletedIterator is returned from FilterOneStepProofCompleted and is used to iterate over the raw logs and unpacked data for OneStepProofCompleted events raised by the IChallengeManager contract.
+type IChallengeManagerOneStepProofCompletedIterator struct {
+	Event *IChallengeManagerOneStepProofCompleted // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *IChallengeManagerOneStepProofCompletedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(IChallengeManagerOneStepProofCompleted)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(IChallengeManagerOneStepProofCompleted)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *IChallengeManagerOneStepProofCompletedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *IChallengeManagerOneStepProofCompletedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// IChallengeManagerOneStepProofCompleted represents a OneStepProofCompleted event raised by the IChallengeManager contract.
+type IChallengeManagerOneStepProofCompleted struct {
+	ChallengeIndex uint64
+	Raw            types.Log // Blockchain specific contextual infos
+}
+
+// FilterOneStepProofCompleted is a free log retrieval operation binding the contract event 0xc2cc42e04ff8c36de71c6a2937ea9f161dd0dd9e175f00caa26e5200643c781e.
+//
+// Solidity: event OneStepProofCompleted(uint64 indexed challengeIndex)
+func (_IChallengeManager *IChallengeManagerFilterer) FilterOneStepProofCompleted(opts *bind.FilterOpts, challengeIndex []uint64) (*IChallengeManagerOneStepProofCompletedIterator, error) {
+
+	var challengeIndexRule []interface{}
+	for _, challengeIndexItem := range challengeIndex {
+		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
+	}
+
+	logs, sub, err := _IChallengeManager.contract.FilterLogs(opts, "OneStepProofCompleted", challengeIndexRule)
+	if err != nil {
+		return nil, err
+	}
+	return &IChallengeManagerOneStepProofCompletedIterator{contract: _IChallengeManager.contract, event: "OneStepProofCompleted", logs: logs, sub: sub}, nil
+}
+
+// WatchOneStepProofCompleted is a free log subscription operation binding the contract event 0xc2cc42e04ff8c36de71c6a2937ea9f161dd0dd9e175f00caa26e5200643c781e.
+//
+// Solidity: event OneStepProofCompleted(uint64 indexed challengeIndex)
+func (_IChallengeManager *IChallengeManagerFilterer) WatchOneStepProofCompleted(opts *bind.WatchOpts, sink chan<- *IChallengeManagerOneStepProofCompleted, challengeIndex []uint64) (event.Subscription, error) {
+
+	var challengeIndexRule []interface{}
+	for _, challengeIndexItem := range challengeIndex {
+		challengeIndexRule = append(challengeIndexRule, challengeIndexItem)
+	}
+
+	logs, sub, err := _IChallengeManager.contract.WatchLogs(opts, "OneStepProofCompleted", challengeIndexRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(IChallengeManagerOneStepProofCompleted)
+				if err := _IChallengeManager.contract.UnpackLog(event, "OneStepProofCompleted", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseOneStepProofCompleted is a log parse operation binding the contract event 0xc2cc42e04ff8c36de71c6a2937ea9f161dd0dd9e175f00caa26e5200643c781e.
+//
+// Solidity: event OneStepProofCompleted(uint64 indexed challengeIndex)
+func (_IChallengeManager *IChallengeManagerFilterer) ParseOneStepProofCompleted(log types.Log) (*IChallengeManagerOneStepProofCompleted, error) {
+	event := new(IChallengeManagerOneStepProofCompleted)
+	if err := _IChallengeManager.contract.UnpackLog(event, "OneStepProofCompleted", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// IChallengeResultReceiverMetaData contains all meta data concerning the IChallengeResultReceiver contract.
+var IChallengeResultReceiverMetaData = &bind.MetaData{
+	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"challengeIndex\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"winner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"loser\",\"type\":\"address\"}],\"name\":\"completeChallenge\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+}
+
+// IChallengeResultReceiverABI is the input ABI used to generate the binding from.
+// Deprecated: Use IChallengeResultReceiverMetaData.ABI instead.
+var IChallengeResultReceiverABI = IChallengeResultReceiverMetaData.ABI
+
+// IChallengeResultReceiver is an auto generated Go binding around an Ethereum contract.
+type IChallengeResultReceiver struct {
+	IChallengeResultReceiverCaller     // Read-only binding to the contract
+	IChallengeResultReceiverTransactor // Write-only binding to the contract
+	IChallengeResultReceiverFilterer   // Log filterer for contract events
+}
+
+// IChallengeResultReceiverCaller is an auto generated read-only Go binding around an Ethereum contract.
+type IChallengeResultReceiverCaller struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// IChallengeResultReceiverTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type IChallengeResultReceiverTransactor struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// IChallengeResultReceiverFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type IChallengeResultReceiverFilterer struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// IChallengeResultReceiverSession is an auto generated Go binding around an Ethereum contract,
+// with pre-set call and transact options.
+type IChallengeResultReceiverSession struct {
+	Contract     *IChallengeResultReceiver // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts             // Call options to use throughout this session
+	TransactOpts bind.TransactOpts         // Transaction auth options to use throughout this session
+}
+
+// IChallengeResultReceiverCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// with pre-set call options.
+type IChallengeResultReceiverCallerSession struct {
+	Contract *IChallengeResultReceiverCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts                   // Call options to use throughout this session
+}
+
+// IChallengeResultReceiverTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// with pre-set transact options.
+type IChallengeResultReceiverTransactorSession struct {
+	Contract     *IChallengeResultReceiverTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts                   // Transaction auth options to use throughout this session
+}
+
+// IChallengeResultReceiverRaw is an auto generated low-level Go binding around an Ethereum contract.
+type IChallengeResultReceiverRaw struct {
+	Contract *IChallengeResultReceiver // Generic contract binding to access the raw methods on
+}
+
+// IChallengeResultReceiverCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type IChallengeResultReceiverCallerRaw struct {
+	Contract *IChallengeResultReceiverCaller // Generic read-only contract binding to access the raw methods on
+}
+
+// IChallengeResultReceiverTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type IChallengeResultReceiverTransactorRaw struct {
+	Contract *IChallengeResultReceiverTransactor // Generic write-only contract binding to access the raw methods on
+}
+
+// NewIChallengeResultReceiver creates a new instance of IChallengeResultReceiver, bound to a specific deployed contract.
+func NewIChallengeResultReceiver(address common.Address, backend bind.ContractBackend) (*IChallengeResultReceiver, error) {
+	contract, err := bindIChallengeResultReceiver(address, backend, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &IChallengeResultReceiver{IChallengeResultReceiverCaller: IChallengeResultReceiverCaller{contract: contract}, IChallengeResultReceiverTransactor: IChallengeResultReceiverTransactor{contract: contract}, IChallengeResultReceiverFilterer: IChallengeResultReceiverFilterer{contract: contract}}, nil
+}
+
+// NewIChallengeResultReceiverCaller creates a new read-only instance of IChallengeResultReceiver, bound to a specific deployed contract.
+func NewIChallengeResultReceiverCaller(address common.Address, caller bind.ContractCaller) (*IChallengeResultReceiverCaller, error) {
+	contract, err := bindIChallengeResultReceiver(address, caller, nil, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &IChallengeResultReceiverCaller{contract: contract}, nil
+}
+
+// NewIChallengeResultReceiverTransactor creates a new write-only instance of IChallengeResultReceiver, bound to a specific deployed contract.
+func NewIChallengeResultReceiverTransactor(address common.Address, transactor bind.ContractTransactor) (*IChallengeResultReceiverTransactor, error) {
+	contract, err := bindIChallengeResultReceiver(address, nil, transactor, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &IChallengeResultReceiverTransactor{contract: contract}, nil
+}
+
+// NewIChallengeResultReceiverFilterer creates a new log filterer instance of IChallengeResultReceiver, bound to a specific deployed contract.
+func NewIChallengeResultReceiverFilterer(address common.Address, filterer bind.ContractFilterer) (*IChallengeResultReceiverFilterer, error) {
+	contract, err := bindIChallengeResultReceiver(address, nil, nil, filterer)
+	if err != nil {
+		return nil, err
+	}
+	return &IChallengeResultReceiverFilterer{contract: contract}, nil
+}
+
+// bindIChallengeResultReceiver binds a generic wrapper to an already deployed contract.
+func bindIChallengeResultReceiver(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := IChallengeResultReceiverMetaData.GetAbi()
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, *parsed, caller, transactor, filterer), nil
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_IChallengeResultReceiver *IChallengeResultReceiverRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IChallengeResultReceiver.Contract.IChallengeResultReceiverCaller.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_IChallengeResultReceiver *IChallengeResultReceiverRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IChallengeResultReceiver.Contract.IChallengeResultReceiverTransactor.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_IChallengeResultReceiver *IChallengeResultReceiverRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IChallengeResultReceiver.Contract.IChallengeResultReceiverTransactor.contract.Transact(opts, method, params...)
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_IChallengeResultReceiver *IChallengeResultReceiverCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IChallengeResultReceiver.Contract.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_IChallengeResultReceiver *IChallengeResultReceiverTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IChallengeResultReceiver.Contract.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_IChallengeResultReceiver *IChallengeResultReceiverTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IChallengeResultReceiver.Contract.contract.Transact(opts, method, params...)
+}
+
+// CompleteChallenge is a paid mutator transaction binding the contract method 0x0357aa49.
+//
+// Solidity: function completeChallenge(uint256 challengeIndex, address winner, address loser) returns()
+func (_IChallengeResultReceiver *IChallengeResultReceiverTransactor) CompleteChallenge(opts *bind.TransactOpts, challengeIndex *big.Int, winner common.Address, loser common.Address) (*types.Transaction, error) {
+	return _IChallengeResultReceiver.contract.Transact(opts, "completeChallenge", challengeIndex, winner, loser)
+}
+
+// CompleteChallenge is a paid mutator transaction binding the contract method 0x0357aa49.
+//
+// Solidity: function completeChallenge(uint256 challengeIndex, address winner, address loser) returns()
+func (_IChallengeResultReceiver *IChallengeResultReceiverSession) CompleteChallenge(challengeIndex *big.Int, winner common.Address, loser common.Address) (*types.Transaction, error) {
+	return _IChallengeResultReceiver.Contract.CompleteChallenge(&_IChallengeResultReceiver.TransactOpts, challengeIndex, winner, loser)
+}
+
+// CompleteChallenge is a paid mutator transaction binding the contract method 0x0357aa49.
+//
+// Solidity: function completeChallenge(uint256 challengeIndex, address winner, address loser) returns()
+func (_IChallengeResultReceiver *IChallengeResultReceiverTransactorSession) CompleteChallenge(challengeIndex *big.Int, winner common.Address, loser common.Address) (*types.Transaction, error) {
+	return _IChallengeResultReceiver.Contract.CompleteChallenge(&_IChallengeResultReceiver.TransactOpts, challengeIndex, winner, loser)
 }
