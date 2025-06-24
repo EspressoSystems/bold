@@ -907,10 +907,6 @@ func (a *AssertionChain) AssertionUnrivaledBlocks(ctx context.Context, assertion
 	if !wantNode.IsFirstChild {
 		return 0, nil
 	}
-	assertionCreationBlock, err := a.GetAssertionCreationParentBlock(ctx, b)
-	if err != nil {
-		return 0, err
-	}
 	assertion := &Assertion{
 		id:        assertionHash,
 		chain:     a,
