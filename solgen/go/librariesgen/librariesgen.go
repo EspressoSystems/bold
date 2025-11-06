@@ -3917,7 +3917,7 @@ func (_IReader4844 *IReader4844CallerSession) GetDataHashes() ([][32]byte, error
 // MerkleLibMetaData contains all meta data concerning the MerkleLib contract.
 var MerkleLibMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220a342088c3b98f8766471bc27eeca6bad027205879f9ee4a63f357127f083384c64736f6c63430008190033",
+	Bin: "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220c7b0a563fad2ea1a7c99f8a4fb04d41c4cee14f3accd718f171f0ed1bcbeeed064736f6c63430008190033",
 }
 
 // MerkleLibABI is the input ABI used to generate the binding from.
